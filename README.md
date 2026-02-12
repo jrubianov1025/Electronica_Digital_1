@@ -20,9 +20,6 @@ Juan Diego Rubiano Valero -CC 1025525548 - Grupo 7
 - [Calculadora](./calculadora/) — Carpeta que contiene los 4 periféricos principales realizados durante las sesiones de clase, cada periférico posee su propia carpeta:
  
   - Multiplicador  
-  - Divisor  
-  - Raíz cuadrada  
-  - Binario a BCD
 
 - [Plantillas Verilog](./plantillas%20verilog/) — Carpeta que contiene plantillas genericas de diversos modulos de verilog utiles para la realizacion de las diferentes actividades.
  
