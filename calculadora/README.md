@@ -36,8 +36,8 @@ Este módulo toma dos operandos de 16 bits y produce un resultado de 32 bits uti
 Se describe con mas detalle el funcionamiento del modulo mediante el uso de 3 diagramas, Diagrama de flujo, Datapath y Diagrama de estados; a continuación se anexan estos 3 diagramas.
 
 <p align="center">
-  <img src="./Diagramas/Captura%20desde%202026-02-12%2009-29-14.png" width="350">
-  <img src="./Diagramas/Captura%20desde%202026-02-12%2009-33-01.png" width="350"> 
+  <img src="./Diagramas/Captura%20desde%202026-02-12%2009-29-14.png" width="300">
+  <img src="./Diagramas/Captura%20desde%202026-02-12%2009-33-01.png" width="400"> 
   <img src="./Diagramas/Captura%20desde%202026-02-12%2009-33-45.png" width="350">
 </p>
 
