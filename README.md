@@ -17,7 +17,7 @@ Juan Diego Rubiano Valero -CC 1025525548 - Grupo 7
 
 ## Estructura del Repositorio
 
-- [Calculadora](./Calculadora/) — Carpeta que contiene los 4 periféricos principales realizados durante las sesiones de clase, cada periférico posee su propia carpeta:
+- [Calculadora](./calculadora/) — Carpeta que contiene los 4 periféricos principales realizados durante las sesiones de clase, cada periférico posee su propia carpeta:
  
   - Multiplicador  
   - Divisor  
