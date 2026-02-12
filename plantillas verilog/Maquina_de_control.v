@@ -25,7 +25,7 @@
     parameter S_STATE_4   = 3'b100;
     parameter S_STATE_5   = 3'b101;
     parameter S_STATE_6   = 3'b110;
-    parameter S_END1      = 3'b111;
+    parameter S_END       = 3'b111;
     
     reg [2:0] NEXT_STATE;
     reg [5:0] count; // alargar la señal DONE lo suficiente para que el procesador la lea.
