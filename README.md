@@ -24,10 +24,18 @@ Juan Diego Rubiano Valero -CC 1025525548 - Grupo 7
   - Raíz cuadrada  
   - Binario a BCD
 
+- [Plantillas Verilog](./plantillas%20verilog/) — Carpeta que contiene plantillas genericas de diversos modulos de verilog utiles para la realizacion de las diferentes actividades.
+ 
+  - Comparador 
+  - Contador 
+  - Corrimientos  
+  - Main
+  - Maquina de control
+  - Periferico
+  - Sumador
+
 - [Proyecto Principal](./proyecto%20principal/) — Carpeta que contiene los periféricos desarrollados como proyecto principal de la asignatura:
 
-  - 12 bits por pixel
-  - Reproducción de video
   
 - `README.md` — Archivo de descripción principal.
 
