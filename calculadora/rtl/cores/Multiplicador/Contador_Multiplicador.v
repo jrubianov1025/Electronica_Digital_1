@@ -7,7 +7,7 @@ module contador_Multiplicador
     output  reg [4:0] out,
     output  zero 
 );
-    always @(posedge clk) begin, //logica secuencial en flanco de subida 
+    always @(posedge clk) begin //logica secuencial en flanco de subida 
 
         if(reset)
             out <= 5'd16;
