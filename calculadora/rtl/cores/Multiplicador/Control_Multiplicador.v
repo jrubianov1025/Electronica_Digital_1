@@ -5,11 +5,12 @@ module Control_Multiplicador(
     input Z,
     input LSB,
 
-    output ADD,
-    output SH,
-    output DEC,
-    output LD,
-    output DONE
+    output reg ADD,
+    output reg SH,
+    output reg DEC,
+    output reg LD,
+    output reg DONE
+
 
 );
 

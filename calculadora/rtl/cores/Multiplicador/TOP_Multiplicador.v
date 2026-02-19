@@ -1,48 +1,77 @@
+// no tengo ni idea si esta funcionando, hacer el testbench y corregir el datapath
+
 module TOP_Multiplicador (
 
     input reset,
     input clk,
     input init,
 
-    input [15:0] Multiplicando,
-    input [15:0] Multiplicador,
+    input signed [15:0] Multiplicando,
+    input signed [15:0] Multiplicador,
     
     output [31:0] Resultado,
     output DONE
 
 );
 
+wire signed [31:0] A_long;
+wire signed [31:0] ACC;
+
 wire W_LD;
 wire W_SH;
 wire W_ADD;
 wire W_DEC;
 wire W_LSB;
+wire W_Z;
 
+wire ACC_LSB;
+wire [4:0] count;
 
-//revisar si esto esta bien echo
+A_long_Multiplicador A_long_reg (
 
-Control_Multiplicador Control_Multiplicador0(
-    
     .clk(clk),
-    .init(init),
-    .Z(zero),
-    .LSB(),
+    .LD(W_LD),  
+    .A(Multiplicando),
 
-    .ADD(),
-    .SH(),
-    .DEC(),
-    .LD(),
-    .DONE()
+    .A_long(A_long)
+
+);
+
+Acumulador_Multiplicador ACC0(
+
+    .clk(clk),
+    .LD(W_LD),
+    .ADD(W_ADD),
+    .SH(W_SH),
+    .A_long(A_long),
+
+    .ACC(ACC),
+    .ACC_LSB(ACC_LSB)
+
 );
 
 contador_Multiplicador contador_Multiplicador0(
 
     .clk(clk),
-    .reset(LD),
-    .in(DEC),
+    .reset(W_LD),
+    .in(W_DEC),
 
-    .out(),
-    .zero()
+    .out(count),
+    .zero(W_Z)
+);
+
+Control_Multiplicador Control_Multiplicador0(
+    
+    .clk(clk),
+    .init(init),
+    .Z(W_Z),
+    .LSB(W_LSB),
+
+    .ADD(W_ADD),
+    .SH(W_SH),
+    .DEC(W_DEC),
+    .LD(W_LD),
+    .DONE(DONE)
 );
 
 endmodule
