@@ -18,7 +18,7 @@ module B_long_Multiplicador(
 
         else if(SH)
         
-        B_long <= {ACC_LSB, B_long[15:1]};
+        B_long <= {ACC_LSB, B_long[31:1]};
     end
 
 endmodule
