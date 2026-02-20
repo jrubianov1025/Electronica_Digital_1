@@ -1,5 +1,3 @@
-// no tengo ni idea si esta funcionando, hacer el testbench y corregir el datapath
-
 module TOP_Multiplicador (
 
     input reset,
@@ -14,7 +12,10 @@ module TOP_Multiplicador (
 
 );
 
+assign Resultado = B_long;
+
 wire signed [31:0] A_long;
+wire signed [31:0] B_long;
 wire signed [31:0] ACC;
 
 wire W_LD;
@@ -34,6 +35,19 @@ A_long_Multiplicador A_long_reg (
     .A(Multiplicando),
 
     .A_long(A_long)
+
+);
+
+B_long_Multiplicador B_long_reg(
+
+    .clk(clk),
+    .LD(W_LD),
+    .SH(W_SH),
+    .ACC_LSB(ACC_LSB),
+    .B(Multiplicador),
+
+    .B_long(B_long),
+    .LSB(W_LSB)
 
 );
 

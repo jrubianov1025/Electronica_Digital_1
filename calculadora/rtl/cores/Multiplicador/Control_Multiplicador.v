@@ -11,7 +11,6 @@ module Control_Multiplicador(
     output reg LD,
     output reg DONE
 
-
 );
 
 // DEFINICIÓN DE ESTADOS
@@ -37,6 +36,7 @@ module Control_Multiplicador(
             end
             
             S_CHECK: begin
+                if (Z)    NEXT_STATE = S_END;
                 if (LSB)  NEXT_STATE = S_ADD;
                 else      NEXT_STATE = S_SHIFT;
                 
@@ -53,8 +53,8 @@ module Control_Multiplicador(
             end
 
             S_END: begin
-                count = count + 1;
-                NEXT_STATE = (count>30) ? S_START : S_END; // contador para alargar la señal DONE, esto para que el procesador le de tiempo de leer.
+                COUNT = COUNT + 1;
+                NEXT_STATE = (COUNT>30) ? S_START : S_END; // contador para alargar la señal DONE, esto para que el procesador le de tiempo de leer.
             end
                     
             default: NEXT_STATE = S_START;
@@ -72,7 +72,7 @@ module Control_Multiplicador(
                 SH    = 0;
                 DEC   = 0;
                 LD    = 1;
-                DONE  = 0,
+                DONE  = 0;
             end
         
             S_CHECK: begin
@@ -80,7 +80,7 @@ module Control_Multiplicador(
                 SH    = 0;
                 DEC   = 0;
                 LD    = 0;
-                DONE  = 0,
+                DONE  = 0;
             end     
 
             S_ADD: begin
@@ -88,7 +88,7 @@ module Control_Multiplicador(
                 SH    = 0;
                 DEC   = 0;
                 LD    = 0;
-                DONE  = 0,
+                DONE  = 0;
             end
 
             S_SHIFT: begin
@@ -96,7 +96,7 @@ module Control_Multiplicador(
                 SH    = 1;
                 DEC   = 1;
                 LD    = 0;
-                DONE  = 0,
+                DONE  = 0;
             end      
 
             S_END: begin
@@ -104,7 +104,7 @@ module Control_Multiplicador(
                 SH    = 0;
                 DEC   = 0;
                 LD    = 0;
-                DONE  = 1,
+                DONE  = 1;
             end
 
             default: begin
@@ -112,7 +112,7 @@ module Control_Multiplicador(
                 SH    = 0;
                 DEC   = 0;
                 LD    = 0;
-                DONE  = 0,
+                DONE  = 0;
             end
 
         endcase

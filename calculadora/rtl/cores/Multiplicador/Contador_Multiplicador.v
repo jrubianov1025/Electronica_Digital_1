@@ -10,8 +10,8 @@ module contador_Multiplicador
     always @(posedge clk) begin //logica secuencial en flanco de subida 
 
         if(reset)
-            out <= 5'd16;
-        else if(in)
+            out <= 5'd31;
+        else if(in && out != 0)
             out <= out - 1;
     end
     
