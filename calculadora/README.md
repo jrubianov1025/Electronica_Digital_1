@@ -11,9 +11,10 @@ la estructura del proyecto se muestra acontinuación:
   \rtl
     \cores
       ...
-      \UART
       \Multiplicador
       \Divisor
+      \Raiz
+      \Binario-BCD
   ...
   SOC.v
 ```
@@ -48,28 +49,33 @@ A modo de resumen, se específica en la siguiente tabla las diferentes variables
 
 | Señal    | I/O    | Bits | Descripción                     |
 | -------- | ------ | ---- | ------------------------------- |
-| ``       | Input  |      | Multiplicando                   |
-| ``       | Input  |      | Multiplicador                   |
-| ``       | Input  |      | Inicia la operación             |
-| ``       | Input  |      | Señal de reloj                  |
-| ``       | Output |      | Indica que la operación terminó |
-| ``       | Output |      | Resultado final                 |
+| `A`      | Input  |  16  | Multiplicando                   |
+| `B`      | Input  |  16  | Multiplicador                   |
+| `init`   | Input  |   1  | Inicia la operación             |
+| `clk`    | Input  |   1  | Señal de reloj                  |
+| `DONE`   | Output |   1  | Indica que la operación terminó |
+| `R`      | Output |  32  | Resultado final                 |
 
 
-Hay xxxx archivos relacionados a este Periferico:
+Hay 9 archivos relacionados a este Periferico:
 
 - `.S` — Archivo en Assembler con el objetivo de realizar la comunicación entre el periférico y el procesador.
 
-- `.v` — Archivo que instancia el módulo multiplicador como un periférico de un procesador RISC-V.
+- `Periferico_Multiplicador.v` — Archivo que instancia el módulo multiplicador como un periférico de un procesador RISC-V.
 
-- `.v` — Módulo TOP del multiplicador, el cual declara las variables de entrada y salida del módulo, además de llamar el resto de módulos necesarios.
+- `TOP_Multiplicador.v` — Módulo TOP del multiplicador, el cual declara las variables de entrada y salida del módulo, además de llamar el resto de módulos necesarios.
 
-- `.v` — 
-- `.v` —
-- `.v` — 
-- `.v` — 
-- `.v` — 
-- `.v` — 
+- `Testbench_Multiplicador.v` — Modulo que prueba el correcto funcionamiento de todos los modulos individuales.
+
+- `Control_Multiplicador.v` — Modulo que ejecuta el diagrama de estados para el correcto funcionamiento del algoritmo.
+
+- `Contador_Multiplicador.v` — Contador descendente que analiza los ciclos faltantes.
+
+- `B_long_Multiplicador.v` — Modulo que registra los corrimientos del multiplicador y va guardando el resultado de forma simultanea.
+
+- `A_long_Multiplicador.v` — modulo que almacena el multiplicando.
+
+- `Acumulador_Multiplicador.v` — modulo donde se contruye el resultado. 
 
 
 ---
@@ -119,42 +125,48 @@ Hay xxxx archivos relacionados a este Periferico:
 
 ---
 
-### 🔢 UART 
+### ✔️ Raiz 
 
-
+Este módulo implementa la Raíz cuadrada binaria mediante un procedimiento similar a una division larga, utiliza corrimientos, comparador con el uso de un sumador en complemento a dos y una máquina de control que coordina las etapas.
 
 Se describe con mas detalle el funcionamiento del modulo mediante el uso de 3 diagramas, Diagrama de flujo, Datapath y Diagrama de estados; a continuación se anexan estos 3 diagramas.
 
 <p align="center">
-  <img src="./Diagramas/.png" width="300">
-  <img src="./Diagramas/.png" width="400"> 
-  <img src="./Diagramas/.png" width="350">
+  <img src="./Diagramas/Raiz_flujo.png" width="300">
+  <img src="./Diagramas/Raiz_datapath.png" width="400"> 
+  <img src="./Diagramas/Raiz_estados.png" width="350">
 </p>
-
 
 A modo de resumen, se específica en la siguiente tabla las diferentes variables presentes en el diseño.
 
-| Señal    | I/O    | Bits | Descripción                     |
-| -------- | ------ | ---- | ------------------------------- |
-| ``       | Input  |      |                         |
-| ``       | Input  |      |                         |
-| ``       | Input  |      | Inicia la operación             |
-| ``       | Input  |      | Señal de reloj                  |
-| ``       | Output |      | Indica que la operación terminó |
-| ``       | Output |      | Resultado final                 |
+| Señal      | I/O    | Bits | Descripción                     |
+| --------   | ------ | ---- | ------------------------------- |
+| `Op_A`     | Input  | 16   | Numero del cual obtener su raíz |
+| `INIT`     | Input  | 1    | Inicia la operación             |
+| `CLK`      | Input  | 1    | Señal de reloj                  |
+| `DONE`     | Output | 1    | Indica que la operación terminó |
+| `Resultado`| Output | 16   | Resultado final                 |
 
 
-Hay xxxx archivos relacionados a este Periferico:
 
-- `.S` — Archivo en Assembler con el objetivo de realizar la comunicación entre el periférico y el procesador.
+Hay 10 archivos relacionados a este Periferico:
 
-- `.v` — Archivo que instancia el módulo divisor como un periférico de un procesador RISC-V.
+- `Raiz.S` — Archivo en Assembler con el objetivo de realizar la comunicación entre el periférico y el procesador.
 
-- `.v` — Módulo TOP del divisor, el cual declara las variables de entrada y salida del módulo, además de llamar el resto de módulos necesarios.
+- `Periferico_raiz.v` — Archivo que instancia el módulo Raíz como un periférico de un procesador RISC-V.
 
-- `.v` — 
-- `.v` —
-- `.v` — 
-- `.v` — 
-- `.v` — 
-- `.v` — 
+- `RAIZ.v` — Módulo TOP de la Raíz cuadrada, el cual declara las variables de entrada y salida del módulo, además de llamar el resto de módulos necesarios.
+
+- `CONTROL_RAIZ.v` —   Máquina de control del periférico. Genera señales de control para el correcto funcionamiento del periférico (basado en el diagrama de estados).
+
+- `COUNT_RAIZ.v` — Contador descendente para llevar un registro de ciclos de ejecución realizados.
+
+- `LSR_A_RAIZ.v` — Toma el valor original y realiza un desplazamiento de dos bits para realizar la comparación del número con el resultado parcial.
+
+- `LSR_R_RAIZ.v` — Se va construyendo el resultado mediante un corrimiento bit a bit y una señal de control R0.
+ 
+- `LSR_TMP_RAIZ.v` — Registro de almacenamiento temporal del resultado parcial para su posterior uso en el sumador en complemento a dos. 
+
+- `SUM_C2_RAIZ.v` — Sumador en complemento a dos que realiza la comparación directa de la pareja de bits en LSR_A_RAIZ y LSR_TMP_RAIZ concatenado con un uno para validar la operación.
+ 
+- `tb_Periferico_DIVISOR.v` — Módulo TESTBENCH para probar el funcionamiento del periférico. Crea un archivo .vcd que puede ser visualizado en GTKWave.

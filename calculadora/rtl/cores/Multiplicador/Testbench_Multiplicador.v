@@ -1,79 +1,181 @@
 `timescale 1ns/1ps
 
-module tb_TOP_Multiplicador;
+module tb_Periferico_multiplicador;
+
+//--------------------------------------------------
+// REGISTROS Y WIRES
+//--------------------------------------------------
 
 reg clk;
 reg reset;
-reg init;
 
-reg signed [15:0] Multiplicando;
-reg signed [15:0] Multiplicador;
+reg [15:0] d_in;
+reg cs;
+reg [4:0] addr;
+reg rd;
+reg wr;
 
-wire [31:0] Resultado;
-wire DONE;
+wire [31:0] d_out;
 
-// --------instanciar--------
-TOP_Multiplicador DUT(
-    .reset(reset),
+//--------------------------------------------------
+// INSTANCIA DEL PERIFERICO
+//--------------------------------------------------
+
+Periferico_multiplicador DUT (
+
     .clk(clk),
-    .init(init),
-    .Multiplicando(Multiplicando),
-    .Multiplicador(Multiplicador),
-    .Resultado(Resultado),
-    .DONE(DONE)
+    .reset(reset),
+    .d_in(d_in),
+    .cs(cs),
+    .addr(addr),
+    .rd(rd),
+    .wr(wr),
+    .d_out(d_out)
+
 );
 
-// -------- reloj 10ns --------
-always #5 clk = ~clk;
+//--------------------------------------------------
+// GENERACION DE CLOCK
+//--------------------------------------------------
 
-// -------- simulación --------
+always #5 clk = ~clk; // periodo = 10ns
+
+//--------------------------------------------------
+// TASKS
+//--------------------------------------------------
+
+task WRITE;
+
+    input [4:0] direccion;
+    input [15:0] dato;
+
+    begin
+
+        @(posedge clk);
+
+        cs   <= 1'b1;
+        wr   <= 1'b1;
+        rd   <= 1'b0;
+
+        addr <= direccion;
+        d_in <= dato;
+
+        @(posedge clk);
+
+        cs   <= 1'b0;
+        wr   <= 1'b0;
+        addr <= 5'd0;
+        d_in <= 16'd0;
+
+    end
+
+endtask
+
+
+task READ;
+
+    input [4:0] direccion;
+
+    begin
+
+        @(posedge clk);
+
+        cs   <= 1'b1;
+        rd   <= 1'b1;
+        wr   <= 1'b0;
+
+        addr <= direccion;
+
+        @(posedge clk);
+
+        $display("READ addr = %h --> d_out = %d", direccion, d_out);
+
+        cs   <= 1'b0;
+        rd   <= 1'b0;
+        addr <= 5'd0;
+
+    end
+
+endtask
+
+//--------------------------------------------------
+// SIMULACION
+//--------------------------------------------------
+
 initial begin
 
-    // dump para GTKWave
-    $dumpfile("multiplicador.vcd");
+    //--------------------------------------------------
+    // GENERAR VCD PARA GTKWAVE
+    //--------------------------------------------------
 
-    clk = 0;
+    $dumpfile("tb_Periferico_multiplicador.vcd");
+    $dumpvars(0, tb_Periferico_multiplicador);
+
+    //--------------------------------------------------
+    // INICIALIZACION
+    //--------------------------------------------------
+
+    clk   = 0;
+    reset = 1;
+
+    cs    = 0;
+    rd    = 0;
+    wr    = 0;
+
+    addr  = 0;
+    d_in  = 0;
+
+    //--------------------------------------------------
+    // RESET
+    //--------------------------------------------------
+
+    #20;
     reset = 0;
-    init = 0;
 
-    // valores iniciales
-    Multiplicando = -100; 
-    Multiplicador = 1000; 
+    //--------------------------------------------------
+    // ESCRIBIR MULTIPLICANDO = 7
+    //--------------------------------------------------
 
-    // reset inicial
-    #10 reset = 1;
-    #10 reset = 0;
+    //WRITE(5'h04, 16'd7);
+    WRITE(5'h04, -16'sd7);
+    //--------------------------------------------------
+    // ESCRIBIR MULTIPLICADOR = 3
+    //--------------------------------------------------
 
-    // iniciar multiplicación
-    #10 init = 1;
-    #10 init = 0;
+    WRITE(5'h08, 16'd3);
 
-    // esperar a que termine
-    wait(DONE);
+    //--------------------------------------------------
+    // INICIAR MULTIPLICACION
+    //--------------------------------------------------
 
-    #50 $finish;
+    WRITE(5'h0C, 16'd1);
 
-end
+    //--------------------------------------------------
+    // ESPERAR DONE
+    //--------------------------------------------------
 
-// -------- monitor ciclo por ciclo --------
-initial begin
-    $display("--------------------------------------------------------------------------");
-    $display("time | state señales internas");
-    $display("--------------------------------------------------------------------------");
+    wait(DUT.DONE == 1'b1);
 
-    $monitor(
-        "t=%0t | LD=%b ADD=%b SH=%b DEC=%b | A_long=%b | B_long=%b | ACC=%b | count=%b | DONE=%b",
-        $time,
-        DUT.W_LD,
-        DUT.W_ADD,
-        DUT.W_SH,
-        DUT.W_DEC,
-        DUT.A_long,
-        DUT.B_long,
-        DUT.ACC,
-        DUT.count,
-        DONE
-    );
+    //--------------------------------------------------
+    // LEER RESULTADO
+    //--------------------------------------------------
+
+    READ(5'h10);
+
+    //--------------------------------------------------
+    // LEER DONE
+    //--------------------------------------------------
+
+    READ(5'h14);
+
+    //--------------------------------------------------
+    // FINALIZAR
+    //--------------------------------------------------
+
+    #50;
+
+    $finish;
+
 end
 
 endmodule
