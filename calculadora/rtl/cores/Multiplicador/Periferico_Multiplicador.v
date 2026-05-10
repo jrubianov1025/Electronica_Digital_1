@@ -1,4 +1,3 @@
-// revisar al finalizar los 4 modulos
 module Periferico_multiplicador(
   input clk,
   input reset,
@@ -11,7 +10,7 @@ module Periferico_multiplicador(
 );
 
 
-//------------------------------------ regs and wires-------------------------------
+// REGISTROS Y WIRES INTERNOS
 
 reg [4:0] s;
 
@@ -22,9 +21,9 @@ reg init;
 wire [31:0] Resultado;
 wire DONE;
 
-//------------------------------------ regs and wires-------------------------------
+// DECODIFICADOR DE DIRECCIONES
 
-always @(*) begin//------address_decoder------------------------------
+always @(*) begin
 
     if(cs) begin
 
@@ -35,50 +34,34 @@ always @(*) begin//------address_decoder------------------------------
             5'h0C: s = 5'b00100; // init
             5'h10: s = 5'b01000; // Resultado
             5'h14: s = 5'b10000; // DONE
-
             default: s = 5'b00000;
 
         endcase
 
-    end
-    else
+    end else
         s = 5'b00000;
+end
 
-end//------------------address_decoder--------------------------------
+// ESCRITURA DE REGISTROS
 
-
-
-
-always @(posedge clk) begin//-------------------- escritura de registros 
-
+always @(posedge clk) begin
 
     if(reset) begin
-
         Multiplicando <= 16'd0;
         Multiplicador <= 16'd0;
         init          <= 1'b0;
 
-    end
-    else begin
-
-        if(cs && wr) begin
-
+    end else if(cs && wr) begin
             Multiplicando <= s[0] ? d_in      : Multiplicando;
             Multiplicador <= s[1] ? d_in      : Multiplicador;
             init          <= s[2] ? d_in[0]   : 1'b0;
-
+        
         end
-        else begin
-            init <= 1'b0;
-        end
-
     end
 
+// LECTURA DE REGISTROS
 
-end//------------------------------------------- escritura de registros
-
-
-always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas del periferico
+always @(posedge clk) begin
 
     if(reset)
         d_out <= 32'd0;
@@ -89,15 +72,15 @@ always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas 
 
             5'b01000: d_out <= Resultado;
             5'b10000: d_out <= {31'b0, DONE};
-
             default:  d_out <= 32'd0;
 
         endcase
 
     end
 
-end//-----------------------------------------------mux_4
+end
 
+// INSTANCIA DEL TOP DEL MULTIPLICADOR
 
 TOP_Multiplicador u_TOP_Multiplicador(
 

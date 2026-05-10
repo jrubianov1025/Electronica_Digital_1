@@ -1,14 +1,14 @@
 module Contador_Divisor(
     input   clk,    
-    input   LD,  
+    input   INIT,  
     input   DEC,
   
     output  reg [5:0] out,
     output  Z 
 );
-    always @(posedge clk) begin, 
+    always @(posedge clk) begin 
 
-        if(LD)
+        if(INIT)
             out <= 6'd32;
         else if(DEC)
             out <= out - 1;

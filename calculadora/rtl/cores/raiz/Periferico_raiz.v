@@ -1,5 +1,3 @@
-//revisar al fonalizar los 4 modulos
-
 module Periferico_raiz (
   input CLK,
   input reset,
@@ -11,7 +9,7 @@ module Periferico_raiz (
   output reg [15:0] d_out // salida hacia el bus 
 );
 
-  // Registros internos
+// REGISTROS Y WIRES INTERNOS
 
   reg [4:0] s;           // Selector de registro 
   reg [15:0] Op_A;       // Operando de entrada
@@ -20,49 +18,60 @@ module Periferico_raiz (
   wire [15:0] Resultado; // Resultado de la raíz
   wire DONE;             // Bandera de finalización
 
-  // 1. Decodificador de direcciones
+// DECODIFICADOR DE DIRECCIONES
 
   always @(*) begin
+
     if (cs) begin
+
       case (addr)
+
         5'h04: s = 5'b00001; // Op_A
         5'h08: s = 5'b00010; // INIT
         5'h0C: s = 5'b00100; // Resultado
         5'h10: s = 5'b01000; // DONE
         default: s = 5'b00000;
       endcase
-    end else begin
+
+    end else 
       s = 5'b00000;
-    end
   end
 
-  // 2. Escritura de registros
+// ESCRITURA DE REGISTROS
 
   always @(posedge CLK) begin
+    
     if (reset) begin
       Op_A <= 0;
       INIT <= 0;
+    
     end else if (cs && wr) begin
       Op_A  <= s[0] ? d_in : Op_A;   // Escribir operando
       INIT <= s[1] ? d_in[0] : INIT; // Escribir bit de inicio
+    
     end
   end
 
-  // 3. Lectura de registros
+// LECTURA DE REGISTROS
 
   always @(posedge CLK) begin
+
     if (reset) begin
       d_out <= 0;
+
     end else if (cs && rd) begin
+
       case (s)
+
         5'b00100: d_out <= Resultado;     // Lectura del resultado
         5'b01000: d_out <= {15'b0, DONE}; // Lectura del estado
         default:  d_out <= 16'b0;
+
       endcase
     end
   end
 
-  // 4. Instancia del módulo de raíz
+// INSTANCIA DEL TOP DE LA RAIZ
 
   RAIZ u_RAIZ (
     .CLK(CLK),
