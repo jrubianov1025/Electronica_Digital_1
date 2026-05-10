@@ -71,8 +71,8 @@ initial begin
 //--------------------------------------------------
 // GENERAR VCD PARA GTKWAVE
 //--------------------------------------------------
-$dumpfile("tb_Periferico_Divisor.vcd");
-$dumpvars(0, tb_Periferico_Divisor);
+//$dumpfile("tb_Periferico_Divisor.vcd");
+//$dumpvars(0, tb_Periferico_Divisor);
 //--------------------------------------------------
 // INICIALIZACION
 //--------------------------------------------------
