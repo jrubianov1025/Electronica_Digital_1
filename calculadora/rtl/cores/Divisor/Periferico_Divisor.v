@@ -1,15 +1,18 @@
-corregir porque no esta leyendo el done
-
 module Periferico_Divisor (
+
     input         clk,
     input         reset,
-    input  [31:0] d_in,   // dato que llega del procesador 
+
+    input  [31:0] d_in,   // dato que llega del procesador
     input         cs,     // chip select
     input  [4:0]  addr,   // dirección desde el bus
     input         rd,     // señal de lectura
     input         wr,     // señal de escritura
-    output reg [31:0] d_out  // dato de salida hacia el procesador
+
+    output reg [31:0] d_out
+
 );
+
 
 // REGISTROS Y WIRES INTERNOS
 
@@ -17,11 +20,13 @@ reg [5:0] s;
 
 reg signed [31:0] Dividendo;
 reg signed [31:0] DR;
-reg               init;
+
+reg init;
 
 wire signed [31:0] Resultado;
 wire signed [31:0] Residuo;
-wire               DONE;
+
+wire DONE;
 
 // DECODIFICADOR DE DIRECCIONES
 
@@ -53,7 +58,11 @@ always @(posedge clk) begin
         DR        <= 32'd0;
         init      <= 1'b0;
     
-    end else if (cs && wr) begin
+    end else begin
+
+    init <= 1'b0;
+
+    if (cs && wr)
         Dividendo <= s[0] ? d_in    : Dividendo;
         DR        <= s[1] ? d_in    : DR;
         init      <= s[2] ? d_in[0] : 1'b0;
@@ -61,9 +70,10 @@ always @(posedge clk) begin
     end
 end
 
+
 // LECTURA DE REGISTROS
 
-always @(posedge clk) begin
+always @(*) begin // revisar si esta bien que sea COMBINACIONAL
     
     if (reset)
         d_out <= 32'd0;

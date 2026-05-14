@@ -66,7 +66,7 @@ always @(*) begin
     case (NEXT_STATE)
 
         S_START: begin
-            LD   = 1;
+            LD   = 0;
             SH   = 0;
             DEC  = 0;
             DV0  = 0;
