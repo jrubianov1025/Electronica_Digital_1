@@ -23,14 +23,17 @@ wire [width:0]    SUM_C2_out;
 wire [width:0]    Residuo_NS;
 wire [width:0]    Resultado_NS;
 
-wire result_sign  = Dividendo[width] ^ DR[width];
-wire residue_sign = Dividendo[width];
+wire result_sign  = Dividendo[width] ^ DR[width]; // Determina el signo del resultado de la division.
+wire residue_sign = Dividendo[width]; // Se guarda el bit de signo del dividendo.
 
+// Señal usada para indicar si luego debe corregirse el signo del cociente o del residuo.
 wire corregir = result_sign | residue_sign;
 
+// Obtiene el valor absoluto del dividendo.
 wire [width:0] Dividendo_abs = Dividendo[width] ? (~Dividendo + 1) : Dividendo;
-wire [width:0] DR_abs        = DR[width]        ? (~DR + 1)        : DR;
 
+// Obtiene el valor absoluto del divisor.
+wire [width:0] DR_abs        = DR[width]        ? (~DR + 1)        : DR;
 
 Control_Divisor control (
 

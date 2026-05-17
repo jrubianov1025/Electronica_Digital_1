@@ -89,38 +89,47 @@ Este módulo toma dos operandos de 16 bits y produce un resultado menor a 16 bit
 Se describe con mas detalle el funcionamiento del modulo mediante el uso de 3 diagramas, Diagrama de flujo, Datapath y Diagrama de estados; a continuación se anexan estos 3 diagramas.
 
 <p align="center">
-  <img src="./Diagramas/.png" width="300">
-  <img src="./Diagramas/.png" width="400"> 
-  <img src="./Diagramas/.png" width="350">
+  <img src="./Diagramas/Divisor_flujo.png" width="300">
+  <img src="./Diagramas/Divisor_datapath.png" width="400"> 
+  <img src="./Diagramas/Divisor_estados.png" width="350">
 </p>
 
 
 A modo de resumen, se específica en la siguiente tabla las diferentes variables presentes en el diseño.
 
-| Señal    | I/O    | Bits | Descripción                     |
-| -------- | ------ | ---- | ------------------------------- |
-| ``       | Input  |      | Dividendo                       |
-| ``       | Input  |      | Divisor                         |
-| ``       | Input  |      | Inicia la operación             |
-| ``       | Input  |      | Señal de reloj                  |
-| ``       | Output |      | Indica que la operación terminó |
-| ``       | Output |      | Resultado final                 |
+| Señal      | I/O    | Bits | Descripción                     |
+| --------   | ------ | ---- | ------------------------------- |
+|`Dividendo` | Input  |  32  | Dividendo                       |
+|`DR`        | Input  |  32  | Divisor                         |
+|`INIT`      | Input  |   1  | Inicia la operación             |
+|`CLK`       | Input  |   1  | Señal de reloj                  |
+|`DONE`      | Output |   1  | Indica que la operación terminó |
+|`Resultado` | Output |  32  | Resultado final                 |
+|`Residuo`   | Output |  32  | Residuo final                   |
 
 
-Hay xxxx archivos relacionados a este Periferico:
+Hay 10 archivos relacionados a este Periferico:
 
 - `.S` — Archivo en Assembler con el objetivo de realizar la comunicación entre el periférico y el procesador.
 
-- `.v` — Archivo que instancia el módulo divisor como un periférico de un procesador RISC-V.
+- `Periferico_Divisor.v` — Archivo que instancia el módulo divisor como un periférico de un procesador RISC-V.
 
-- `.v` — Módulo TOP del divisor, el cual declara las variables de entrada y salida del módulo, además de llamar el resto de módulos necesarios.
+- `Top_Divisor.v` — Módulo TOP del divisor, el cual declara las variables de entrada y salida del módulo, además de llamar el resto de módulos necesarios.
 
-- `.v` — 
-- `.v` —
-- `.v` — 
-- `.v` — 
-- `.v` — 
-- `.v` — 
+- `Control_Divisor.v` — Máquina de control del periférico. Genera señales de control para el correcto funcionamiento del periférico (basado en el diagrama de estados).
+
+- `Corregir_Divisor.v` — Modulo que se encarga de corregir el signo al resultado final.
+
+- `Contador_Divisor.v` — Contador descendente para llevar un registro de ciclos de ejecución realizados.
+
+- `RegistroA_Divisor.v` — Modulo encargado de llevar y realizar todos los cambios relacionados al registro A, ademas , se almacena el residuo.
+
+- `.RegistroDV_Divisor.v` — Modulo encargado de recibir el dividendo y realizar todos los cambios relacionados a este, ademas de almacenar el resultado final.
+
+- `Sumador_Divisor.v` — Modulo encargado de realizar una operacion de suma en complemento a dos con la finalidad de aprobar o descartar la operacion.
+
+- `Testbench_Divisor.v` — Módulo TESTBENCH para probar el funcionamiento del periférico. Crea un archivo .vcd que puede ser visualizado en GTKWave.
+
 
 
 ---
@@ -169,4 +178,4 @@ Hay 10 archivos relacionados a este Periferico:
 
 - `SUM_C2_RAIZ.v` — Sumador en complemento a dos que realiza la comparación directa de la pareja de bits en LSR_A_RAIZ y LSR_TMP_RAIZ concatenado con un uno para validar la operación.
  
-- `tb_Periferico_DIVISOR.v` — Módulo TESTBENCH para probar el funcionamiento del periférico. Crea un archivo .vcd que puede ser visualizado en GTKWave.
+- `tb_Periferico_raiz.v` — Módulo TESTBENCH para probar el funcionamiento del periférico. Crea un archivo .vcd que puede ser visualizado en GTKWave.
