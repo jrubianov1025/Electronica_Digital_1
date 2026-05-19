@@ -1,277 +1,165 @@
-// ============================================================
-// TESTBENCH DEBUG BINARIO -> BCD
-// ============================================================
-// Este testbench está pensado específicamente para:
-//
-// 1. Ver el algoritmo Double Dabble paso a paso
-// 2. Ver TODOS los registros internos
-// 3. Ver cada nibble BCD individualmente
-// 4. Ver los shifts ciclo por ciclo
-// 5. Detectar errores en ADD3
-// 6. Visualizar claramente A y Op_A
-//
-// ============================================================
-
 `timescale 1ns/1ps
+module tb_Periferico_BinarioABCD;
 
-module tb_BinarioABCD_Debug;
+// Señales del bus
+reg         CLK;
+reg         reset;
+reg         cs;
+reg         rd;
+reg         wr;
+reg  [5:0]  addr;
+reg  [23:0] d_in;
+wire [31:0] d_out;
 
-    // ========================================================
-    // ENTRADAS
-    // ========================================================
-    reg CLK;
-    reg INIT;
+// Instancia del periférico
+Periferico_BinarioABCD DUT (
+    .CLK  (CLK  ),
+    .reset(reset),
+    .d_in (d_in ),
+    .cs   (cs   ),
+    .addr (addr ),
+    .rd   (rd   ),
+    .wr   (wr   ),
+    .d_out(d_out)
+);
 
-    reg signed [23:0] Op_A;
+// Generador de reloj
+initial CLK = 0;
+always #5 CLK = ~CLK;   // 10 ns de periodo (100 MHz)
 
-    // ========================================================
-    // SALIDAS
-    // ========================================================
-    wire [3:0] SIGN;
+// Archivo de ondas
+initial begin
+    $dumpfile("BinarioABCD.vcd");
+    $dumpvars(0, tb_Periferico_BinarioABCD);
+end
 
-    wire [3:0] MILLON;
-    wire [3:0] CIENMIL;
-    wire [3:0] DIEZMIL;
-    wire [3:0] MIL;
-    wire [3:0] CENT;
-    wire [3:0] DEC;
-    wire [3:0] UNIT;
+// ─── Tareas ───────────────────────────────────────────────────────────────────
 
-    wire DONE;
-
-    // ========================================================
-    // INSTANCIA DEL DUT
-    // ========================================================
-    BinarioABCD DUT(
-
-        .CLK(CLK),
-        .Op_A(Op_A),
-        .INIT(INIT),
-
-        .SIGN(SIGN),
-
-        .MILLON(MILLON),
-        .CIENMIL(CIENMIL),
-        .DIEZMIL(DIEZMIL),
-        .MIL(MIL),
-        .CENT(CENT),
-        .DEC(DEC),
-        .UNIT(UNIT),
-
-        .DONE(DONE)
-    );
-
-    // ========================================================
-    // CLOCK
-    // ========================================================
-    initial begin
-        CLK = 0;
-        forever #5 CLK = ~CLK;
+task write_reg;
+    input [5:0]  addr_in;
+    input [23:0] data;
+    begin
+        @(negedge CLK);
+        cs   = 1;
+        wr   = 1;
+        rd   = 0;
+        addr = addr_in;
+        d_in = data;
+        @(negedge CLK);
+        cs   = 0;
+        wr   = 0;
+        d_in = 0;
     end
+endtask
 
-    // ========================================================
-    // VARIABLES DEBUG
-    // ========================================================
-    integer ciclo;
-
-    // ========================================================
-    // NOMBRE DEL ESTADO
-    // ========================================================
-    reg [80:0] estado_nombre;
-
-    always @(*) begin
-
-        case(DUT.CONTROL_BBCD0.NEXT_STATE)
-
-            3'b000: estado_nombre = "START";
-            3'b001: estado_nombre = "SUM";
-            3'b010: estado_nombre = "SHIFT_DEC";
-            3'b011: estado_nombre = "CHECK";
-            3'b100: estado_nombre = "END";
-
-            default: estado_nombre = "UNKNOWN";
-
-        endcase
+task read_reg;
+    input [5:0] addr_in;
+    begin
+        @(negedge CLK);
+        cs   = 1;
+        rd   = 1;
+        wr   = 0;
+        addr = addr_in;
+        @(negedge CLK);
+        $display("Tiempo=%0t ns | READ addr=%h -> d_out=%h", $time, addr_in, d_out);
+        cs   = 0;
+        rd   = 0;
     end
+endtask
 
-    // ========================================================
-    // VCD
-    // ========================================================
-    initial begin
-
-        $dumpfile("BinarioABCD_debug.vcd");
-        $dumpvars(0, tb_BinarioABCD_Debug);
-
-    end
-
-    // ========================================================
-    // HEADER
-    // ========================================================
-    initial begin
-
-        $display("");
-        $display("===============================================================================================================================================================================");
-        $display("TIME | CICLO | ESTADO     |LD|SH|ADD3|DEC|Z|DONE|A (BCD)                              | Op_A                                | BCD DIGITS");
-        $display("===============================================================================================================================================================================");
-
-    end
-
-    // ========================================================
-    // DEBUG CICLO A CICLO
-    // ========================================================
-    always @(posedge CLK) begin
-
-        ciclo = ciclo + 1;
-
-        $display(
-
-        "%5t | %5d | %s | %b | %b |  %b  | %b |%b|  %b | %028b | %024b | %1d %1d %1d %1d %1d %1d %1d",
-
-            $time,
-            ciclo,
-
-            estado_nombre,
-
-            DUT.W_LD,
-            DUT.W_SH,
-            DUT.W_ADD3,
-            DUT.W_DEC,
-
-            DUT.W_Z,
-            DONE,
-
-            DUT.LSR_BBCD0.A,
-            DUT.LSR_BBCD0.Op_A,
-
-            MILLON,
-            CIENMIL,
-            DIEZMIL,
-            MIL,
-            CENT,
-            DEC,
-            UNIT
+// Decodifica d_out[31:0] = {SIGN,MILLON,CIENMIL,DIEZMIL,MIL,CENT,DEC,UNIT}
+task mostrar_resultado;
+    begin
+        read_reg(6'h0C); // lee RESULT
+        $display("  SIGN=%0d | %0d,%0d%0d%0d,%0d%0d%0d",
+            d_out[31:28],           // SIGN
+            d_out[27:24],           // MILLON
+            d_out[23:20],           // CIENMIL
+            d_out[19:16],           // DIEZMIL
+            d_out[15:12],           // MIL
+            d_out[11:8],            // CENT
+            d_out[7:4],             // DEC
+            d_out[3:0]              // UNIT
         );
     end
+endtask
 
-    // ========================================================
-    // ESTÍMULOS
-    // ========================================================
-    initial begin
+// ─── Esperar DONE o timeout ────────────────────────────────────────────────────
 
-        ciclo = 0;
-
-        INIT = 0;
-        Op_A = 0;
-
-        // ====================================================
-        // CAMBIAR AQUÍ EL NÚMERO A PROBAR
-        // ====================================================
-
-        // POSITIVO
-        //Op_A = 24'd1234567;
-
-        // NEGATIVO
-        // Op_A = -24'd765432;
-
-        // PEQUEÑO
-        // Op_A = 24'd13;
-
-        // MÁXIMO POSITIVO
-        // Op_A = 24'd8388607;
-
-        // MÁXIMO NEGATIVO
-        // Op_A = -24'd8388608;
-
-        // ====================================================
-
-        #20;
-
-        INIT = 1;
-
-        #10;
-
-        INIT = 0;
-
-        #5000;
-
-        $display("");
-        $display("=========================================================");
-        $display("TIMEOUT");
-        $display("=========================================================");
-
-        $finish;
-
-    end
-
-    // ========================================================
-    // FINALIZAR CUANDO DONE
-    // ========================================================
-    always @(posedge CLK) begin
-
-        if(DONE) begin
-
-            $display("");
-            $display("=========================================================");
-            $display("CONVERSION TERMINADA");
-            $display("Tiempo = %0t", $time);
-            $display("=========================================================");
-
-            $display("");
-
-            $display("Numero Binario = %0d", Op_A);
-
-            if(SIGN == 4'hA)
-                $display("Signo = NEGATIVO");
-            else
-                $display("Signo = POSITIVO");
-
-            $display("");
-
-            $display(
-                "BCD FINAL = %1d %1d %1d %1d %1d %1d %1d",
-                MILLON,
-                CIENMIL,
-                DIEZMIL,
-                MIL,
-                CENT,
-                DEC,
-                UNIT
-            );
-
-            $display("");
-
-            $display("A FINAL    = %028b", DUT.LSR_BBCD0.A);
-            $display("Op_A FINAL = %024b", DUT.LSR_BBCD0.Op_A);
-
-            $display("=========================================================");
-
-            #20;
-
-            $finish;
-
+task wait_done;
+    reg [8:0] contador;
+    begin
+        contador = 0;
+        while (contador < 9'd300) begin
+            read_reg(6'h10);        // lee DONE
+            if (d_out[0] == 1'b1) begin
+                $display("Tiempo=%0t ns | DONE detectado (iter=%0d).", $time, contador);
+                contador = 9'd300;  // salir
+            end else begin
+                contador = contador + 1;
+            end
         end
+        if (d_out[0] == 1'b0)
+            $display("ERROR: Timeout esperando DONE.");
     end
+endtask
+
+// ─── Helper: escribe Op_A e INIT, espera DONE y muestra resultado ─────────────
+
+task run_test;
+    input signed [23:0] operando;
+    begin
+        write_reg(6'h04, operando); // Op_A (24 bits, puede ser negativo)
+        write_reg(6'h08, 24'h1);    // INIT = 1
+        write_reg(6'h08, 24'h0);    // INIT = 0 (pulso de 1 ciclo)
+        wait_done();
+        mostrar_resultado();
+    end
+endtask
+
+// ─── Secuencia principal de prueba ────────────────────────────────────────────
+
+initial begin
+    // Inicialización
+    reset = 1;
+    cs    = 0;
+    rd    = 0;
+    wr    = 0;
+    addr  = 0;
+    d_in  = 0;
+
+    // Reset por 4 ciclos
+    repeat(4) @(negedge CLK);
+    reset = 0;
+
+    $display("\n=== INICIO DE SIMULACIÓN BinarioABCD ===\n");
+
+    // ── Test 1: número positivo pequeño ──
+    //$display("--- Test 1: +123 ---");
+    //run_test(24'sd123);
+
+    // ── Test 2: número positivo grande ──
+    //$display("--- Test 2: +1234567 ---");
+    //run_test(24'sd1234567);
+
+    // ── Test 3: número negativo ──
+    //$display("--- Test 3: -456 ---");
+    //run_test(-24'sd456);
+
+    // ── Test 4: cero ──
+    //$display("--- Test 4: 0 ---");
+    //run_test(24'sd0);
+
+    // ── Test 5: máximo positivo 24 bits signed (8388607) ──
+    //$display("--- Test 5: +8388607 (max) ---");
+    //run_test(24'sd8388607);
+
+    // ── Test 6: máximo negativo 24 bits signed (-8388608) ──
+    //$display("--- Test 6: -8388608 (min) ---");
+    //run_test(-24'sd8388608);
+
+    $display("\n=== FIN DE SIMULACIÓN ===");
+    #20 $finish;
+end
 
 endmodule
-
-/*
-============================================================
-
-COMPILAR
-
-iverilog -o sim.out *.v
-
-============================================================
-
-EJECUTAR
-
-vvp sim.out
-
-============================================================
-
-VER ONDAS
-
-gtkwave BinarioABCD_debug.vcd
-
-============================================================
-*/

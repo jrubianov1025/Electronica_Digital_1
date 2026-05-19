@@ -11,10 +11,10 @@ la estructura del proyecto se muestra acontinuación:
   \rtl
     \cores
       ...
+      \Binario-BCD     
+      \Divisor 
       \Multiplicador
-      \Divisor
       \Raiz
-      \Binario-BCD
   ...
   SOC.v
 ```
@@ -179,3 +179,58 @@ Hay 10 archivos relacionados a este Periferico:
 - `SUM_C2_RAIZ.v` — Sumador en complemento a dos que realiza la comparación directa de la pareja de bits en LSR_A_RAIZ y LSR_TMP_RAIZ concatenado con un uno para validar la operación.
  
 - `tb_Periferico_raiz.v` — Módulo TESTBENCH para probar el funcionamiento del periférico. Crea un archivo .vcd que puede ser visualizado en GTKWave.
+
+
+---
+
+### 🔢 Binario_BCD 
+
+Este módulo implementa la conversión de un número binario con signo a código BCD mediante el algoritmo Double Dabble (Shift-Add-3).
+
+El diseño realiza desplazamientos sucesivos sobre el número binario de entrada mientras corrige cada nibble BCD mediante la operación +3 cuando un dígito es mayor o igual a 5. Todo el proceso es coordinado mediante una máquina de estados y registros de desplazamiento independientes para el número binario y el resultado BCD.
+
+El módulo soporta números positivos y negativos en complemento a dos de 24 bits. Para representar el signo se utiliza un nibble adicional (SIGN) 
+
+Se describe con mas detalle el funcionamiento del modulo mediante el uso de 3 diagramas, Diagrama de flujo, Datapath y Diagrama de estados; a continuación se anexan estos 3 diagramas.
+
+<p align="center">
+  <img src="./Diagramas/Binario_BCD_flujo.png" width="300">
+  <img src="./Diagramas/Binario_BCD_datapath.png" width="400"> 
+  <img src="./Diagramas/Binario_BCD_estados.png" width="350">
+</p>
+
+A modo de resumen, se específica en la siguiente tabla las diferentes variables presentes en el diseño.
+
+
+| Señal      | I/O    | Bits | Descripción                     |
+| --------   | ------ | ---- | ------------------------------- |
+| `Op_A`     | Input  | 24   | Número binario con signo        |
+| `INIT`     | Input  | 1    | Inicia la operación             |
+| `CLK`      | Input  | 1    | Señal de reloj                  |
+| `DONE`     | Output | 1    | Indica que la operación terminó |
+| `MILLON`   | Output | 4    | Dígito de millones              |
+| `CIENMIL`  | Output | 4    | Dígito de cientos de mil        |
+| `DIEZMIL`  | Output | 4    | Dígito de decenas de mil        |
+| `MIL`      | Output | 4    | Dígito de miles                 |
+| `CENT`     | Output | 4    | Dígito de centenas              |
+| `DEC`      | Output | 4    | Dígito de decenas               |
+| `UNIT`     | Output | 4    | Dígito de unidades              |
+
+
+Hay 7 archivos relacionados a este Periferico:
+
+- `.S` — Archivo en Assembler con el objetivo de realizar la comunicación entre el periférico y el procesador.
+
+- `Periferico_Binario_BCD.v` — Archivo que instancia el módulo Top como un periférico de un procesador RISC-V.
+
+- `Top_Binario_BCD.v` — Módulo TOP del conversor binario a BCD, el cual declara las variables de entrada y salida del módulo, además de llamar el resto de módulos necesarios.
+
+- `Control_Binario_BCD.v` —   Máquina de control del periférico. Genera señales de control para el correcto funcionamiento del periférico (basado en el diagrama de estados).
+
+- `Contador_Binario_BCD.v` — Contador descendente para llevar un registro de ciclos de ejecución realizados.
+
+- `LSR_Binario_BCD.v` — Toma el valor original y realiza un desplazamiento de un bit a la izquiera para poder desarrolalr el procedimiento correctamente.
+
+- `Sumador_Binario_BCD.v` — sumador en complemento a dos para realizar la comparacion y verificacion ed cada nibble.
+ 
+- `Testbench_Binario_BCD.v` — Módulo TESTBENCH para probar el funcionamiento del periférico. Crea un archivo .vcd que puede ser visualizado en GTKWave.
