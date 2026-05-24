@@ -28,6 +28,7 @@ always @(posedge clk) begin
     case (NEXT_STATE)
 
         S_START: begin
+            COUNT = 0;
             if (init) NEXT_STATE = S_SHIFT;
             else      NEXT_STATE = S_START;
         end

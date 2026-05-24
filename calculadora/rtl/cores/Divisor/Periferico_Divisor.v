@@ -18,8 +18,8 @@ module Periferico_Divisor (
 
 reg [5:0] s;
 
-reg signed [31:0] Dividendo;
-reg signed [31:0] DR;
+reg signed [23:0] Dividendo;
+reg signed [23:0] DR;
 
 reg init;
 
@@ -58,11 +58,7 @@ always @(posedge clk) begin
         DR        <= 32'd0;
         init      <= 1'b0;
     
-    end else begin
-
-    init <= 1'b0;
-
-    if (cs && wr)
+    end else if (cs && wr) begin
         Dividendo <= s[0] ? d_in    : Dividendo;
         DR        <= s[1] ? d_in    : DR;
         init      <= s[2] ? d_in[0] : 1'b0;
@@ -73,7 +69,7 @@ end
 
 // LECTURA DE REGISTROS
 
-always @(*) begin // revisar si esta bien que sea COMBINACIONAL
+always @(posedge clk) begin
     
     if (reset)
         d_out <= 32'd0;

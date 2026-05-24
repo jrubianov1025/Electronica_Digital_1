@@ -1,4 +1,4 @@
-module Periferico_multiplicador(
+module Periferico_Multiplicador(
   input clk,
   input reset,
   input [15:0] d_in,   // dato que llega del procesador

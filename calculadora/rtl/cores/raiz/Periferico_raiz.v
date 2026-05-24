@@ -6,7 +6,7 @@ module Periferico_raiz (
   input [4:0] addr,     // dirección (desde el bus)
   input rd,             // lectura
   input wr,             // escritura
-  output reg [15:0] d_out // salida hacia el bus 
+  output reg [31:0] d_out // salida hacia el bus 
 );
 
 // REGISTROS Y WIRES INTERNOS
@@ -63,9 +63,9 @@ module Periferico_raiz (
 
       case (s)
 
-        5'b00100: d_out <= Resultado;     // Lectura del resultado
-        5'b01000: d_out <= {15'b0, DONE}; // Lectura del estado
-        default:  d_out <= 16'b0;
+        5'b00100: d_out <= {16'b0, Resultado};     // Lectura del resultado
+        5'b01000: d_out <= {31'b0, DONE}; // Lectura del estado
+        default:  d_out <= 32'b0;
 
       endcase
     end

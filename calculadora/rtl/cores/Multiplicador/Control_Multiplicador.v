@@ -31,6 +31,7 @@ module Control_Multiplicador(
         case (NEXT_STATE)
         
             S_START: begin
+                COUNT = 0;
                 if (init) NEXT_STATE = S_CHECK;
                 else      NEXT_STATE = S_START;
             end

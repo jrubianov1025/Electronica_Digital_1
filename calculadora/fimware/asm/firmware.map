@@ -1,0 +1,117 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+BRAM             0x0000000000000000 0x0000000000004000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+everything      0x0000000000000000      0x6f6
+                0x0000000000000000                . = ALIGN (0x4)
+ Calculadora.o(.text)
+ .text          0x0000000000000000      0x134 Calculadora.o
+                0x0000000000000000                calculator
+ *(.*)
+ .data          0x0000000000000134       0x60 Calculadora.o
+ .bss           0x0000000000000194        0x0 Calculadora.o
+ .riscv.attributes
+                0x0000000000000194       0x1a Calculadora.o
+ *fill*         0x00000000000001ae        0x2 
+ .text          0x00000000000001b0       0x2c B_BCD.o
+                0x00000000000001b0                bin2bcd_hw
+ .data          0x00000000000001dc        0x0 B_BCD.o
+ .bss           0x00000000000001dc        0x0 B_BCD.o
+ .riscv.attributes
+                0x00000000000001dc       0x1a B_BCD.o
+ *fill*         0x00000000000001f6        0x2 
+ .text          0x00000000000001f8       0x3c BCD_B.o
+                0x00000000000001f8                bcd2bin
+ .data          0x0000000000000234        0x0 BCD_B.o
+ .bss           0x0000000000000234        0x0 BCD_B.o
+ .riscv.attributes
+                0x0000000000000234       0x1a BCD_B.o
+ *fill*         0x000000000000024e        0x2 
+ .text          0x0000000000000250       0x30 Divisor.o
+                0x0000000000000250                div_hw
+ .data          0x0000000000000280        0x0 Divisor.o
+ .bss           0x0000000000000280        0x0 Divisor.o
+ .riscv.attributes
+                0x0000000000000280       0x1a Divisor.o
+ *fill*         0x000000000000029a        0x2 
+ .text          0x000000000000029c        0x0 dpram.o
+ .data          0x000000000000029c        0x0 dpram.o
+ .bss           0x000000000000029c        0x0 dpram.o
+ .riscv.attributes
+                0x000000000000029c       0x1a dpram.o
+ *fill*         0x00000000000002b6        0x2 
+ .text          0x00000000000002b8       0x3c getchar.o
+                0x00000000000002b8                getchar
+ .data          0x00000000000002f4        0x0 getchar.o
+ .bss           0x00000000000002f4        0x0 getchar.o
+ .riscv.attributes
+                0x00000000000002f4       0x1a getchar.o
+ *fill*         0x000000000000030e        0x2 
+ .text          0x0000000000000310      0x108 get_number.o
+                0x0000000000000310                get_number
+ .data          0x0000000000000418        0x0 get_number.o
+ .bss           0x0000000000000418        0x0 get_number.o
+ .riscv.attributes
+                0x0000000000000418       0x1a get_number.o
+ *fill*         0x0000000000000432        0x2 
+ .text          0x0000000000000434       0x30 Multiplicador.o
+                0x0000000000000434                mult_hw
+ .data          0x0000000000000464        0x0 Multiplicador.o
+ .bss           0x0000000000000464        0x0 Multiplicador.o
+ .riscv.attributes
+                0x0000000000000464       0x1a Multiplicador.o
+ *fill*         0x000000000000047e        0x2 
+ .text          0x0000000000000480       0x4c putchar.o
+                0x0000000000000480                putchar
+ .data          0x00000000000004cc        0x0 putchar.o
+ .bss           0x00000000000004cc        0x0 putchar.o
+ .riscv.attributes
+                0x00000000000004cc       0x1a putchar.o
+ *fill*         0x00000000000004e6        0x2 
+ .text          0x00000000000004e8       0x2c putstring.o
+                0x00000000000004e8                putstring
+ .data          0x0000000000000514        0x0 putstring.o
+ .bss           0x0000000000000514        0x0 putstring.o
+ .riscv.attributes
+                0x0000000000000514       0x1a putstring.o
+ *fill*         0x000000000000052e        0x2 
+ .text          0x0000000000000530       0x50 Raiz.o
+                0x0000000000000530                sqrt_hw
+ .data          0x0000000000000580       0x1a Raiz.o
+ .bss           0x000000000000059a        0x0 Raiz.o
+ .riscv.attributes
+                0x000000000000059a       0x1a Raiz.o
+ .text          0x00000000000005b4       0xd4 start.o
+                0x00000000000005b4                start
+                0x00000000000005bc                blinker
+ .data          0x0000000000000688       0x13 start.o
+ .bss           0x000000000000069b        0x0 start.o
+ .riscv.attributes
+                0x000000000000069b       0x1a start.o
+ *fill*         0x00000000000006b5        0x3 
+ .text          0x00000000000006b8       0x24 wait.o
+                0x00000000000006b8                wait
+ .data          0x00000000000006dc        0x0 wait.o
+ .bss           0x00000000000006dc        0x0 wait.o
+ .riscv.attributes
+                0x00000000000006dc       0x1a wait.o
+LOAD B_BCD.o
+LOAD BCD_B.o
+LOAD Calculadora.o
+LOAD Divisor.o
+LOAD dpram.o
+LOAD getchar.o
+LOAD get_number.o
+LOAD Multiplicador.o
+LOAD putchar.o
+LOAD putstring.o
+LOAD Raiz.o
+LOAD start.o
+LOAD wait.o
+OUTPUT(firmware.elf elf32-littleriscv)

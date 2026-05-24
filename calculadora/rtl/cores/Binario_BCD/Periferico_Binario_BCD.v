@@ -1,4 +1,4 @@
-module Periferico_BinarioABCD (
+module Periferico_Binario_BCD (
   input         CLK,
   input         reset,
   input  [23:0] d_in,    // dato de entrada desde el bus
@@ -58,9 +58,12 @@ module Periferico_BinarioABCD (
   // 3. Lectura de registros
 
   always @(posedge CLK) begin
+    
     if (reset)
       d_out <= 0;
+    
     else if (cs && rd) begin
+      
       case (s[3:0])
         4'b0100: d_out <= RESULT;   
         4'b1000: d_out <= {31'b0, DONE};     
