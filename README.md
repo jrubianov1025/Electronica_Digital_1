@@ -9,9 +9,7 @@ Incluye implementaciones estructurales, periféricos y testbench para validació
 
 Juan Diego Rubiano Valero -CC 1025525548 - Grupo 7  
 
--CC  - Grupo 
-
--CC  - Grupo 
+Sebastian Bohorquez Parra -CC 1003845024 - Grupo 8
 
 ---
 
@@ -30,6 +28,7 @@ Juan Diego Rubiano Valero -CC 1025525548 - Grupo 7
   - Maquina de control
   - Periferico
   - Sumador
+  - Testbench
 
 - [Proyecto Principal](./proyecto%20principal/) — Carpeta que contiene los periféricos desarrollados como proyecto principal de la asignatura:
 

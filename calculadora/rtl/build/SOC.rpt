@@ -2550,10 +2550,10 @@ Generating RTLIL representation for module `\$__ECP5_PDPW16KD_'.
 Successfully finished Verilog frontend.
 
 42.28.3. Continuing TECHMAP pass.
-Using template $paramod$6955d21455d80d3e8a50f1cfec57bf2a6d25c4f7\$__ECP5_DP16KD_ for cells of type $__ECP5_DP16KD_.
-Using template $paramod$eea71573ab909d124ac9e1f2c0a31f6ee4122998\$__ECP5_DP16KD_ for cells of type $__ECP5_DP16KD_.
-Using template $paramod$edc95f42bee93fcda7dde406f9dbd743abe4df2f\$__ECP5_DP16KD_ for cells of type $__ECP5_DP16KD_.
-Using template $paramod$032ac14fc4a07d21cf94e647cf15268238f88294\$__ECP5_DP16KD_ for cells of type $__ECP5_DP16KD_.
+Using template $paramod$bbe79139773e7f5d0cbeaf53b6517120e0ff91a4\$__ECP5_DP16KD_ for cells of type $__ECP5_DP16KD_.
+Using template $paramod$fe55672251ac77331f37711af03b54f1f3e51fd0\$__ECP5_DP16KD_ for cells of type $__ECP5_DP16KD_.
+Using template $paramod$d5005c0d30e47486c30b390f702a1bc3fb9425b8\$__ECP5_DP16KD_ for cells of type $__ECP5_DP16KD_.
+Using template $paramod$66ab4470e2e5022c7ace96168242f7ebb6ba9f63\$__ECP5_DP16KD_ for cells of type $__ECP5_DP16KD_.
 No more expansions possible.
 
 42.29. Executing OPT pass (performing simple optimizations).
@@ -9840,6 +9840,6 @@ Found and reported 0 problems.
 43. Executing JSON backend.
 
 Warnings: 3 unique messages, 3 total
-End of script. Logfile hash: 1bb1df53b4, CPU: user 10.56s system 0.16s, MEM: 202.54 MB peak
+End of script. Logfile hash: 2155ebf9ea, CPU: user 9.38s system 0.14s, MEM: 202.83 MB peak
 Yosys 0.33+6 (git sha1 41b34a193, x86_64-conda-linux-gnu-cc 11.2.0 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/root/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1694128612374/work=/usr/local/src/conda/yosys-0.33_7_g41b34a193 -fdebug-prefix-map=/home/juan-diego/miniconda3/envs/digital=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
-Time spent: 21% 1x autoname (2 sec), 18% 1x abc (2 sec), ...
+Time spent: 17% 1x autoname (1 sec), 16% 1x abc (1 sec), ...
