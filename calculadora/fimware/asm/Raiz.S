@@ -5,9 +5,6 @@
 .equ SQRT_DONE,      0x10
 
 .section .data
-sqrt_error_msg:
-    .asciz "\n\rError: raiz de negativo"
-
 .section .text
 .globl sqrt_hw
 
@@ -18,32 +15,29 @@ sqrt_hw:
     # Validar que a0 >= 0
     bge  a0, zero, .sqrt_ok      # si es positivo, continuar
 
-    # Es negativo → imprimir error y retornar -1
+    # Es negativo retornar -1
     addi sp, sp, -4
     sw   ra, 0(sp)
-
-    la   a0, sqrt_error_msg
-    call putstring
 
     lw   ra, 0(sp)
     addi sp, sp, 4
     li   a0, -1                  # código de error
     ret
-
-.sqrt_ok:
-    li   gp, SQRT_BASE
-
-    sw   a0, SQRT_OP_A(gp)       # escribir operando
-    li   a0, 1
     
-    sw   a0, SQRT_INIT(gp)       # init = 1 → arrancar
-    sw   zero, SQRT_INIT(gp)     # init = 0 → pulso
-
+.sqrt_ok:
+    
+    li   t0, SQRT_BASE
+    sw   a0, SQRT_OP_A(t0)          # escribir operando
+    li   a1, 1
+    sw   a1, SQRT_INIT(t0)          # init = 1 → arrancar
+    sw   zero, SQRT_INIT(t0)        # init = 0 → pulso
+ 
 .wait_sqrt:
-    li   t0, 1
-    lw   t1, SQRT_DONE(gp)
-    and  t1, t1, t0
-    beqz t1, .wait_sqrt          # esperar hasta DONE == 1
-
-    lw   a0, SQRT_RESULTADO(gp)  # leer resultado
+    
+    lw   t1, SQRT_DONE(t0)
+    andi t1, t1, 1
+    beqz t1, .wait_sqrt             # esperar hasta DONE == 1
+ 
+    lw   a0, SQRT_RESULTADO(t0)     # leer resultado
     ret
+

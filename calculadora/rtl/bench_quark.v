@@ -65,8 +65,9 @@ initial begin
     #(tck * 60000);
 
     // ── PRUEBA 1: RAÍZ de 1234 ──────────────────────
-/*
-    UART_WRITE_BYTE(8'h32); // '1'
+/*    //UART_WRITE_BYTE(8'h2D); // '-'
+    //#(tck * 1500);
+    UART_WRITE_BYTE(8'h31); // '1'
     #(tck * 1500);
     UART_WRITE_BYTE(8'h32); // '2'
     #(tck * 1500);
@@ -77,12 +78,11 @@ initial begin
     UART_WRITE_BYTE(8'h0D); // Enter
     #(tck * 2500);
     UART_WRITE_BYTE(8'h40); // '@' raíz
-    #(tck * 90000);
-*/ 
-
-  // ── PRUEBA 2: SUMA 12 + 34 ──────────────────────
+ 
+*/
+  // ── PRUEBA 2: SUMA o resta 1234 ──────────────────────
 /*
-    UART_WRITE_BYTE(8'h32); // '1'
+    UART_WRITE_BYTE(8'h31); // '1'
     #(tck * 1500);
     UART_WRITE_BYTE(8'h32); // '2'
     #(tck * 1500);
@@ -92,9 +92,10 @@ initial begin
     #(tck * 1500);
     UART_WRITE_BYTE(8'h0D); // Enter
     #(tck * 25000);
-    UART_WRITE_BYTE(8'h2B); // '+'
+    //UART_WRITE_BYTE(8'h2B); // '+'
+    UART_WRITE_BYTE(8'h2D); // '-'
     #(tck * 25000);
-    UART_WRITE_BYTE(8'h32); // '1'
+    UART_WRITE_BYTE(8'h31); // '1'
     #(tck * 1500);
     UART_WRITE_BYTE(8'h32); // '2'
     #(tck * 1500);
@@ -104,7 +105,6 @@ initial begin
     #(tck * 1500);
     UART_WRITE_BYTE(8'h0D); // Enter
     #(tck * 2500);
-
 */
 
     // ── PRUEBA 3: MULTIPLICACIÓN -12 * -3 ───────────
@@ -147,7 +147,7 @@ initial begin
     #(tck * 25000);
 */
 
-    #(tck * 900000);
+    #(tck * 300000);
     $finish;
 end
 
