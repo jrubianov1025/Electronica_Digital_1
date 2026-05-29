@@ -28,7 +28,13 @@ la estructura del proyecto se muestra acontinuación:
       \Raiz
   Makefile
   bench_quark.v
+  SOC_i9.lpf
   SOC.v
+  
+  \Simulaciones
+    Simulacion_Periferico.vcd
+    ...
+    Visualizar_Simulacion.gtkw
   ...
 
 ```
@@ -36,11 +42,10 @@ Para cada periferico se crean los siguientes archivos:
 
 - Los módulos necesarios para su funcionamiento
 - Un módulo TOP
-- Un testbench para simulación
 - Archivo en assembler adicional utilizado por la calculadora completa
 - Periferico para su implementacion 
 
-Además, se encuentran 4 archivos adicionales necesarios para el funcionamiento de la calculadora.
+Además, se encuentran archivos adicionales necesarios para el funcionamiento de la calculadora junto con una carpeta para visualizar la simulacion de cada periferico.
 
 ---
 
@@ -71,7 +76,7 @@ A modo de resumen, se específica en la siguiente tabla las diferentes variables
 | `R`      | Output |  32  | Resultado final                 |
 
 
-Hay 9 archivos relacionados a este Periferico:
+Hay 8 archivos relacionados a este Periferico:
 
 - `Multiplicador.S` — Archivo en Assembler con el objetivo de realizar la comunicación entre el periférico y el procesador, se encientra en la carpeta de asm.
 
@@ -120,7 +125,7 @@ A modo de resumen, se específica en la siguiente tabla las diferentes variables
 |`Residuo`   | Output |  32  | Residuo final                   |
 
 
-Hay 10 archivos relacionados a este Periferico:
+Hay 9 archivos relacionados a este Periferico:
 
 - `Divisor.S` — Archivo en Assembler con el objetivo de realizar la comunicación entre el periférico y el procesador.
 
@@ -167,7 +172,7 @@ A modo de resumen, se específica en la siguiente tabla las diferentes variables
 
 
 
-Hay 10 archivos relacionados a este Periferico:
+Hay 9 archivos relacionados a este Periferico:
 
 - `Raiz.S` — Archivo en Assembler con el objetivo de realizar la comunicación entre el periférico y el procesador.
 
