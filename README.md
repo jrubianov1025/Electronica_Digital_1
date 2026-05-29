@@ -17,7 +17,11 @@ Sebastian Bohorquez Parra -CC 1003845024 - Grupo 8
 
 - [Calculadora](./calculadora/) — Carpeta que contiene los 4 periféricos principales realizados durante las sesiones de clase, cada periférico posee su propia carpeta:
  
-  - Multiplicador  
+  - Multiplicador
+  - Divisor
+  - Raiz
+  - Conversor Binario_BCD
+  - Conversor BCD_Binario 
 
 - [Plantillas Verilog](./plantillas%20verilog/) — Carpeta que contiene plantillas genericas de diversos modulos de verilog utiles para la realizacion de las diferentes actividades.
  
