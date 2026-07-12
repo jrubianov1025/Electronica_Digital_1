@@ -1,0 +1,1691 @@
+
+ /----------------------------------------------------------------------------\
+ |                                                                            |
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |                                                                            |
+ |  Copyright (C) 2012 - 2020  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |                                                                            |
+ |  Permission to use, copy, modify, and/or distribute this software for any  |
+ |  purpose with or without fee is hereby granted, provided that the above    |
+ |  copyright notice and this permission notice appear in all copies.         |
+ |                                                                            |
+ |  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES  |
+ |  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF          |
+ |  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR   |
+ |  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    |
+ |  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN     |
+ |  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF   |
+ |  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.            |
+ |                                                                            |
+ \----------------------------------------------------------------------------/
+
+ Yosys 0.33+6 (git sha1 41b34a193, x86_64-conda-linux-gnu-cc 11.2.0 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/root/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1694128612374/work=/usr/local/src/conda/yosys-0.33_7_g41b34a193 -fdebug-prefix-map=/home/juan-diego/miniconda3/envs/digital=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
+
+
+-- Running command `verilog_defaults -push; verilog_defaults -add -defer; read_verilog -formal CONTROLADOR_I2C.v ADS1115_CONTROLER/ADS1115_CONTROLLER.v ADS1115_CONTROLER/TICK_GENERATOR.v I2C/Top_I2C.v I2C/CONTROL.v I2C/SHIFT_REG.v I2C/CONTADOR_BITS.v I2C/CONTADOR_BYTES.v I2C/I2C_CLOCK_GENERATOR.v; verilog_defaults -pop; attrmap -tocase keep -imap keep="true" keep=1 -imap keep="false" keep=0 -remove keep=0; synth_ecp5 -top CONTROLADOR_I2C; write_json build/CONTROLADOR_I2C_i9.json' --
+
+1. Executing Verilog-2005 frontend: CONTROLADOR_I2C.v
+Parsing formal Verilog input from `CONTROLADOR_I2C.v' to AST representation.
+Storing AST representation for module `$abstract\CONTROLADOR_I2C'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: ADS1115_CONTROLER/ADS1115_CONTROLLER.v
+Parsing formal Verilog input from `ADS1115_CONTROLER/ADS1115_CONTROLLER.v' to AST representation.
+Storing AST representation for module `$abstract\ADS1115_CONTROLLER'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: ADS1115_CONTROLER/TICK_GENERATOR.v
+Parsing formal Verilog input from `ADS1115_CONTROLER/TICK_GENERATOR.v' to AST representation.
+Storing AST representation for module `$abstract\TICK_GENERATOR'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: I2C/Top_I2C.v
+Parsing formal Verilog input from `I2C/Top_I2C.v' to AST representation.
+Warning: Yosys has only limited support for tri-state logic at the moment. (I2C/Top_I2C.v:66)
+Warning: Yosys has only limited support for tri-state logic at the moment. (I2C/Top_I2C.v:68)
+Storing AST representation for module `$abstract\TOP_I2C'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: I2C/CONTROL.v
+Parsing formal Verilog input from `I2C/CONTROL.v' to AST representation.
+Storing AST representation for module `$abstract\CONTROL_I2C'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: I2C/SHIFT_REG.v
+Parsing formal Verilog input from `I2C/SHIFT_REG.v' to AST representation.
+Storing AST representation for module `$abstract\SHIFT_REGISTER'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: I2C/CONTADOR_BITS.v
+Parsing formal Verilog input from `I2C/CONTADOR_BITS.v' to AST representation.
+Storing AST representation for module `$abstract\CONTADOR_BITS'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: I2C/CONTADOR_BYTES.v
+Parsing formal Verilog input from `I2C/CONTADOR_BYTES.v' to AST representation.
+Storing AST representation for module `$abstract\CONTADOR_BYTES'.
+Successfully finished Verilog frontend.
+
+9. Executing Verilog-2005 frontend: I2C/I2C_CLOCK_GENERATOR.v
+Parsing formal Verilog input from `I2C/I2C_CLOCK_GENERATOR.v' to AST representation.
+Storing AST representation for module `$abstract\I2C_CLOCK_GENERATOR'.
+Successfully finished Verilog frontend.
+
+10. Executing ATTRMAP pass (move or copy attributes).
+
+11. Executing SYNTH_ECP5 pass.
+
+11.1. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\LUT4'.
+Generating RTLIL representation for module `\$__ABC9_LUT5'.
+Generating RTLIL representation for module `\$__ABC9_LUT6'.
+Generating RTLIL representation for module `\$__ABC9_LUT7'.
+Generating RTLIL representation for module `\L6MUX21'.
+Generating RTLIL representation for module `\CCU2C'.
+Generating RTLIL representation for module `\TRELLIS_RAM16X2'.
+Generating RTLIL representation for module `\PFUMX'.
+Generating RTLIL representation for module `\TRELLIS_DPR16X4'.
+Generating RTLIL representation for module `\DPR16X4C'.
+Generating RTLIL representation for module `\LUT2'.
+Generating RTLIL representation for module `\TRELLIS_FF'.
+Generating RTLIL representation for module `\TRELLIS_IO'.
+Generating RTLIL representation for module `\INV'.
+Generating RTLIL representation for module `\TRELLIS_COMB'.
+Generating RTLIL representation for module `\DP16KD'.
+Generating RTLIL representation for module `\FD1P3AX'.
+Generating RTLIL representation for module `\FD1P3AY'.
+Generating RTLIL representation for module `\FD1P3BX'.
+Generating RTLIL representation for module `\FD1P3DX'.
+Generating RTLIL representation for module `\FD1P3IX'.
+Generating RTLIL representation for module `\FD1P3JX'.
+Generating RTLIL representation for module `\FD1S3AX'.
+Generating RTLIL representation for module `\FD1S3AY'.
+Generating RTLIL representation for module `\FD1S3BX'.
+Generating RTLIL representation for module `\FD1S3DX'.
+Generating RTLIL representation for module `\FD1S3IX'.
+Generating RTLIL representation for module `\FD1S3JX'.
+Generating RTLIL representation for module `\IFS1P3BX'.
+Generating RTLIL representation for module `\IFS1P3DX'.
+Generating RTLIL representation for module `\IFS1P3IX'.
+Generating RTLIL representation for module `\IFS1P3JX'.
+Generating RTLIL representation for module `\OFS1P3BX'.
+Generating RTLIL representation for module `\OFS1P3DX'.
+Generating RTLIL representation for module `\OFS1P3IX'.
+Generating RTLIL representation for module `\OFS1P3JX'.
+Generating RTLIL representation for module `\IB'.
+Generating RTLIL representation for module `\IBPU'.
+Generating RTLIL representation for module `\IBPD'.
+Generating RTLIL representation for module `\OB'.
+Generating RTLIL representation for module `\OBZ'.
+Generating RTLIL representation for module `\OBZPU'.
+Generating RTLIL representation for module `\OBZPD'.
+Generating RTLIL representation for module `\OBCO'.
+Generating RTLIL representation for module `\BB'.
+Generating RTLIL representation for module `\BBPU'.
+Generating RTLIL representation for module `\BBPD'.
+Generating RTLIL representation for module `\ILVDS'.
+Generating RTLIL representation for module `\OLVDS'.
+Successfully finished Verilog frontend.
+
+11.2. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_bb.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_bb.v' to AST representation.
+Generating RTLIL representation for module `\MULT18X18D'.
+Generating RTLIL representation for module `\ALU54B'.
+Generating RTLIL representation for module `\EHXPLLL'.
+Generating RTLIL representation for module `\DTR'.
+Generating RTLIL representation for module `\OSCG'.
+Generating RTLIL representation for module `\USRMCLK'.
+Generating RTLIL representation for module `\JTAGG'.
+Generating RTLIL representation for module `\DELAYF'.
+Generating RTLIL representation for module `\DELAYG'.
+Generating RTLIL representation for module `\IDDRX1F'.
+Generating RTLIL representation for module `\IDDRX2F'.
+Generating RTLIL representation for module `\IDDR71B'.
+Generating RTLIL representation for module `\IDDRX2DQA'.
+Generating RTLIL representation for module `\ODDRX1F'.
+Generating RTLIL representation for module `\ODDRX2F'.
+Generating RTLIL representation for module `\ODDR71B'.
+Generating RTLIL representation for module `\OSHX2A'.
+Generating RTLIL representation for module `\ODDRX2DQA'.
+Generating RTLIL representation for module `\ODDRX2DQSB'.
+Generating RTLIL representation for module `\TSHX2DQA'.
+Generating RTLIL representation for module `\TSHX2DQSA'.
+Generating RTLIL representation for module `\DQSBUFM'.
+Generating RTLIL representation for module `\DDRDLLA'.
+Generating RTLIL representation for module `\DLLDELD'.
+Generating RTLIL representation for module `\CLKDIVF'.
+Generating RTLIL representation for module `\ECLKSYNCB'.
+Generating RTLIL representation for module `\ECLKBRIDGECS'.
+Generating RTLIL representation for module `\DCCA'.
+Generating RTLIL representation for module `\DCSC'.
+Generating RTLIL representation for module `\DCUA'.
+Generating RTLIL representation for module `\EXTREFB'.
+Generating RTLIL representation for module `\PCSCLKDIV'.
+Generating RTLIL representation for module `\PUR'.
+Generating RTLIL representation for module `\GSR'.
+Generating RTLIL representation for module `\SGSR'.
+Generating RTLIL representation for module `\PDPW16KD'.
+Successfully finished Verilog frontend.
+
+11.3. Executing HIERARCHY pass (managing design hierarchy).
+
+11.4. Executing AST frontend in derive mode using pre-parsed AST for module `\CONTROLADOR_I2C'.
+Generating RTLIL representation for module `\CONTROLADOR_I2C'.
+
+11.4.1. Analyzing design hierarchy..
+Top module:  \CONTROLADOR_I2C
+Parameter \CLK_FREQ_HZ = 25000000
+Parameter \I2C_FREQ_HZ = 100000
+
+11.4.2. Executing AST frontend in derive mode using pre-parsed AST for module `\TOP_I2C'.
+Parameter \CLK_FREQ_HZ = 25000000
+Parameter \I2C_FREQ_HZ = 100000
+Generating RTLIL representation for module `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C'.
+Parameter \CLK_FREQ_HZ = 25000000
+Parameter \DELAY_MS = 500
+Parameter \I2C_ADDR = 7'1001000
+
+11.4.3. Executing AST frontend in derive mode using pre-parsed AST for module `\ADS1115_CONTROLLER'.
+Parameter \CLK_FREQ_HZ = 25000000
+Parameter \DELAY_MS = 500
+Parameter \I2C_ADDR = 7'1001000
+Generating RTLIL representation for module `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER'.
+
+11.4.4. Analyzing design hierarchy..
+Top module:  \CONTROLADOR_I2C
+Used module:     $paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C
+Used module:     $paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER
+Parameter \CLK_FREQ_HZ = 25000000
+Parameter \DELAY_MS = 500
+
+11.4.5. Executing AST frontend in derive mode using pre-parsed AST for module `\TICK_GENERATOR'.
+Parameter \CLK_FREQ_HZ = 25000000
+Parameter \DELAY_MS = 500
+Generating RTLIL representation for module `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR'.
+
+11.4.6. Executing AST frontend in derive mode using pre-parsed AST for module `\CONTROL_I2C'.
+Generating RTLIL representation for module `\CONTROL_I2C'.
+
+11.4.7. Executing AST frontend in derive mode using pre-parsed AST for module `\CONTADOR_BYTES'.
+Generating RTLIL representation for module `\CONTADOR_BYTES'.
+
+11.4.8. Executing AST frontend in derive mode using pre-parsed AST for module `\CONTADOR_BITS'.
+Generating RTLIL representation for module `\CONTADOR_BITS'.
+
+11.4.9. Executing AST frontend in derive mode using pre-parsed AST for module `\SHIFT_REGISTER'.
+Generating RTLIL representation for module `\SHIFT_REGISTER'.
+Parameter \CLK_FREQ_HZ = 25000000
+Parameter \I2C_FREQ_HZ = 100000
+
+11.4.10. Executing AST frontend in derive mode using pre-parsed AST for module `\I2C_CLOCK_GENERATOR'.
+Parameter \CLK_FREQ_HZ = 25000000
+Parameter \I2C_FREQ_HZ = 100000
+Generating RTLIL representation for module `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR'.
+
+11.4.11. Analyzing design hierarchy..
+Top module:  \CONTROLADOR_I2C
+Used module:     $paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C
+Used module:         \CONTROL_I2C
+Used module:         \CONTADOR_BYTES
+Used module:         \CONTADOR_BITS
+Used module:         \SHIFT_REGISTER
+Used module:         $paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR
+Used module:     $paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER
+Used module:         $paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR
+
+11.4.12. Analyzing design hierarchy..
+Top module:  \CONTROLADOR_I2C
+Used module:     $paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C
+Used module:         \CONTROL_I2C
+Used module:         \CONTADOR_BYTES
+Used module:         \CONTADOR_BITS
+Used module:         \SHIFT_REGISTER
+Used module:         $paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR
+Used module:     $paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER
+Used module:         $paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR
+Removing unused module `$abstract\I2C_CLOCK_GENERATOR'.
+Removing unused module `$abstract\CONTADOR_BYTES'.
+Removing unused module `$abstract\CONTADOR_BITS'.
+Removing unused module `$abstract\SHIFT_REGISTER'.
+Removing unused module `$abstract\CONTROL_I2C'.
+Removing unused module `$abstract\TOP_I2C'.
+Removing unused module `$abstract\TICK_GENERATOR'.
+Removing unused module `$abstract\ADS1115_CONTROLLER'.
+Removing unused module `$abstract\CONTROLADOR_I2C'.
+Removed 9 unused modules.
+
+11.5. Executing PROC pass (convert processes to netlists).
+
+11.5.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:213$117'.
+Cleaned up 1 empty switch.
+
+11.5.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:350$224 in module TRELLIS_FF.
+Marked 1 switch rules as full_case in process $proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:285$176 in module DPR16X4C.
+Marked 1 switch rules as full_case in process $proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:221$118 in module TRELLIS_DPR16X4.
+Marked 3 switch rules as full_case in process $proc$I2C/I2C_CLOCK_GENERATOR.v:22$293 in module $paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.
+Marked 1 switch rules as full_case in process $proc$I2C/SHIFT_REG.v:34$292 in module SHIFT_REGISTER.
+Marked 3 switch rules as full_case in process $proc$I2C/SHIFT_REG.v:19$291 in module SHIFT_REGISTER.
+Marked 2 switch rules as full_case in process $proc$I2C/CONTADOR_BITS.v:13$286 in module CONTADOR_BITS.
+Marked 2 switch rules as full_case in process $proc$I2C/CONTADOR_BYTES.v:13$281 in module CONTADOR_BYTES.
+Marked 1 switch rules as full_case in process $proc$I2C/CONTROL.v:113$274 in module CONTROL_I2C.
+Marked 15 switch rules as full_case in process $proc$I2C/CONTROL.v:45$264 in module CONTROL_I2C.
+Marked 3 switch rules as full_case in process $proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$260 in module $paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.
+Removed 1 dead cases from process $proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:179$259 in module $paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.
+Marked 4 switch rules as full_case in process $proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:179$259 in module $paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.
+Marked 7 switch rules as full_case in process $proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234 in module $paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.
+Marked 1 switch rules as full_case in process $proc$I2C/Top_I2C.v:54$226 in module $paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.
+Removed a total of 1 dead cases.
+
+11.5.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 11 redundant assignments.
+Promoted 60 assignments to connections.
+
+11.5.4. Executing PROC_INIT pass (extract init attributes).
+Found init rule in `\TRELLIS_FF.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$225'.
+  Set init value: \Q = 1'0
+
+11.5.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst in `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.$proc$I2C/I2C_CLOCK_GENERATOR.v:22$293'.
+Found async reset \rst in `\SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:34$292'.
+Found async reset \rst in `\SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:19$291'.
+Found async reset \rst in `\CONTADOR_BITS.$proc$I2C/CONTADOR_BITS.v:13$286'.
+Found async reset \rst in `\CONTADOR_BYTES.$proc$I2C/CONTADOR_BYTES.v:13$281'.
+Found async reset \rst in `\CONTROL_I2C.$proc$I2C/CONTROL.v:45$264'.
+Found async reset \rst in `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$260'.
+Found async reset \rst in `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+Found async reset \rst in `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$I2C/Top_I2C.v:54$226'.
+
+11.5.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+11.5.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\TRELLIS_FF.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$225'.
+Creating decoders for process `\TRELLIS_FF.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:350$224'.
+     1/1: $0\Q[0:0]
+Creating decoders for process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+Creating decoders for process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:285$176'.
+     1/3: $1$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:287$175_EN[3:0]$182
+     2/3: $1$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:287$175_DATA[3:0]$181
+     3/3: $1$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:287$175_ADDR[3:0]$180
+Creating decoders for process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+Creating decoders for process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:221$118'.
+     1/3: $1$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:223$116_EN[3:0]$124
+     2/3: $1$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:223$116_DATA[3:0]$123
+     3/3: $1$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:223$116_ADDR[3:0]$122
+Creating decoders for process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:213$117'.
+Creating decoders for process `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.$proc$I2C/I2C_CLOCK_GENERATOR.v:22$293'.
+     1/4: $0\scl_fall[0:0]
+     2/4: $0\scl_rise[0:0]
+     3/4: $0\counter[6:0]
+     4/4: $0\scl[0:0]
+Creating decoders for process `\SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:34$292'.
+     1/1: $0\rx_reg[7:0]
+Creating decoders for process `\SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:19$291'.
+     1/1: $0\shift_reg[7:0]
+Creating decoders for process `\CONTADOR_BITS.$proc$I2C/CONTADOR_BITS.v:13$286'.
+     1/1: $0\count[2:0]
+Creating decoders for process `\CONTADOR_BYTES.$proc$I2C/CONTADOR_BYTES.v:13$281'.
+     1/1: $0\count[7:0]
+Creating decoders for process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+     1/14: $1\byte_done[0:0]
+     2/14: $1\store_rx[0:0]
+     3/14: $1\done[0:0]
+     4/14: $1\shift_rx[0:0]
+     5/14: $1\busy[0:0]
+     6/14: $1\shift_tx[0:0]
+     7/14: $1\dec_byte_counter[0:0]
+     8/14: $1\load_shift[0:0]
+     9/14: $1\load_byte_counter[0:0]
+    10/14: $1\sda_force_low[0:0]
+    11/14: $1\dec_bit_counter[0:0]
+    12/14: $1\sda_mux_sel[0:0]
+    13/14: $1\load_bit_counter[0:0]
+    14/14: $1\scl_enable[0:0]
+Creating decoders for process `\CONTROL_I2C.$proc$I2C/CONTROL.v:45$264'.
+     1/3: $0\NEXT_STATE[9:0]
+     2/3: $0\delay_cnt[7:0]
+     3/3: $0\ack_error[0:0]
+Creating decoders for process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$260'.
+     1/2: $0\tick[0:0]
+     2/2: $0\counter[23:0]
+Creating decoders for process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:179$259'.
+     1/7: $4\tx_byte[7:0]
+     2/7: $3\tx_byte[7:0]
+     3/7: $2\tx_byte[7:0]
+     4/7: $1\num_bytes[7:0]
+     5/7: $1\tx_byte[7:0]
+     6/7: $1\rw[0:0]
+     7/7: $1\start[0:0]
+Creating decoders for process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+     1/6: $0\NEXT_STATE[8:0]
+     2/6: $0\adc_valid[0:0]
+     3/6: $0\adc_msb[7:0]
+     4/6: $0\byte_idx[1:0]
+     5/6: $0\error_alert[0:0]
+     6/6: $0\adc_value[15:0]
+Creating decoders for process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$I2C/Top_I2C.v:54$226'.
+     1/2: $0\sda_sync[0:0]
+     2/2: $0\sda_meta[0:0]
+
+11.5.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\CONTROL_I2C.\busy' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\done' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\byte_done' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\scl_enable' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\sda_mux_sel' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\sda_force_low' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\load_shift' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\shift_tx' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\shift_rx' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\store_rx' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\load_bit_counter' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\dec_bit_counter' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\load_byte_counter' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `\CONTROL_I2C.\dec_byte_counter' from process `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+No latch inferred for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\start' from process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:179$259'.
+No latch inferred for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\rw' from process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:179$259'.
+No latch inferred for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\tx_byte' from process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:179$259'.
+No latch inferred for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\num_bytes' from process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:179$259'.
+
+11.5.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\TRELLIS_FF.\Q' using process `\TRELLIS_FF.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:350$224'.
+  created $dff cell `$procdff$661' with positive edge clock.
+Creating register for signal `\DPR16X4C.\i' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$160_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$161_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$162_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$163_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$164_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$165_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$166_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$167_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$168_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$169_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$170_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$171_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$172_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$173_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:281$174_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:287$175_ADDR' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:285$176'.
+  created $dff cell `$procdff$662' with positive edge clock.
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:287$175_DATA' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:285$176'.
+  created $dff cell `$procdff$663' with positive edge clock.
+Creating register for signal `\DPR16X4C.$memwr$\ram$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:287$175_EN' using process `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:285$176'.
+  created $dff cell `$procdff$664' with positive edge clock.
+Creating register for signal `\TRELLIS_DPR16X4.\i' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$100_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$101_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$102_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$103_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$104_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$105_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$106_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$107_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$108_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$109_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$110_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$111_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$112_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$113_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$114_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:207$115_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+  created direct connection (no actual register cell created).
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:223$116_ADDR' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:221$118'.
+  created $dff cell `$procdff$665' with positive edge clock.
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:223$116_DATA' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:221$118'.
+  created $dff cell `$procdff$666' with positive edge clock.
+Creating register for signal `\TRELLIS_DPR16X4.$memwr$\mem$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:223$116_EN' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:221$118'.
+  created $dff cell `$procdff$667' with positive edge clock.
+Creating register for signal `\TRELLIS_DPR16X4.\muxwre' using process `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:213$117'.
+  created direct connection (no actual register cell created).
+Creating register for signal `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.\scl_rise' using process `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.$proc$I2C/I2C_CLOCK_GENERATOR.v:22$293'.
+  created $adff cell `$procdff$668' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.\scl_fall' using process `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.$proc$I2C/I2C_CLOCK_GENERATOR.v:22$293'.
+  created $adff cell `$procdff$669' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.\scl' using process `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.$proc$I2C/I2C_CLOCK_GENERATOR.v:22$293'.
+  created $adff cell `$procdff$670' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.\counter' using process `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.$proc$I2C/I2C_CLOCK_GENERATOR.v:22$293'.
+  created $adff cell `$procdff$671' with positive edge clock and positive level reset.
+Creating register for signal `\SHIFT_REGISTER.\rx_reg' using process `\SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:34$292'.
+  created $adff cell `$procdff$672' with positive edge clock and positive level reset.
+Creating register for signal `\SHIFT_REGISTER.\shift_reg' using process `\SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:19$291'.
+  created $adff cell `$procdff$673' with positive edge clock and positive level reset.
+Creating register for signal `\CONTADOR_BITS.\count' using process `\CONTADOR_BITS.$proc$I2C/CONTADOR_BITS.v:13$286'.
+  created $adff cell `$procdff$674' with positive edge clock and positive level reset.
+Creating register for signal `\CONTADOR_BYTES.\count' using process `\CONTADOR_BYTES.$proc$I2C/CONTADOR_BYTES.v:13$281'.
+  created $adff cell `$procdff$675' with positive edge clock and positive level reset.
+Creating register for signal `\CONTROL_I2C.\ack_error' using process `\CONTROL_I2C.$proc$I2C/CONTROL.v:45$264'.
+  created $adff cell `$procdff$676' with positive edge clock and positive level reset.
+Creating register for signal `\CONTROL_I2C.\NEXT_STATE' using process `\CONTROL_I2C.$proc$I2C/CONTROL.v:45$264'.
+  created $adff cell `$procdff$677' with positive edge clock and positive level reset.
+Creating register for signal `\CONTROL_I2C.\delay_cnt' using process `\CONTROL_I2C.$proc$I2C/CONTROL.v:45$264'.
+  created $adff cell `$procdff$678' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.\tick' using process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$260'.
+  created $adff cell `$procdff$679' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.\counter' using process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$260'.
+  created $adff cell `$procdff$680' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\adc_value' using process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+  created $adff cell `$procdff$681' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\adc_valid' using process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+  created $adff cell `$procdff$682' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\error_alert' using process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+  created $adff cell `$procdff$683' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\NEXT_STATE' using process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+  created $adff cell `$procdff$684' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\byte_idx' using process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+  created $adff cell `$procdff$685' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.\adc_msb' using process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+  created $adff cell `$procdff$686' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.\sda_meta' using process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$I2C/Top_I2C.v:54$226'.
+  created $adff cell `$procdff$687' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.\sda_sync' using process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$I2C/Top_I2C.v:54$226'.
+  created $adff cell `$procdff$688' with positive edge clock and positive level reset.
+
+11.5.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+11.5.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `TRELLIS_FF.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$225'.
+Found and cleaned up 2 empty switches in `\TRELLIS_FF.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:350$224'.
+Removing empty process `TRELLIS_FF.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:350$224'.
+Removing empty process `DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$199'.
+Found and cleaned up 1 empty switch in `\DPR16X4C.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:285$176'.
+Removing empty process `TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$142'.
+Found and cleaned up 1 empty switch in `\TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:221$118'.
+Removing empty process `TRELLIS_DPR16X4.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:213$117'.
+Found and cleaned up 2 empty switches in `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.$proc$I2C/I2C_CLOCK_GENERATOR.v:22$293'.
+Removing empty process `$paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.$proc$I2C/I2C_CLOCK_GENERATOR.v:22$293'.
+Found and cleaned up 1 empty switch in `\SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:34$292'.
+Removing empty process `SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:34$292'.
+Found and cleaned up 3 empty switches in `\SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:19$291'.
+Removing empty process `SHIFT_REGISTER.$proc$I2C/SHIFT_REG.v:19$291'.
+Found and cleaned up 2 empty switches in `\CONTADOR_BITS.$proc$I2C/CONTADOR_BITS.v:13$286'.
+Removing empty process `CONTADOR_BITS.$proc$I2C/CONTADOR_BITS.v:13$286'.
+Found and cleaned up 2 empty switches in `\CONTADOR_BYTES.$proc$I2C/CONTADOR_BYTES.v:13$281'.
+Removing empty process `CONTADOR_BYTES.$proc$I2C/CONTADOR_BYTES.v:13$281'.
+Found and cleaned up 1 empty switch in `\CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+Removing empty process `CONTROL_I2C.$proc$I2C/CONTROL.v:113$274'.
+Found and cleaned up 15 empty switches in `\CONTROL_I2C.$proc$I2C/CONTROL.v:45$264'.
+Removing empty process `CONTROL_I2C.$proc$I2C/CONTROL.v:45$264'.
+Found and cleaned up 2 empty switches in `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$260'.
+Removing empty process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$260'.
+Found and cleaned up 4 empty switches in `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:179$259'.
+Removing empty process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:179$259'.
+Found and cleaned up 10 empty switches in `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+Removing empty process `$paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.$proc$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:100$234'.
+Removing empty process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$I2C/Top_I2C.v:54$226'.
+Cleaned up 46 empty switches.
+
+11.5.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.
+Optimizing module SHIFT_REGISTER.
+Optimizing module CONTADOR_BITS.
+Optimizing module CONTADOR_BYTES.
+Optimizing module CONTROL_I2C.
+Optimizing module $paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.
+Optimizing module $paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.
+Optimizing module $paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.
+Optimizing module CONTROLADOR_I2C.
+
+11.6. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$883779b11137cdd758f697b018082aebb916c78f\I2C_CLOCK_GENERATOR.
+Deleting now unused module SHIFT_REGISTER.
+Deleting now unused module CONTADOR_BITS.
+Deleting now unused module CONTADOR_BYTES.
+Deleting now unused module CONTROL_I2C.
+Deleting now unused module $paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.
+Deleting now unused module $paramod$b5554af5f2b2d5062a1eae4b2ce4096b2a5d2757\ADS1115_CONTROLLER.
+Deleting now unused module $paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.
+
+11.7. Executing TRIBUF pass.
+
+11.8. Executing DEMINOUT pass (demote inout ports to input or output).
+
+11.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+Removed 23 unused cells and 151 unused wires.
+
+11.11. Executing CHECK pass (checking for obvious problems).
+Checking module CONTROLADOR_I2C...
+Found and reported 0 problems.
+
+11.12. Executing OPT pass (performing simple optimizations).
+
+11.12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 73 cells.
+
+11.12.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \CONTROLADOR_I2C..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $flatten\mi_controlador.$procmux$589.
+    dead port 2/2 on $mux $flatten\mi_controlador.$procmux$564.
+    dead port 2/2 on $mux $flatten\mi_controlador.$procmux$575.
+Removed 3 multiplexer ports.
+
+11.12.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \CONTROLADOR_I2C.
+    New ctrl vector for $pmux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$416: $auto$opt_reduce.cc:134:opt_pmux$692
+    New ctrl vector for $pmux cell $flatten\mi_controlador.$procmux$594: { $auto$opt_reduce.cc:134:opt_pmux$698 $auto$opt_reduce.cc:134:opt_pmux$696 $auto$opt_reduce.cc:134:opt_pmux$694 }
+    New ctrl vector for $pmux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$439: { $flatten\mi_i2c_driver.\CONTROL.$procmux$378_CMP $auto$opt_reduce.cc:134:opt_pmux$700 }
+    New ctrl vector for $pmux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$451: $auto$opt_reduce.cc:134:opt_pmux$702
+    New ctrl vector for $pmux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$455: $auto$opt_reduce.cc:134:opt_pmux$704
+    New ctrl vector for $pmux cell $flatten\mi_controlador.$procmux$604: { $flatten\mi_controlador.$procmux$590_CMP $auto$opt_reduce.cc:134:opt_pmux$706 $flatten\mi_controlador.$procmux$576_CMP $flatten\mi_controlador.$eq$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:126$253_Y $flatten\mi_controlador.$eq$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:112$235_Y }
+    New ctrl vector for $pmux cell $flatten\mi_controlador.$procmux$614: $auto$opt_reduce.cc:134:opt_pmux$708
+    New ctrl vector for $pmux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$469: $auto$opt_reduce.cc:134:opt_pmux$710
+    New ctrl vector for $pmux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$474: $auto$opt_reduce.cc:134:opt_pmux$712
+    New ctrl vector for $pmux cell $flatten\mi_controlador.$procmux$621: $auto$opt_reduce.cc:134:opt_pmux$714
+  Optimizing cells in module \CONTROLADOR_I2C.
+Performed a total of 10 changes.
+
+11.12.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 1 cells.
+
+11.12.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.12.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+Removed 0 unused cells and 77 unused wires.
+
+11.12.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.12.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.12.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \CONTROLADOR_I2C..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.12.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \CONTROLADOR_I2C.
+Performed a total of 0 changes.
+
+11.12.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 0 cells.
+
+11.12.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.12.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.12.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.12.16. Finished OPT passes. (There is nothing left to do.)
+
+11.13. Executing FSM pass (extract and optimize FSM).
+
+11.13.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking CONTROLADOR_I2C.mi_controlador.NEXT_STATE as FSM state register:
+    Circuit seems to be self-resetting.
+Not marking CONTROLADOR_I2C.mi_i2c_driver.CONTROL.NEXT_STATE as FSM state register:
+    Circuit seems to be self-resetting.
+
+11.13.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+11.13.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+11.13.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.13.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+11.13.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+11.13.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+11.13.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+11.14. Executing OPT pass (performing simple optimizations).
+
+11.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 0 cells.
+
+11.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \CONTROLADOR_I2C..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \CONTROLADOR_I2C.
+Performed a total of 0 changes.
+
+11.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 0 cells.
+
+11.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $flatten\mi_i2c_driver.\SHIFT.$procdff$673 ($adff) from module CONTROLADOR_I2C (D = $flatten\mi_i2c_driver.\SHIFT.$0\shift_reg[7:0], Q = \mi_i2c_driver.SHIFT.shift_reg).
+Adding EN signal on $flatten\mi_i2c_driver.\SHIFT.$procdff$672 ($adff) from module CONTROLADOR_I2C (D = \mi_i2c_driver.SHIFT.shift_reg, Q = \mi_i2c_driver.SHIFT.rx_reg).
+Adding EN signal on $flatten\mi_i2c_driver.\CONTROL.$procdff$676 ($adff) from module CONTROLADOR_I2C (D = $flatten\mi_i2c_driver.\CONTROL.$0\ack_error[0:0], Q = \mi_i2c_driver.CONTROL.ack_error).
+Adding EN signal on $flatten\mi_i2c_driver.\CLOCK_GEN.$procdff$670 ($adff) from module CONTROLADOR_I2C (D = $flatten\mi_i2c_driver.\CLOCK_GEN.$0\scl[0:0], Q = \mi_i2c_driver.CLOCK_GEN.scl).
+Adding EN signal on $flatten\mi_i2c_driver.\BYTE_COUNTER.$procdff$675 ($adff) from module CONTROLADOR_I2C (D = $flatten\mi_i2c_driver.\BYTE_COUNTER.$0\count[7:0], Q = \mi_i2c_driver.BYTE_COUNTER.count).
+Adding EN signal on $flatten\mi_i2c_driver.\BIT_COUNTER.$procdff$674 ($adff) from module CONTROLADOR_I2C (D = $flatten\mi_i2c_driver.\BIT_COUNTER.$0\count[2:0], Q = \mi_i2c_driver.BIT_COUNTER.count).
+Adding EN signal on $flatten\mi_controlador.$procdff$686 ($adff) from module CONTROLADOR_I2C (D = \mi_i2c_driver.SHIFT.rx_reg, Q = \mi_controlador.adc_msb).
+Adding EN signal on $flatten\mi_controlador.$procdff$685 ($adff) from module CONTROLADOR_I2C (D = $flatten\mi_controlador.$0\byte_idx[1:0], Q = \mi_controlador.byte_idx).
+Adding EN signal on $flatten\mi_controlador.$procdff$681 ($adff) from module CONTROLADOR_I2C (D = { \mi_controlador.adc_msb \mi_i2c_driver.SHIFT.rx_reg }, Q = \mi_controlador.adc_value).
+
+11.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+Removed 3 unused cells and 3 unused wires.
+
+11.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \CONTROLADOR_I2C..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \CONTROLADOR_I2C.
+Performed a total of 0 changes.
+
+11.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 0 cells.
+
+11.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.14.16. Finished OPT passes. (There is nothing left to do.)
+
+11.15. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 2) from port B of cell CONTROLADOR_I2C.$auto$opt_dff.cc:195:make_patterns_logic$728 ($ne).
+Removed top 8 bits (of 9) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$procmux$647_CMP0 ($eq).
+Removed top 1 bits (of 9) from mux cell CONTROLADOR_I2C.$flatten\mi_controlador.$procmux$629 ($mux).
+Removed top 5 bits (of 8) from mux cell CONTROLADOR_I2C.$flatten\mi_controlador.$procmux$594 ($pmux).
+Removed top 6 bits (of 9) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$procmux$590_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$procmux$587_CMP0 ($eq).
+Removed top 4 bits (of 9) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$procmux$576_CMP0 ($eq).
+Removed top 1 bits (of 2) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$add$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:129$255 ($add).
+Removed top 3 bits (of 9) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$eq$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:126$253 ($eq).
+Removed top 5 bits (of 9) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$eq$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:126$251 ($eq).
+Removed top 7 bits (of 9) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$eq$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:126$250 ($eq).
+Removed top 1 bits (of 2) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$eq$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:112$237 ($eq).
+Removed top 2 bits (of 9) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$eq$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:112$235 ($eq).
+Removed top 1 bits (of 9) from port B of cell CONTROLADOR_I2C.$flatten\mi_controlador.$eq$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:95$233 ($eq).
+Removed top 1 bits (of 2) from mux cell CONTROLADOR_I2C.$flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:86$231 ($mux).
+Removed top 1 bits (of 8) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$ge$I2C/CONTROL.v:99$272 ($ge).
+Removed top 7 bits (of 8) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$eq$I2C/CONTROL.v:163$275 ($eq).
+Removed top 3 bits (of 10) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$371_CMP0 ($eq).
+Removed top 4 bits (of 10) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$378_CMP0 ($eq).
+Removed top 5 bits (of 10) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$389_CMP0 ($eq).
+Removed top 7 bits (of 10) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$410_CMP0 ($eq).
+Removed top 6 bits (of 10) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$418_CMP0 ($eq).
+Removed top 8 bits (of 10) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$425_CMP0 ($eq).
+Removed top 2 bits (of 10) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$441_CMP0 ($eq).
+Removed top 9 bits (of 10) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$464_CMP0 ($eq).
+Removed top 1 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$494 ($mux).
+Removed top 5 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$498 ($mux).
+Removed top 2 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$501 ($mux).
+Removed top 2 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$504 ($mux).
+Removed top 3 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$508 ($mux).
+Removed top 4 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$512 ($mux).
+Removed top 3 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$516 ($mux).
+Removed top 6 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$520 ($mux).
+Removed top 7 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$524 ($mux).
+Removed top 8 bits (of 10) from mux cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$528 ($mux).
+Removed top 7 bits (of 8) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\BYTE_COUNTER.$sub$I2C/CONTADOR_BYTES.v:21$284 ($sub).
+Removed top 2 bits (of 3) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\BIT_COUNTER.$sub$I2C/CONTADOR_BITS.v:22$289 ($sub).
+Removed top 1 bits (of 10) from port B of cell CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$eq$I2C/CONTROL.v:53$265 ($eq).
+Removed top 1 bits (of 9) from wire CONTROLADOR_I2C.$flatten\mi_controlador.$procmux$629_Y.
+Removed top 1 bits (of 2) from wire CONTROLADOR_I2C.$flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:86$231_Y.
+Removed top 1 bits (of 10) from wire CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$494_Y.
+Removed top 5 bits (of 10) from wire CONTROLADOR_I2C.$flatten\mi_i2c_driver.\CONTROL.$procmux$498_Y.
+
+11.16. Executing PEEPOPT pass (run peephole optimizers).
+
+11.17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+Removed 0 unused cells and 4 unused wires.
+
+11.18. Executing SHARE pass (SAT-based resource sharing).
+
+11.19. Executing TECHMAP pass (map to technology primitives).
+
+11.19.1. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+11.19.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+11.20. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.22. Executing TECHMAP pass (map to technology primitives).
+
+11.22.1. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/mul2dsp.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/mul2dsp.v' to AST representation.
+Generating RTLIL representation for module `\_80_mul'.
+Generating RTLIL representation for module `\_90_soft_mul'.
+Successfully finished Verilog frontend.
+
+11.22.2. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/dsp_map.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/dsp_map.v' to AST representation.
+Generating RTLIL representation for module `\$__MUL18X18'.
+Successfully finished Verilog frontend.
+
+11.22.3. Continuing TECHMAP pass.
+No more expansions possible.
+
+11.23. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module CONTROLADOR_I2C:
+  creating $macc model for $flatten\mi_controlador.$add$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:129$255 ($add).
+  creating $macc model for $flatten\mi_controlador.$add$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:86$232 ($add).
+  creating $macc model for $flatten\mi_controlador.\TICK.$add$ADS1115_CONTROLER/TICK_GENERATOR.v:27$263 ($add).
+  creating $macc model for $flatten\mi_i2c_driver.\BIT_COUNTER.$sub$I2C/CONTADOR_BITS.v:22$289 ($sub).
+  creating $macc model for $flatten\mi_i2c_driver.\BYTE_COUNTER.$sub$I2C/CONTADOR_BYTES.v:21$284 ($sub).
+  creating $macc model for $flatten\mi_i2c_driver.\CLOCK_GEN.$add$I2C/I2C_CLOCK_GENERATOR.v:42$298 ($add).
+  creating $macc model for $flatten\mi_i2c_driver.\CONTROL.$add$I2C/CONTROL.v:54$268 ($add).
+  creating $alu model for $macc $flatten\mi_i2c_driver.\CONTROL.$add$I2C/CONTROL.v:54$268.
+  creating $alu model for $macc $flatten\mi_i2c_driver.\CLOCK_GEN.$add$I2C/I2C_CLOCK_GENERATOR.v:42$298.
+  creating $alu model for $macc $flatten\mi_i2c_driver.\BYTE_COUNTER.$sub$I2C/CONTADOR_BYTES.v:21$284.
+  creating $alu model for $macc $flatten\mi_i2c_driver.\BIT_COUNTER.$sub$I2C/CONTADOR_BITS.v:22$289.
+  creating $alu model for $macc $flatten\mi_controlador.\TICK.$add$ADS1115_CONTROLER/TICK_GENERATOR.v:27$263.
+  creating $alu model for $macc $flatten\mi_controlador.$add$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:86$232.
+  creating $alu model for $macc $flatten\mi_controlador.$add$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:129$255.
+  creating $alu model for $flatten\mi_i2c_driver.\CONTROL.$ge$I2C/CONTROL.v:104$273 ($ge): new $alu
+  creating $alu model for $flatten\mi_i2c_driver.\CONTROL.$ge$I2C/CONTROL.v:99$272 ($ge): new $alu
+  creating $alu cell for $flatten\mi_i2c_driver.\CONTROL.$ge$I2C/CONTROL.v:99$272: $auto$alumacc.cc:485:replace_alu$747
+  creating $alu cell for $flatten\mi_i2c_driver.\CONTROL.$ge$I2C/CONTROL.v:104$273: $auto$alumacc.cc:485:replace_alu$756
+  creating $alu cell for $flatten\mi_controlador.$add$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:129$255: $auto$alumacc.cc:485:replace_alu$769
+  creating $alu cell for $flatten\mi_controlador.$add$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:86$232: $auto$alumacc.cc:485:replace_alu$772
+  creating $alu cell for $flatten\mi_controlador.\TICK.$add$ADS1115_CONTROLER/TICK_GENERATOR.v:27$263: $auto$alumacc.cc:485:replace_alu$775
+  creating $alu cell for $flatten\mi_i2c_driver.\BIT_COUNTER.$sub$I2C/CONTADOR_BITS.v:22$289: $auto$alumacc.cc:485:replace_alu$778
+  creating $alu cell for $flatten\mi_i2c_driver.\BYTE_COUNTER.$sub$I2C/CONTADOR_BYTES.v:21$284: $auto$alumacc.cc:485:replace_alu$781
+  creating $alu cell for $flatten\mi_i2c_driver.\CLOCK_GEN.$add$I2C/I2C_CLOCK_GENERATOR.v:42$298: $auto$alumacc.cc:485:replace_alu$784
+  creating $alu cell for $flatten\mi_i2c_driver.\CONTROL.$add$I2C/CONTROL.v:54$268: $auto$alumacc.cc:485:replace_alu$787
+  created 9 $alu and 0 $macc cells.
+
+11.24. Executing OPT pass (performing simple optimizations).
+
+11.24.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.24.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 0 cells.
+
+11.24.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \CONTROLADOR_I2C..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.24.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \CONTROLADOR_I2C.
+Performed a total of 0 changes.
+
+11.24.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 0 cells.
+
+11.24.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.24.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+Removed 0 unused cells and 2 unused wires.
+
+11.24.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.24.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.24.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \CONTROLADOR_I2C..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.24.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \CONTROLADOR_I2C.
+Performed a total of 0 changes.
+
+11.24.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 0 cells.
+
+11.24.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.24.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.24.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.24.16. Finished OPT passes. (There is nothing left to do.)
+
+11.25. Executing MEMORY pass.
+
+11.25.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+11.25.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+11.25.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+11.25.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+11.25.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+11.25.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.25.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+11.25.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+11.25.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.25.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+11.26. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.27. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+
+11.28. Executing TECHMAP pass (map to technology primitives).
+
+11.28.1. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/lutrams_map.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/lutrams_map.v' to AST representation.
+Generating RTLIL representation for module `\$__TRELLIS_DPR16X4_'.
+Successfully finished Verilog frontend.
+
+11.28.2. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/brams_map.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/brams_map.v' to AST representation.
+Generating RTLIL representation for module `\$__ECP5_DP16KD_'.
+Generating RTLIL representation for module `\$__ECP5_PDPW16KD_'.
+Successfully finished Verilog frontend.
+
+11.28.3. Continuing TECHMAP pass.
+No more expansions possible.
+
+11.29. Executing OPT pass (performing simple optimizations).
+
+11.29.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.29.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 1 cells.
+
+11.29.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.29.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+Removed 0 unused cells and 17 unused wires.
+
+11.29.5. Finished fast OPT passes.
+
+11.30. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+11.31. Executing OPT pass (performing simple optimizations).
+
+11.31.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.31.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 0 cells.
+
+11.31.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \CONTROLADOR_I2C..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.31.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \CONTROLADOR_I2C.
+    Consolidated identical input bits for $mux cell $flatten\mi_controlador.$procmux$562:
+      Old ports: A=8'00000000, B=8'10010001, Y=$flatten\mi_controlador.$4\tx_byte[7:0]
+      New ports: A=1'0, B=1'1, Y=$flatten\mi_controlador.$4\tx_byte[7:0] [0]
+      New connections: $flatten\mi_controlador.$4\tx_byte[7:0] [7:1] = { $flatten\mi_controlador.$4\tx_byte[7:0] [0] 2'00 $flatten\mi_controlador.$4\tx_byte[7:0] [0] 3'000 }
+    Consolidated identical input bits for $mux cell $flatten\mi_controlador.$procmux$573:
+      Old ports: A=8'00000000, B=8'10010000, Y=$flatten\mi_controlador.$3\tx_byte[7:0]
+      New ports: A=1'0, B=1'1, Y=$flatten\mi_controlador.$3\tx_byte[7:0] [4]
+      New connections: { $flatten\mi_controlador.$3\tx_byte[7:0] [7:5] $flatten\mi_controlador.$3\tx_byte[7:0] [3:0] } = { $flatten\mi_controlador.$3\tx_byte[7:0] [4] 6'000000 }
+    Consolidated identical input bits for $pmux cell $flatten\mi_controlador.$procmux$584:
+      Old ports: A=8'10010000, B=24'000000011100001000000011, Y=$flatten\mi_controlador.$2\tx_byte[7:0]
+      New ports: A=5'10100, B=15'000011101000011, Y={ $flatten\mi_controlador.$2\tx_byte[7:0] [7:6] $flatten\mi_controlador.$2\tx_byte[7:0] [4] $flatten\mi_controlador.$2\tx_byte[7:0] [1:0] }
+      New connections: { $flatten\mi_controlador.$2\tx_byte[7:0] [5] $flatten\mi_controlador.$2\tx_byte[7:0] [3:2] } = 3'000
+    Consolidated identical input bits for $mux cell $flatten\mi_controlador.$procmux$629:
+      Old ports: A=8'10000000, B=8'00001000, Y=$auto$wreduce.cc:461:run$740 [7:0]
+      New ports: A=2'10, B=2'01, Y={ $auto$wreduce.cc:461:run$740 [7] $auto$wreduce.cc:461:run$740 [3] }
+      New connections: { $auto$wreduce.cc:461:run$740 [6:4] $auto$wreduce.cc:461:run$740 [2:0] } = 6'000000
+    Consolidated identical input bits for $mux cell $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:142$256:
+      Old ports: A=9'000001000, B=9'100000000, Y=$flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:142$256_Y
+      New ports: A=2'01, B=2'10, Y={ $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:142$256_Y [8] $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:142$256_Y [3] }
+      New connections: { $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:142$256_Y [7:4] $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:142$256_Y [2:0] } = 7'0000000
+    Consolidated identical input bits for $mux cell $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:151$257:
+      Old ports: A=9'000100000, B=9'100000000, Y=$flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:151$257_Y
+      New ports: A=2'01, B=2'10, Y={ $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:151$257_Y [8] $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:151$257_Y [5] }
+      New connections: { $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:151$257_Y [7:6] $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:151$257_Y [4:0] } = 7'0000000
+    Consolidated identical input bits for $mux cell $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:160$258:
+      Old ports: A=9'010000000, B=9'100000000, Y=$flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:160$258_Y
+      New ports: A=2'01, B=2'10, Y=$flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:160$258_Y [8:7]
+      New connections: $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:160$258_Y [6:0] = 7'0000000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$485:
+      Old ports: A=10'1000000000, B=10'0000000001, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$485_Y
+      New ports: A=2'10, B=2'01, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$485_Y [9] $flatten\mi_i2c_driver.\CONTROL.$procmux$485_Y [0] }
+      New connections: $flatten\mi_i2c_driver.\CONTROL.$procmux$485_Y [8:1] = 8'00000000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$490:
+      Old ports: A=10'0100000000, B=10'1000000000, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$490_Y
+      New ports: A=2'01, B=2'10, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$490_Y [9:8]
+      New connections: $flatten\mi_i2c_driver.\CONTROL.$procmux$490_Y [7:0] = 8'00000000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$494:
+      Old ports: A=9'010000000, B=9'100000000, Y=$auto$wreduce.cc:461:run$742 [8:0]
+      New ports: A=2'01, B=2'10, Y=$auto$wreduce.cc:461:run$742 [8:7]
+      New connections: $auto$wreduce.cc:461:run$742 [6:0] = 7'0000000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$498:
+      Old ports: A=5'00100, B=5'10000, Y=$auto$wreduce.cc:461:run$743 [4:0]
+      New ports: A=2'01, B=2'10, Y={ $auto$wreduce.cc:461:run$743 [4] $auto$wreduce.cc:461:run$743 [2] }
+      New connections: { $auto$wreduce.cc:461:run$743 [3] $auto$wreduce.cc:461:run$743 [1:0] } = 3'000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$501:
+      Old ports: A={ 3'000 $auto$wreduce.cc:461:run$743 [4:0] }, B=8'10000000, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [7:0]
+      New ports: A={ 1'0 $auto$wreduce.cc:461:run$743 [4:0] }, B=6'100000, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [4:0] }
+      New connections: $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [6:5] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$508:
+      Old ports: A=7'0100000, B=7'1000000, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$508_Y [6:0]
+      New ports: A=2'01, B=2'10, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$508_Y [6:5]
+      New connections: $flatten\mi_i2c_driver.\CONTROL.$procmux$508_Y [4:0] = 5'00000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$512:
+      Old ports: A=6'010000, B=6'100000, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$512_Y [5:0]
+      New ports: A=2'01, B=2'10, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$512_Y [5:4]
+      New connections: $flatten\mi_i2c_driver.\CONTROL.$procmux$512_Y [3:0] = 4'0000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$516:
+      Old ports: A=7'0001000, B=7'1000000, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$516_Y [6:0]
+      New ports: A=2'01, B=2'10, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$516_Y [6] $flatten\mi_i2c_driver.\CONTROL.$procmux$516_Y [3] }
+      New connections: { $flatten\mi_i2c_driver.\CONTROL.$procmux$516_Y [5:4] $flatten\mi_i2c_driver.\CONTROL.$procmux$516_Y [2:0] } = 5'00000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$520:
+      Old ports: A=4'0100, B=4'1000, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$520_Y [3:0]
+      New ports: A=2'01, B=2'10, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$520_Y [3:2]
+      New connections: $flatten\mi_i2c_driver.\CONTROL.$procmux$520_Y [1:0] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$524:
+      Old ports: A=3'010, B=3'100, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$524_Y [2:0]
+      New ports: A=2'01, B=2'10, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$524_Y [2:1]
+      New connections: $flatten\mi_i2c_driver.\CONTROL.$procmux$524_Y [0] = 1'0
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\SHIFT.$procmux$351:
+      Old ports: A={ \mi_i2c_driver.SHIFT.shift_reg [6:0] \mi_i2c_driver.sda_sync }, B={ \mi_i2c_driver.SHIFT.shift_reg [6:0] 1'0 }, Y=$flatten\mi_i2c_driver.\SHIFT.$procmux$351_Y
+      New ports: A=\mi_i2c_driver.sda_sync, B=1'0, Y=$flatten\mi_i2c_driver.\SHIFT.$procmux$351_Y [0]
+      New connections: $flatten\mi_i2c_driver.\SHIFT.$procmux$351_Y [7:1] = \mi_i2c_driver.SHIFT.shift_reg [6:0]
+  Optimizing cells in module \CONTROLADOR_I2C.
+    Consolidated identical input bits for $pmux cell $flatten\mi_controlador.$procmux$604:
+      Old ports: A=8'00000000, B={ $flatten\mi_controlador.$2\tx_byte[7:0] 8'10010000 $flatten\mi_controlador.$3\tx_byte[7:0] 8'10010001 $flatten\mi_controlador.$4\tx_byte[7:0] }, Y=\mi_i2c_driver.SHIFT.tx_byte
+      New ports: A=5'00000, B={ $flatten\mi_controlador.$2\tx_byte[7:0] [7:6] $flatten\mi_controlador.$2\tx_byte[7:0] [4] $flatten\mi_controlador.$2\tx_byte[7:0] [1:0] 5'10100 $flatten\mi_controlador.$3\tx_byte[7:0] [4] 1'0 $flatten\mi_controlador.$3\tx_byte[7:0] [4] 7'0010101 $flatten\mi_controlador.$4\tx_byte[7:0] [0] 1'0 $flatten\mi_controlador.$4\tx_byte[7:0] [0] 1'0 $flatten\mi_controlador.$4\tx_byte[7:0] [0] }, Y={ \mi_i2c_driver.SHIFT.tx_byte [7:6] \mi_i2c_driver.SHIFT.tx_byte [4] \mi_i2c_driver.SHIFT.tx_byte [1:0] }
+      New connections: { \mi_i2c_driver.SHIFT.tx_byte [5] \mi_i2c_driver.SHIFT.tx_byte [3:2] } = 3'000
+    Consolidated identical input bits for $mux cell $flatten\mi_controlador.$procmux$633:
+      Old ports: A=9'001000000, B=$flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:160$258_Y, Y=$flatten\mi_controlador.$procmux$633_Y
+      New ports: A=3'001, B={ $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:160$258_Y [8:7] 1'0 }, Y=$flatten\mi_controlador.$procmux$633_Y [8:6]
+      New connections: $flatten\mi_controlador.$procmux$633_Y [5:0] = 6'000000
+    Consolidated identical input bits for $mux cell $flatten\mi_controlador.$procmux$638:
+      Old ports: A=9'000010000, B=$flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:151$257_Y, Y=$flatten\mi_controlador.$procmux$638_Y
+      New ports: A=3'001, B={ $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:151$257_Y [8] $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:151$257_Y [5] 1'0 }, Y={ $flatten\mi_controlador.$procmux$638_Y [8] $flatten\mi_controlador.$procmux$638_Y [5:4] }
+      New connections: { $flatten\mi_controlador.$procmux$638_Y [7:6] $flatten\mi_controlador.$procmux$638_Y [3:0] } = 6'000000
+    Consolidated identical input bits for $mux cell $flatten\mi_controlador.$procmux$643:
+      Old ports: A=9'000000100, B=$flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:142$256_Y, Y=$flatten\mi_controlador.$procmux$643_Y
+      New ports: A=3'001, B={ $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:142$256_Y [8] $flatten\mi_controlador.$ternary$ADS1115_CONTROLER/ADS1115_CONTROLLER.v:142$256_Y [3] 1'0 }, Y={ $flatten\mi_controlador.$procmux$643_Y [8] $flatten\mi_controlador.$procmux$643_Y [3:2] }
+      New connections: { $flatten\mi_controlador.$procmux$643_Y [7:4] $flatten\mi_controlador.$procmux$643_Y [1:0] } = 6'000000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$501:
+      Old ports: A={ 1'0 $auto$wreduce.cc:461:run$743 [4:0] }, B=6'100000, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [4:0] }
+      New ports: A={ 1'0 $auto$wreduce.cc:461:run$743 [4] $auto$wreduce.cc:461:run$743 [2] }, B=3'100, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [4] $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [2] }
+      New connections: { $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [3] $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [1:0] } = 3'000
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$504:
+      Old ports: A=$flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [7:0], B=8'10000000, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [7:0]
+      New ports: A={ $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [4:0] }, B=6'100000, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [4:0] }
+      New connections: $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [6:5] = 2'00
+  Optimizing cells in module \CONTROLADOR_I2C.
+    Consolidated identical input bits for $mux cell $flatten\mi_i2c_driver.\CONTROL.$procmux$504:
+      Old ports: A={ $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [4:0] }, B=6'100000, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [4:0] }
+      New ports: A={ $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [4] $flatten\mi_i2c_driver.\CONTROL.$procmux$501_Y [2] }, B=3'100, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [4] $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [2] }
+      New connections: { $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [3] $flatten\mi_i2c_driver.\CONTROL.$procmux$504_Y [1:0] } = 3'000
+  Optimizing cells in module \CONTROLADOR_I2C.
+Performed a total of 25 changes.
+
+11.31.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 8 cells.
+
+11.31.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.31.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+Removed 0 unused cells and 8 unused wires.
+
+11.31.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.31.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.31.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \CONTROLADOR_I2C..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+
+11.31.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \CONTROLADOR_I2C.
+Performed a total of 0 changes.
+
+11.31.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 0 cells.
+
+11.31.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.31.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.31.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.31.16. Finished OPT passes. (There is nothing left to do.)
+
+11.32. Executing TECHMAP pass (map to technology primitives).
+
+11.32.1. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+11.32.2. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/arith_map.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/arith_map.v' to AST representation.
+Generating RTLIL representation for module `\_80_ecp5_alu'.
+Successfully finished Verilog frontend.
+
+11.32.3. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $eq.
+Using template $paramod$b8c0a997bce700f23568a5ada79cc6781d1f5ca0\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $adffe.
+Using template $paramod$3bc68cbaeb834ad36c14f6f23cde8a2e055f1574\_90_pmux for cells of type $pmux.
+Using template $paramod$fedb90247e1daaa8b0af86a595f377181f141d27\_90_pmux for cells of type $pmux.
+Using template $paramod$77db613179eb70c5e4e5c5aca72d602a7c6017b6\_90_pmux for cells of type $pmux.
+Using template $paramod$85df5dc01c7df96a7d8e5f1fdf76ce9ac452af63\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod$7e708ae28ab761f11d0fb59d3ffc72f6a4baf5d9\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod$79aa992f2eb7f354d4aaf651790713cf239111fa\_80_ecp5_alu for cells of type $alu.
+Using template $paramod$c4905825bb8ecc38b98eb4167e8b007447af7884\_80_ecp5_alu for cells of type $alu.
+Using template $paramod$dbcdc7e8aa1a4080cea2deda6fdc8772064f4d90\_80_ecp5_alu for cells of type $alu.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using template $paramod$c5c783b17ab1d780abfad8cfe6563a0a7b47a3b0\_90_pmux for cells of type $pmux.
+Using template $paramod$f25e08d27ab464ccab67f5ad90182b05ecac07b7\_90_pmux for cells of type $pmux.
+Using template $paramod$103b4016182df467cceab67bcf3e18e6361ec0fd\_80_ecp5_alu for cells of type $alu.
+Using template $paramod$403a3c2fa431a154c52a6a5429d7a6260b5d144f\_80_ecp5_alu for cells of type $alu.
+Using template $paramod$c3cd1564c35d873179656addd6052d7ea8b6d991\_80_ecp5_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $tribuf.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $xor.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+No more expansions possible.
+
+11.33. Executing OPT pass (performing simple optimizations).
+
+11.33.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.33.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\CONTROLADOR_I2C'.
+Removed a total of 156 cells.
+
+11.33.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.33.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+Removed 52 unused cells and 733 unused wires.
+
+11.33.5. Finished fast OPT passes.
+
+11.34. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+
+11.35. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+
+11.36. Executing TECHMAP pass (map to technology primitives).
+
+11.36.1. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_map.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NN_'.
+Generating RTLIL representation for module `\$_DFFE_PN_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$_SDFF_NP0_'.
+Generating RTLIL representation for module `\$_SDFF_NP1_'.
+Generating RTLIL representation for module `\$_SDFF_PP0_'.
+Generating RTLIL representation for module `\$_SDFF_PP1_'.
+Generating RTLIL representation for module `\$_DFFE_NP0P_'.
+Generating RTLIL representation for module `\$_DFFE_NP1P_'.
+Generating RTLIL representation for module `\$_DFFE_PP0P_'.
+Generating RTLIL representation for module `\$_DFFE_PP1P_'.
+Generating RTLIL representation for module `\$_DFFE_NP0N_'.
+Generating RTLIL representation for module `\$_DFFE_NP1N_'.
+Generating RTLIL representation for module `\$_DFFE_PP0N_'.
+Generating RTLIL representation for module `\$_DFFE_PP1N_'.
+Generating RTLIL representation for module `\$_SDFFE_NP0P_'.
+Generating RTLIL representation for module `\$_SDFFE_NP1P_'.
+Generating RTLIL representation for module `\$_SDFFE_PP0P_'.
+Generating RTLIL representation for module `\$_SDFFE_PP1P_'.
+Generating RTLIL representation for module `\$_SDFFE_NP0N_'.
+Generating RTLIL representation for module `\$_SDFFE_NP1N_'.
+Generating RTLIL representation for module `\$_SDFFE_PP0N_'.
+Generating RTLIL representation for module `\$_SDFFE_PP1N_'.
+Generating RTLIL representation for module `\$_ALDFF_NP_'.
+Generating RTLIL representation for module `\$_ALDFF_PP_'.
+Generating RTLIL representation for module `\$_ALDFFE_NPN_'.
+Generating RTLIL representation for module `\$_ALDFFE_NPP_'.
+Generating RTLIL representation for module `\$_ALDFFE_PPN_'.
+Generating RTLIL representation for module `\$_ALDFFE_PPP_'.
+Generating RTLIL representation for module `\FD1P3AX'.
+Generating RTLIL representation for module `\FD1P3AY'.
+Generating RTLIL representation for module `\FD1P3BX'.
+Generating RTLIL representation for module `\FD1P3DX'.
+Generating RTLIL representation for module `\FD1P3IX'.
+Generating RTLIL representation for module `\FD1P3JX'.
+Generating RTLIL representation for module `\FD1S3AX'.
+Generating RTLIL representation for module `\FD1S3AY'.
+Generating RTLIL representation for module `\FD1S3BX'.
+Generating RTLIL representation for module `\FD1S3DX'.
+Generating RTLIL representation for module `\FD1S3IX'.
+Generating RTLIL representation for module `\FD1S3JX'.
+Generating RTLIL representation for module `\IFS1P3BX'.
+Generating RTLIL representation for module `\IFS1P3DX'.
+Generating RTLIL representation for module `\IFS1P3IX'.
+Generating RTLIL representation for module `\IFS1P3JX'.
+Generating RTLIL representation for module `\OFS1P3BX'.
+Generating RTLIL representation for module `\OFS1P3DX'.
+Generating RTLIL representation for module `\OFS1P3IX'.
+Generating RTLIL representation for module `\OFS1P3JX'.
+Generating RTLIL representation for module `\IB'.
+Generating RTLIL representation for module `\IBPU'.
+Generating RTLIL representation for module `\IBPD'.
+Generating RTLIL representation for module `\OB'.
+Generating RTLIL representation for module `\OBZ'.
+Generating RTLIL representation for module `\OBZPU'.
+Generating RTLIL representation for module `\OBZPD'.
+Generating RTLIL representation for module `\OBCO'.
+Generating RTLIL representation for module `\BB'.
+Generating RTLIL representation for module `\BBPU'.
+Generating RTLIL representation for module `\BBPD'.
+Generating RTLIL representation for module `\ILVDS'.
+Generating RTLIL representation for module `\OLVDS'.
+Successfully finished Verilog frontend.
+
+11.36.2. Continuing TECHMAP pass.
+Using template \$_DFF_PP0_ for cells of type $_DFF_PP0_.
+Using template \$_DFFE_PP0P_ for cells of type $_DFFE_PP0P_.
+Using template \$_DFF_PP1_ for cells of type $_DFF_PP1_.
+Using template \$_DFFE_PP1P_ for cells of type $_DFFE_PP1P_.
+No more expansions possible.
+
+11.37. Executing OPT_EXPR pass (perform const folding).
+Optimizing module CONTROLADOR_I2C.
+
+11.38. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+11.39. Executing LATTICE_GSR pass (implement FF init values).
+Handling GSR in CONTROLADOR_I2C.
+
+11.40. Executing ATTRMVCP pass (move or copy attributes).
+
+11.41. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \CONTROLADOR_I2C..
+Removed 0 unused cells and 645 unused wires.
+
+11.42. Executing TECHMAP pass (map to technology primitives).
+
+11.42.1. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/latches_map.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/latches_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Successfully finished Verilog frontend.
+
+11.42.2. Continuing TECHMAP pass.
+No more expansions possible.
+
+11.43. Executing ABC pass (technology mapping using ABC).
+
+11.43.1. Extracting gate netlist of module `\CONTROLADOR_I2C' to `<abc-temp-dir>/input.blif'..
+Extracted 530 gates and 666 wires to a netlist network with 134 inputs and 95 outputs.
+
+11.43.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_lut <abc-temp-dir>/lutdefs.txt 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + dch -f 
+ABC: + if 
+ABC: + mfs2 
+ABC: + dress <abc-temp-dir>/input.blif 
+ABC: Total number of equiv classes                =     148.
+ABC: Participating nodes from both networks       =     342.
+ABC: Participating nodes from the first network   =     147. (  80.77 % of nodes)
+ABC: Participating nodes from the second network  =     195. ( 107.14 % of nodes)
+ABC: Node pairs (any polarity)                    =     147. (  80.77 % of names can be moved)
+ABC: Node pairs (same polarity)                   =     124. (  68.13 % of names can be moved)
+ABC: Total runtime =     0.08 sec
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+11.43.1.2. Re-integrating ABC results.
+ABC RESULTS:              $lut cells:      181
+ABC RESULTS:        internal signals:      437
+ABC RESULTS:           input signals:      134
+ABC RESULTS:          output signals:       95
+Removing temp directory.
+Removed 0 unused cells and 446 unused wires.
+
+11.44. Executing TECHMAP pass (map to technology primitives).
+
+11.44.1. Executing Verilog-2005 frontend: /home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_map.v
+Parsing Verilog input from `/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DFF_N_'.
+Generating RTLIL representation for module `\$_DFF_P_'.
+Generating RTLIL representation for module `\$_DFFE_NN_'.
+Generating RTLIL representation for module `\$_DFFE_PN_'.
+Generating RTLIL representation for module `\$_DFFE_NP_'.
+Generating RTLIL representation for module `\$_DFFE_PP_'.
+Generating RTLIL representation for module `\$_DFF_NP0_'.
+Generating RTLIL representation for module `\$_DFF_NP1_'.
+Generating RTLIL representation for module `\$_DFF_PP0_'.
+Generating RTLIL representation for module `\$_DFF_PP1_'.
+Generating RTLIL representation for module `\$_SDFF_NP0_'.
+Generating RTLIL representation for module `\$_SDFF_NP1_'.
+Generating RTLIL representation for module `\$_SDFF_PP0_'.
+Generating RTLIL representation for module `\$_SDFF_PP1_'.
+Generating RTLIL representation for module `\$_DFFE_NP0P_'.
+Generating RTLIL representation for module `\$_DFFE_NP1P_'.
+Generating RTLIL representation for module `\$_DFFE_PP0P_'.
+Generating RTLIL representation for module `\$_DFFE_PP1P_'.
+Generating RTLIL representation for module `\$_DFFE_NP0N_'.
+Generating RTLIL representation for module `\$_DFFE_NP1N_'.
+Generating RTLIL representation for module `\$_DFFE_PP0N_'.
+Generating RTLIL representation for module `\$_DFFE_PP1N_'.
+Generating RTLIL representation for module `\$_SDFFE_NP0P_'.
+Generating RTLIL representation for module `\$_SDFFE_NP1P_'.
+Generating RTLIL representation for module `\$_SDFFE_PP0P_'.
+Generating RTLIL representation for module `\$_SDFFE_PP1P_'.
+Generating RTLIL representation for module `\$_SDFFE_NP0N_'.
+Generating RTLIL representation for module `\$_SDFFE_NP1N_'.
+Generating RTLIL representation for module `\$_SDFFE_PP0N_'.
+Generating RTLIL representation for module `\$_SDFFE_PP1N_'.
+Generating RTLIL representation for module `\$_ALDFF_NP_'.
+Generating RTLIL representation for module `\$_ALDFF_PP_'.
+Generating RTLIL representation for module `\$_ALDFFE_NPN_'.
+Generating RTLIL representation for module `\$_ALDFFE_NPP_'.
+Generating RTLIL representation for module `\$_ALDFFE_PPN_'.
+Generating RTLIL representation for module `\$_ALDFFE_PPP_'.
+Generating RTLIL representation for module `\FD1P3AX'.
+Generating RTLIL representation for module `\FD1P3AY'.
+Generating RTLIL representation for module `\FD1P3BX'.
+Generating RTLIL representation for module `\FD1P3DX'.
+Generating RTLIL representation for module `\FD1P3IX'.
+Generating RTLIL representation for module `\FD1P3JX'.
+Generating RTLIL representation for module `\FD1S3AX'.
+Generating RTLIL representation for module `\FD1S3AY'.
+Generating RTLIL representation for module `\FD1S3BX'.
+Generating RTLIL representation for module `\FD1S3DX'.
+Generating RTLIL representation for module `\FD1S3IX'.
+Generating RTLIL representation for module `\FD1S3JX'.
+Generating RTLIL representation for module `\IFS1P3BX'.
+Generating RTLIL representation for module `\IFS1P3DX'.
+Generating RTLIL representation for module `\IFS1P3IX'.
+Generating RTLIL representation for module `\IFS1P3JX'.
+Generating RTLIL representation for module `\OFS1P3BX'.
+Generating RTLIL representation for module `\OFS1P3DX'.
+Generating RTLIL representation for module `\OFS1P3IX'.
+Generating RTLIL representation for module `\OFS1P3JX'.
+Generating RTLIL representation for module `\IB'.
+Generating RTLIL representation for module `\IBPU'.
+Generating RTLIL representation for module `\IBPD'.
+Generating RTLIL representation for module `\OB'.
+Generating RTLIL representation for module `\OBZ'.
+Generating RTLIL representation for module `\OBZPU'.
+Generating RTLIL representation for module `\OBZPD'.
+Generating RTLIL representation for module `\OBCO'.
+Generating RTLIL representation for module `\BB'.
+Generating RTLIL representation for module `\BBPU'.
+Generating RTLIL representation for module `\BBPD'.
+Generating RTLIL representation for module `\ILVDS'.
+Generating RTLIL representation for module `\OLVDS'.
+Generating RTLIL representation for module `\$lut'.
+Successfully finished Verilog frontend.
+
+11.44.2. Continuing TECHMAP pass.
+Using template $paramod$6e238df02989b317f10820a22773676e71120644\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0001 for cells of type $lut.
+Using template $paramod$658b9ed803f0d3d335616d3858b53e0a2522f1e8\$lut for cells of type $lut.
+Using template $paramod$0eecf181cf30c08fa5bcdd9bf87662740b49f895\$lut for cells of type $lut.
+Using template $paramod$571404c0889eaf57f492cb5e37f8acb5df5852f9\$lut for cells of type $lut.
+Using template $paramod$6d6beead1425af15cf78b27fd9b11b41b5d4bce8\$lut for cells of type $lut.
+Using template $paramod$33e58adf67c6b686a154c9ce8ebbc4b04b8cabc5\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00010000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1000 for cells of type $lut.
+Using template $paramod$ef55f89c74d994c27b4ec4bac79af43e8b1d7e25\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0100 for cells of type $lut.
+Using template $paramod$eba7de026ff587370e320127e266317dae097a89\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00011111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01011100 for cells of type $lut.
+Using template $paramod$200337237619ba4c0bed9a492562f1d1b57fb569\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0110 for cells of type $lut.
+Using template $paramod$f245950a40b247d18307ffba793b693fd902d228\$lut for cells of type $lut.
+Using template $paramod$48ac675ec3f5ae95c9111b6fab770149399bc0f5\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000001 for cells of type $lut.
+Using template $paramod$7bb6a37e65823eeb4b38c370fec30ab082759a14\$lut for cells of type $lut.
+Using template $paramod$0ce68ba9db1445bfa049726f5d481ca2c0a90b8f\$lut for cells of type $lut.
+Using template $paramod$11347ef2fc461a352a702c906d1c2654f24334f0\$lut for cells of type $lut.
+Using template $paramod$df196ed0a1da5c4a58c5e08a1dac304fd3fccaab\$lut for cells of type $lut.
+Using template $paramod$d23e89f1ccd35ec377e6e35113f99100d957f9bd\$lut for cells of type $lut.
+Using template $paramod$272652f6c6fbe9a75eff76e45cc7e2788835518b\$lut for cells of type $lut.
+Using template $paramod$5afdc7428159757eedf89ce514f7efa32b31c8e7\$lut for cells of type $lut.
+Using template $paramod$82b4a585d1edcb5c6e755dc9bd3392228a1c1304\$lut for cells of type $lut.
+Using template $paramod$11bbb1f6d040b6fef853156bf96393db1ac26fc4\$lut for cells of type $lut.
+Using template $paramod$1bf62ab10e48d71d6497bccacf5c70420c470fe9\$lut for cells of type $lut.
+Using template $paramod$287fc40df277be5303029e92cf8599a6aab4ddf0\$lut for cells of type $lut.
+Using template $paramod$affcf0f154430e5f24240efdee5f7d379dca7dd1\$lut for cells of type $lut.
+Using template $paramod$251994398653c4cf8de320f1e306e535d5d2d624\$lut for cells of type $lut.
+Using template $paramod$2c0001bb8124becc337daa71d1f46f20d5a016ab\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01100000 for cells of type $lut.
+Using template $paramod$179512a187da069f3b79ef6612a41e494e7d54b6\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+Using template $paramod$2e7a95e82db1d690ae9ba5d10f68b175fa2cb467\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000111 for cells of type $lut.
+Using template $paramod$d4fae2c0d9ad2966369cd4e39b81c71bcd1327c9\$lut for cells of type $lut.
+Using template $paramod$b4f15f202f50520dbc381cd0880ac94f830f05a8\$lut for cells of type $lut.
+Using template $paramod$575b200168b9e109c2ed99df4359056f2c6696ac\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11110100 for cells of type $lut.
+Using template $paramod$43af15662ad501716fa7be30169f72eed974e15e\$lut for cells of type $lut.
+Using template $paramod$913eef49eb8672b00b06491a1f934ca77bcdb106\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01001111 for cells of type $lut.
+Using template $paramod$3efbcfbfbaa24f53c7da5d4f69d6dc97abcf1329\$lut for cells of type $lut.
+Using template $paramod$cf652acbfbf67d2248e3045cd0f09c58ca55886c\$lut for cells of type $lut.
+Using template $paramod$a54d8b8d2c90a828ee71c2d82e7e1612992a7ab8\$lut for cells of type $lut.
+Using template $paramod$3aa93873a28535f07f8f5beed39691121485f94b\$lut for cells of type $lut.
+Using template $paramod$8adf7fbd410d2cc654c288d5be5f7508ee8809b0\$lut for cells of type $lut.
+Using template $paramod$c5f3c57a6d466a2f42208bafb8985b96ce884440\$lut for cells of type $lut.
+Using template $paramod$6b0849254d6c87461fb93e37cc18f089f61eb912\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000111 for cells of type $lut.
+Using template $paramod$dad36f48ef611a71bf9e5e1c2a7edaf8707e7b5f\$lut for cells of type $lut.
+Using template $paramod$c39b4ae3eed03ff4e0ef2a41844cc5ea3df00d09\$lut for cells of type $lut.
+Using template $paramod$722f0e1ebb66607b70bda919c4464a343f9ca4d9\$lut for cells of type $lut.
+Using template $paramod$d36e753d677642d385f662c05e8983c90f398700\$lut for cells of type $lut.
+Using template $paramod$40eef110b559c3d0307615b8951b58fca0519b15\$lut for cells of type $lut.
+Using template $paramod$8b5cfd51a136f15086c81819c3ac4e80128b684d\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11101111 for cells of type $lut.
+Using template $paramod$6e46ec5a196ba1a24b8e69ab094cadc07c13ac1f\$lut for cells of type $lut.
+Using template $paramod$bb4fff1cc3b827238aa40993cafede1c5beecbe3\$lut for cells of type $lut.
+Using template $paramod$359fe4e746656bf9c72aecaff84fc7bdea9f55a5\$lut for cells of type $lut.
+Using template $paramod$354367fdc808a23379675dc8a2e8d73b1ff4f9aa\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1011 for cells of type $lut.
+Using template $paramod$f85118f727cbfc385385a0fcb2d977c74c137bb0\$lut for cells of type $lut.
+No more expansions possible.
+
+11.45. Executing OPT_LUT_INS pass (discard unused LUT inputs).
+Optimizing LUTs in CONTROLADOR_I2C.
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3661.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3759.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3759.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 1)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3759.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3759.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 1)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3759.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3759.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut6 (4 -> 1)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3759.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3773.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3773.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3787.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3787.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3746.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 3)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3746.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 3)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3746.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 3)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3801.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 3)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 1)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 1)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut6 (4 -> 1)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 1)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3816.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3816.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3807.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3662.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3662.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3676.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3676.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3676.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3676.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 1)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3676.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut6 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3676.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3774.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3774.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3774.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3774.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3774.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3768.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3768.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3768.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3768.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3768.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3687.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3687.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3687.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3687.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3687.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3687.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 3)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3673.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3660.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3695.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3671.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3652.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3654.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3655.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3657.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3660.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3662.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3670.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 1)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3671.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3676.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3774.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3687.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3688.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3695.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3671.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3695.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3747.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3750.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3759.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3660.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3762.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3764.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 3)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3768.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3770.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3771.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3773.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3774.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3768.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3776.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3778.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3779.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3780.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3781.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3782.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3783.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3784.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3785.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3787.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3790.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3792.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3796.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3803.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3806.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3810.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3809.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3650$auto$blifparse.cc:525:parse_blif$3816.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+Removed 0 unused cells and 397 unused wires.
+
+11.46. Executing AUTONAME pass.
+Renamed 6151 objects in module CONTROLADOR_I2C (59 iterations).
+
+11.47. Executing HIERARCHY pass (managing design hierarchy).
+
+11.47.1. Analyzing design hierarchy..
+Top module:  \CONTROLADOR_I2C
+
+11.47.2. Analyzing design hierarchy..
+Top module:  \CONTROLADOR_I2C
+Removed 0 unused modules.
+
+11.48. Printing statistics.
+
+=== CONTROLADOR_I2C ===
+
+   Number of wires:                431
+   Number of wire bits:           1028
+   Number of public wires:         431
+   Number of public wire bits:    1028
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                528
+     $_TBUF_                         2
+     CCU2C                          30
+     L6MUX21                        26
+     LUT4                          279
+     PFUMX                          73
+     TRELLIS_FF                    118
+
+11.49. Executing CHECK pass (checking for obvious problems).
+Checking module CONTROLADOR_I2C...
+Found and reported 0 problems.
+
+12. Executing JSON backend.
+
+Warnings: 2 unique messages, 2 total
+End of script. Logfile hash: ba70f7444c, CPU: user 1.63s system 0.05s, MEM: 46.61 MB peak
+Yosys 0.33+6 (git sha1 41b34a193, x86_64-conda-linux-gnu-cc 11.2.0 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/root/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1694128612374/work=/usr/local/src/conda/yosys-0.33_7_g41b34a193 -fdebug-prefix-map=/home/juan-diego/miniconda3/envs/digital=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
+Time spent: 21% 23x read_verilog (0 sec), 16% 1x abc (0 sec), ...

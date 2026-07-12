@@ -1,4 +1,4 @@
-TOP        = TOP_PROYECTO
+TOP        = CONTROLADOR_I2C
 BUILD_DIR  = build
 
 OBJS  = $(TOP).v
@@ -12,7 +12,7 @@ OBJS += I2C/CONTADOR_BITS.v
 OBJS += I2C/CONTADOR_BYTES.v
 OBJS += I2C/I2C_CLOCK_GENERATOR.v
 
-TB_OBJS = tb_TOP_PROYECTO.v
+TB_OBJS = tb_CONTROLADOR_I2C.v
 
 .PHONY: all sim clean configure_i9
 
