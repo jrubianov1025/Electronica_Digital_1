@@ -15,7 +15,9 @@ la estructura del proyecto se muestra acontinuación:
 
     \controlador ads1115
         \ADS1115_CONTROLLER
-            ADS1115_CONTROLLER.v
+            ADS1115_CONTROL.v
+            ADS1115_DATA.v
+            ADS1115_TOP.v
             TICK_GENERATOR.v
 
         \I2C
@@ -57,29 +59,7 @@ El objetivo del diseño es leer periódicamente, por el bus I2C, el valor digita
 
 ###  📥 ADS1115_CONTROLER 
  
- Esta carpeta posee dos archivos funcamentales para la comunicacion con el ADS1115:
 
- - `ADS1115_CONTROLLER.v` — Máquina de estados que implementa **el protocolo de configuración y lectura periódica del ADS1115**, usando al maestro I2C. No conoce los tiempos del bus I2C bit a bit; solo le pide al maestro escribir o leer N bytes y espera la señal `done`.
- 
-Secuencia que realiza en cada ciclo de lectura:
- 
-1. **Configuracion del ADC** escribiendo 4 bytes en el registro `CONFIG` (0x01): dirección + puntero de registro + 2 bytes de configuración. Los dos bytes de configuracion pueden ser modificados dependiendo del uso. (ver comentario en cabecera del archivo con el mapa de bits completo del registro `CONFIG`).
-
-2. **Apuntar al registro de conversión** (0x00) escribiendo el puntero correspondiente.
-
-3. **Leer 2 bytes** (MSB y LSB) del resultado de la conversión y arma `adc_value.
-
-4. **Esperar** un tiempo configurable (`DELAY_MS`, por defecto 500 ms) usando `TICK_GENERATOR`, y vuelve al paso 2 para leer el siguiente dato (no repite la configuración salvo que exista un error o un reset).
- 
-Este diagrama de estados permite visualizar al detalle el funcionamiento del modulo.
-
-
-<p align="center">
-  <img src="./Diagramas/_estados.png" width="350">
-</p>
-
- 
-- `TICK_GENERATOR.v` — Temporizador parametrizable en milisegundos. Cuenta ciclos de reloj hasta alcanzar `(CLK_FREQ_HZ / 1000) * DELAY_MS` y genera un pulso `tick` de un ciclo de duración. Solo cuenta mientras `enable` está activo; si `enable` baja, el contador se reinicia.
  
 ---
 
@@ -90,9 +70,9 @@ en esta carpeta se encuentran los archivos nesesarios para la implementacion de 
  Para profundizar mejor en el diseño del maestro I2C se encuentran estos 3 diagramas (Diagrama de flujo, Datapath y Diagrama de estados) que permiten una visualizacion del diseño y la separacion de tareas dentro de este.
 
 <p align="center">
-  <img src="./Diagramas/_flujo.png" width="300">
-  <img src="./Diagramas/_datapath.png" width="400"> 
-  <img src="./Diagramas/_estados.png" width="350">
+  <img src="./Diagramas/I2C_Flujo.png" width="300">
+  <img src="./Diagramas/I2C_Datapath.png" width="400"> 
+  <img src="./Diagramas/I2C_Estados.png" width="350">
 </p>
 
 esta carpeta posee 6 archivos nesesarios para el correcto funcionamiento del protocolo ademas de un archivo adicional encargado de simular su funcionamiento.
@@ -156,7 +136,7 @@ Parámetros configurables: `CLK_FREQ_HZ` (frecuencia del reloj de la FPGA, por d
 | `SDA`  | D2   | Línea de datos I2C hacia el ADS1115|
 | `SCL`  | E2   | Línea de reloj I2C hacia el ADS1115|
  
-- `tb_TOP_PROYECTO.v` — valida el sistema completo (`CONTROLADOR_I2C`), simulando un **ADS1115 esclavo completo**: responde ACK a la configuración, ACK al puntero de registro, y entrega valores de conversión simulados que van cambiando (0x1A55 → 0x2B66 → 0x3C77) en cada ciclo de lectura. El testbench declara éxito cuando adc_value refleja correctamente las tres lecturas esperadas, y cuenta con un timeout de seguridad de 20 ms simulados por si la máquina de estados quedara bloqueada.
+- `tb_CONTROLADOR_I2C.v` — valida el sistema completo (`CONTROLADOR_I2C`), simulando un **ADS1115 esclavo completo**: responde ACK a la configuración, ACK al puntero de registro, y entrega valores de conversión simulados que van cambiando (0x1A55 → 0x2B66 → 0x3C77) en cada ciclo de lectura. El testbench declara éxito cuando adc_value refleja correctamente las tres lecturas esperadas, y cuenta con un timeout de seguridad de 20 ms simulados por si la máquina de estados quedara bloqueada.
 
 ---
  

@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module CONTROLADOR_I2C;
+module tb_CONTROLADOR_I2C;
 
     // Parámetros de simulación acelerados
     localparam CLK_FREQ_HZ  = 25_000_000;
@@ -113,7 +113,7 @@ module CONTROLADOR_I2C;
 
     initial begin
         $dumpfile("CONTROLADOR_I2C.vcd");
-        $dumpvars(0, CONTROLADOR_I2C);
+        $dumpvars(0, uut);
         
         clk = 0;
         rst = 1;

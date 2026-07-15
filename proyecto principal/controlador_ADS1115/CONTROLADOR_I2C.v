@@ -19,11 +19,11 @@ module CONTROLADOR_I2C #(
     wire [7:0] tx_byte;
     wire [7:0] num_bytes;
 
-    ADS1115_CONTROLLER #(
+    ADS1115_TOP #(
         .CLK_FREQ_HZ(CLK_FREQ_HZ), 
         .DELAY_MS(DELAY_MS),       
         .I2C_ADDR(7'h48)
-    ) mi_controlador (
+    ) ADS1115_TOP1 (
         .clk(clk),
         .rst(rst),
         .busy(busy),
@@ -43,7 +43,7 @@ module CONTROLADOR_I2C #(
     TOP_I2C #(
         .CLK_FREQ_HZ(CLK_FREQ_HZ), 
         .I2C_FREQ_HZ(100_000)      
-    ) mi_i2c_driver (
+    ) TOP_I2C1 (
         .clk(clk),
         .rst(rst),
         .start(start),
