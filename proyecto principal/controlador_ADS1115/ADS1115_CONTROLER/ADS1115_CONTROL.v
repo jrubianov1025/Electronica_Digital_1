@@ -10,16 +10,16 @@ module ADS1115_CONTROL #(
     input wire done,
     input wire ack_error,
     input wire byte_done,
-    input wire tick_delay,
-    input wire [1:0] byte_idx,
+    input wire tick,
+    input wire [1:0] count_byte,
 
     output wire delay_en,
     output reg start,
     output reg rw,
-    output reg idx_ld,
-    output reg cap_msb,
-    output reg cap_lsb,
-    output reg err_set,
+    output reg Ld_count_byte,
+    output reg capture_msb,
+    output reg capture_lsb,
+    output reg error_set,
     output reg [7:0] tx_byte,
     output reg [7:0] num_bytes
 );
@@ -29,7 +29,7 @@ module ADS1115_CONTROL #(
     localparam [7:0] ADDR_R = {I2C_ADDR, 1'b1};
 
     // DEFINICION DE ESTADOS
-    localparam S_RESET      = 9'b000000001;
+    localparam S_INIT       = 9'b000000001;
     localparam S_CFG_START  = 9'b000000010;
     localparam S_CFG_WAIT   = 9'b000000100;
     localparam S_PTR_START  = 9'b000001000;
@@ -42,16 +42,16 @@ module ADS1115_CONTROL #(
     reg [8:0] NEXT_STATE;
 
     assign delay_en = (NEXT_STATE == S_DELAY);
-    wire [1:0] effective_idx = byte_idx + (byte_done ? 2'd1 : 2'd0);
+    wire [1:0] effective_count = count_byte + (byte_done ? 2'd1 : 2'd0);
 
     // LÓGICA SECUENCIAL 
     always @(posedge clk or posedge rst) begin
         if (rst) begin
-            NEXT_STATE <= S_RESET;
+            NEXT_STATE <= S_INIT;
         end else begin
             case (NEXT_STATE)
 
-                S_RESET: begin
+                S_INIT: begin
                     NEXT_STATE <= S_CFG_START;
                 end
 
@@ -86,7 +86,7 @@ module ADS1115_CONTROL #(
                 end
 
                 S_DELAY: begin
-                    if (tick_delay) NEXT_STATE <= S_PTR_START;
+                    if (tick) NEXT_STATE <= S_PTR_START;
                     else            NEXT_STATE <= S_DELAY;
                 end
 
@@ -95,7 +95,7 @@ module ADS1115_CONTROL #(
                 end
 
                 default: begin
-                    NEXT_STATE <= S_RESET;
+                    NEXT_STATE <= S_INIT;
                 end
                 
             endcase
@@ -106,130 +106,130 @@ module ADS1115_CONTROL #(
     always @(*) begin
 
         case (NEXT_STATE)
-            S_RESET: begin
-                start     = 1'b0;
-                rw        = 1'b0;
-                tx_byte   = 8'h00;
-                num_bytes = 8'h00;
-                idx_ld    = 1'b0;
-                cap_msb   = 1'b0;
-                cap_lsb   = 1'b0;
-                err_set   = 1'b0;
+            S_INIT: begin
+                start         = 0;
+                rw            = 0;
+                tx_byte       = 0;
+                num_bytes     = 0;
+                Ld_count_byte = 0;
+                capture_msb   = 0;
+                capture_lsb   = 0;
+                error_set     = 0;
             end
 
             S_CFG_START: begin
-                start     = 1'b1;
-                rw        = 1'b0;
-                tx_byte   = ADDR_W;
-                num_bytes = 8'd4;
-                idx_ld    = 1'b1;
-                cap_msb   = 1'b0;
-                cap_lsb   = 1'b0;
-                err_set   = 1'b0;
+                start         = 1;
+                rw            = 0;
+                tx_byte       = ADDR_W;
+                num_bytes     = 4;
+                Ld_count_byte = 1;
+                capture_msb   = 0;
+                capture_lsb   = 0;
+                error_set     = 0;
             end
 
             S_CFG_WAIT: begin
-                start     = 1'b0;
-                rw        = 1'b0;
-                num_bytes = 8'd4;
-                idx_ld    = 1'b0;
-                cap_msb   = 1'b0;
-                cap_lsb   = 1'b0;
-                err_set   = done && ack_error;
+                start         = 0;
+                rw            = 0;
+                num_bytes     = 4;
+                Ld_count_byte = 0;
+                capture_msb   = 0;
+                capture_lsb   = 0;
+                error_set     = done && ack_error;
                 
-                case (effective_idx)
-                    2'd0:    tx_byte = ADDR_W;
-                    2'd1:    tx_byte = 8'h01;  // Registro de Configuracion (0x01)
-                    2'd2:    tx_byte = CFG_MSB;
-                    2'd3:    tx_byte = CFG_LSB;
-                    default: tx_byte = 8'h00;
+                case (effective_count)
+                    0:    tx_byte = ADDR_W;
+                    1:    tx_byte = 8'h01;  // Registro de Configuracion (0x01)
+                    2:    tx_byte = CFG_MSB;
+                    3:    tx_byte = CFG_LSB;
+                    default: tx_byte = 0;
                 endcase
             end
 
             S_PTR_START: begin
-                start     = 1'b1;
-                rw        = 1'b0;
-                tx_byte   = ADDR_W;
-                num_bytes = 8'd2;
-                idx_ld    = 1'b1;
-                cap_msb   = 1'b0;
-                cap_lsb   = 1'b0;
-                err_set   = 1'b0;
+                start         = 1;
+                rw            = 0;
+                tx_byte       = ADDR_W;
+                num_bytes     = 2;
+                Ld_count_byte = 1;
+                capture_msb   = 0;
+                capture_lsb   = 0;
+                error_set     = 0;
             end
 
             S_PTR_WAIT: begin
-                start     = 1'b0;
-                rw        = 1'b0;
-                num_bytes = 8'd2;
-                idx_ld    = 1'b0;
-                cap_msb   = 1'b0;
-                cap_lsb   = 1'b0;
-                err_set   = done && ack_error;
+                start         = 0;
+                rw            = 0;
+                num_bytes     = 2;
+                Ld_count_byte = 0;
+                capture_msb   = 0;
+                capture_lsb   = 0;
+                error_set     = done && ack_error;
                 
-                case (effective_idx)
-                    2'd0:    tx_byte = ADDR_W;
-                    2'd1:    tx_byte = 8'h00;  // Registro de Conversion (0x00)
-                    default: tx_byte = 8'h00;
+                case (effective_count)
+                    0:    tx_byte = ADDR_W;
+                    1:    tx_byte = 8'h00;  // Registro de Conversion (0x00)
+                    default: tx_byte = 0;
                 endcase
             end
 
             S_READ_START: begin
-                start     = 1'b1;
-                rw        = 1'b1;
-                tx_byte   = ADDR_R;
-                num_bytes = 8'd3;
-                idx_ld    = 1'b1;
-                cap_msb   = 1'b0;
-                cap_lsb   = 1'b0;
-                err_set   = 1'b0;
+                start         = 1;
+                rw            = 1;
+                tx_byte       = ADDR_R;
+                num_bytes     = 3;
+                Ld_count_byte = 1;
+                capture_msb   = 0;
+                capture_lsb   = 0;
+                error_set     = 0;
             end
 
             S_READ_WAIT: begin
-                start     = 1'b0;
-                rw        = 1'b1;
-                num_bytes = 8'd3;
-                idx_ld    = 1'b0;
-                cap_msb   = byte_done && (byte_idx == 2'd1);
-                cap_lsb   = byte_done && (byte_idx == 2'd2);
-                err_set   = done && ack_error;
+                start         = 0;
+                rw            = 1;
+                num_bytes     = 3;
+                Ld_count_byte = 0;
+                capture_msb   = byte_done && (count_byte == 1);
+                capture_lsb   = byte_done && (count_byte == 2);
+                error_set     = done && ack_error;
                 
-                case (effective_idx)
-                    2'd0:    tx_byte = ADDR_R;
-                    default: tx_byte = 8'h00;
+                case (effective_count)
+                    0:    tx_byte = ADDR_R;
+                    default: tx_byte = 0;
                 endcase
             end
 
             S_DELAY: begin
-                start     = 1'b0;
-                rw        = 1'b0;
-                tx_byte   = 8'h00;
-                num_bytes = 8'h00;
-                idx_ld    = 1'b0;
-                cap_msb   = 1'b0;
-                cap_lsb   = 1'b0;
-                err_set   = 1'b0;
+                start         = 0;
+                rw            = 0;
+                tx_byte       = 0;
+                num_bytes     = 0;
+                Ld_count_byte = 0;
+                capture_msb   = 0;
+                capture_lsb   = 0;
+                error_set     = 0;
             end
 
             S_ERROR: begin
-                start     = 1'b0;
-                rw        = 1'b0;
-                tx_byte   = 8'h00;
-                num_bytes = 8'h00;
-                idx_ld    = 1'b0;
-                cap_msb   = 1'b0;
-                cap_lsb   = 1'b0;
-                err_set   = 1'b0;
+                start         = 0;
+                rw            = 0;
+                tx_byte       = 0;
+                num_bytes     = 0;
+                Ld_count_byte = 0;
+                capture_msb   = 0;
+                capture_lsb   = 0;
+                error_set     = 0;
             end
 
             default: begin
-                start     = 1'b0;
-                rw        = 1'b0;
-                tx_byte   = 8'h00;
-                num_bytes = 8'h00;
-                idx_ld    = 1'b0;
-                cap_msb   = 1'b0;
-                cap_lsb   = 1'b0;
-                err_set   = 1'b0;
+                start         = 0;
+                rw            = 0;
+                tx_byte       = 0;
+                num_bytes     = 0;
+                Ld_count_byte = 0;
+                capture_msb   = 0;
+                capture_lsb   = 0;
+                error_set     = 0;
             end
         endcase
     end

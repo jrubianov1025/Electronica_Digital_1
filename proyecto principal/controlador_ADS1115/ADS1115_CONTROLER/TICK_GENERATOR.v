@@ -5,6 +5,7 @@ module TICK_GENERATOR #(
     input  wire clk,
     input  wire rst,
     input  wire enable,
+    
     output reg  tick
 );
 

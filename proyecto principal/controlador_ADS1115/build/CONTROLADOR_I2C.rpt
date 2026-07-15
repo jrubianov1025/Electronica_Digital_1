@@ -308,7 +308,7 @@ Removed 1 dead cases from process $proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$
 Marked 4 switch rules as full_case in process $proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244 in module $paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.
 Marked 9 switch rules as full_case in process $proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:48$240 in module $paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.
 Marked 2 switch rules as full_case in process $proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235 in module ADS1115_DATA.
-Marked 3 switch rules as full_case in process $proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$231 in module $paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.
+Marked 3 switch rules as full_case in process $proc$ADS1115_CONTROLER/TICK_GENERATOR.v:17$231 in module $paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.
 Marked 1 switch rules as full_case in process $proc$I2C/Top_I2C.v:54$226 in module $paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.
 Removed a total of 1 dead cases.
 
@@ -329,7 +329,7 @@ Found async reset \rst in `\CONTADOR_BYTES.$proc$I2C/CONTADOR_BYTES.v:13$269'.
 Found async reset \rst in `\CONTROL_I2C.$proc$I2C/CONTROL.v:45$252'.
 Found async reset \rst in `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:48$240'.
 Found async reset \rst in `\ADS1115_DATA.$proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235'.
-Found async reset \rst in `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$231'.
+Found async reset \rst in `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:17$231'.
 Found async reset \rst in `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$I2C/Top_I2C.v:54$226'.
 
 13.5.6. Executing PROC_ROM pass (convert switches to ROMs).
@@ -386,10 +386,10 @@ Creating decoders for process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349
      1/11: $4\tx_byte[7:0]
      2/11: $3\tx_byte[7:0]
      3/11: $2\tx_byte[7:0]
-     4/11: $1\err_set[0:0]
-     5/11: $1\cap_lsb[0:0]
-     6/11: $1\cap_msb[0:0]
-     7/11: $1\idx_ld[0:0]
+     4/11: $1\error_set[0:0]
+     5/11: $1\capture_lsb[0:0]
+     6/11: $1\capture_msb[0:0]
+     7/11: $1\Ld_count_byte[0:0]
      8/11: $1\num_bytes[7:0]
      9/11: $1\tx_byte[7:0]
     10/11: $1\rw[0:0]
@@ -398,11 +398,11 @@ Creating decoders for process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349
      1/1: $0\NEXT_STATE[8:0]
 Creating decoders for process `\ADS1115_DATA.$proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235'.
      1/5: $0\adc_valid[0:0]
-     2/5: $0\adc_msb[7:0]
-     3/5: $0\byte_idx[1:0]
+     2/5: $0\msb_byte_reg[7:0]
+     3/5: $0\count_byte[1:0]
      4/5: $0\error_alert[0:0]
      5/5: $0\adc_value[15:0]
-Creating decoders for process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$231'.
+Creating decoders for process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:17$231'.
      1/2: $0\tick[0:0]
      2/2: $0\counter[23:0]
 Creating decoders for process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$I2C/Top_I2C.v:54$226'.
@@ -428,10 +428,10 @@ No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\
 No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\rw' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
 No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\tx_byte' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
 No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\num_bytes' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
-No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\idx_ld' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
-No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\cap_msb' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
-No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\cap_lsb' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
-No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\err_set' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
+No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\Ld_count_byte' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
+No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\capture_msb' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
+No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\capture_lsb' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
+No latch inferred for signal `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.\error_set' from process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:106$244'.
 
 13.5.9. Executing PROC_DFF pass (convert process syncs to FFs).
 Creating register for signal `\TRELLIS_FF.\Q' using process `\TRELLIS_FF.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:350$224'.
@@ -546,13 +546,13 @@ Creating register for signal `\ADS1115_DATA.\adc_valid' using process `\ADS1115_
   created $adff cell `$procdff$703' with positive edge clock and positive level reset.
 Creating register for signal `\ADS1115_DATA.\error_alert' using process `\ADS1115_DATA.$proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235'.
   created $adff cell `$procdff$704' with positive edge clock and positive level reset.
-Creating register for signal `\ADS1115_DATA.\byte_idx' using process `\ADS1115_DATA.$proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235'.
+Creating register for signal `\ADS1115_DATA.\count_byte' using process `\ADS1115_DATA.$proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235'.
   created $adff cell `$procdff$705' with positive edge clock and positive level reset.
-Creating register for signal `\ADS1115_DATA.\adc_msb' using process `\ADS1115_DATA.$proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235'.
+Creating register for signal `\ADS1115_DATA.\msb_byte_reg' using process `\ADS1115_DATA.$proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235'.
   created $adff cell `$procdff$706' with positive edge clock and positive level reset.
-Creating register for signal `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.\tick' using process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$231'.
+Creating register for signal `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.\tick' using process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:17$231'.
   created $adff cell `$procdff$707' with positive edge clock and positive level reset.
-Creating register for signal `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.\counter' using process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$231'.
+Creating register for signal `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.\counter' using process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:17$231'.
   created $adff cell `$procdff$708' with positive edge clock and positive level reset.
 Creating register for signal `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.\sda_meta' using process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$I2C/Top_I2C.v:54$226'.
   created $adff cell `$procdff$709' with positive edge clock and positive level reset.
@@ -590,8 +590,8 @@ Found and cleaned up 8 empty switches in `$paramod$6700e42afe5a6ba64bba306c6c707
 Removing empty process `$paramod$6700e42afe5a6ba64bba306c6c707497de39c349\ADS1115_CONTROL.$proc$ADS1115_CONTROLER/ADS1115_CONTROL.v:48$240'.
 Found and cleaned up 5 empty switches in `\ADS1115_DATA.$proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235'.
 Removing empty process `ADS1115_DATA.$proc$ADS1115_CONTROLER/ADS1115_DATA.v:19$235'.
-Found and cleaned up 2 empty switches in `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$231'.
-Removing empty process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:16$231'.
+Found and cleaned up 2 empty switches in `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:17$231'.
+Removing empty process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$ADS1115_CONTROLER/TICK_GENERATOR.v:17$231'.
 Removing empty process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$I2C/Top_I2C.v:54$226'.
 Cleaned up 49 empty switches.
 
@@ -764,9 +764,9 @@ Adding EN signal on $flatten\TOP_I2C1.\CONTROL.$procdff$698 ($adff) from module 
 Adding EN signal on $flatten\TOP_I2C1.\CLOCK_GEN.$procdff$692 ($adff) from module CONTROLADOR_I2C (D = $flatten\TOP_I2C1.\CLOCK_GEN.$0\scl[0:0], Q = \TOP_I2C1.CLOCK_GEN.scl).
 Adding EN signal on $flatten\TOP_I2C1.\BYTE_COUNTER.$procdff$697 ($adff) from module CONTROLADOR_I2C (D = $flatten\TOP_I2C1.\BYTE_COUNTER.$0\count[7:0], Q = \TOP_I2C1.BYTE_COUNTER.count).
 Adding EN signal on $flatten\TOP_I2C1.\BIT_COUNTER.$procdff$696 ($adff) from module CONTROLADOR_I2C (D = $flatten\TOP_I2C1.\BIT_COUNTER.$0\count[2:0], Q = \TOP_I2C1.BIT_COUNTER.count).
-Adding EN signal on $flatten\ADS1115_TOP1.\ADS1115_DATA1.$procdff$706 ($adff) from module CONTROLADOR_I2C (D = \TOP_I2C1.SHIFT.rx_reg, Q = \ADS1115_TOP1.ADS1115_DATA1.adc_msb).
-Adding EN signal on $flatten\ADS1115_TOP1.\ADS1115_DATA1.$procdff$705 ($adff) from module CONTROLADOR_I2C (D = $flatten\ADS1115_TOP1.\ADS1115_DATA1.$0\byte_idx[1:0], Q = \ADS1115_TOP1.ADS1115_DATA1.byte_idx).
-Adding EN signal on $flatten\ADS1115_TOP1.\ADS1115_DATA1.$procdff$702 ($adff) from module CONTROLADOR_I2C (D = { \ADS1115_TOP1.ADS1115_DATA1.adc_msb \TOP_I2C1.SHIFT.rx_reg }, Q = \ADS1115_TOP1.ADS1115_DATA1.adc_value).
+Adding EN signal on $flatten\ADS1115_TOP1.\ADS1115_DATA1.$procdff$706 ($adff) from module CONTROLADOR_I2C (D = \TOP_I2C1.SHIFT.rx_reg, Q = \ADS1115_TOP1.ADS1115_DATA1.msb_byte_reg).
+Adding EN signal on $flatten\ADS1115_TOP1.\ADS1115_DATA1.$procdff$705 ($adff) from module CONTROLADOR_I2C (D = $flatten\ADS1115_TOP1.\ADS1115_DATA1.$0\count_byte[1:0], Q = \ADS1115_TOP1.ADS1115_DATA1.count_byte).
+Adding EN signal on $flatten\ADS1115_TOP1.\ADS1115_DATA1.$procdff$702 ($adff) from module CONTROLADOR_I2C (D = { \ADS1115_TOP1.ADS1115_DATA1.msb_byte_reg \TOP_I2C1.SHIFT.rx_reg }, Q = \ADS1115_TOP1.ADS1115_DATA1.adc_value).
 
 13.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \CONTROLADOR_I2C..
@@ -906,7 +906,7 @@ No more expansions possible.
 Extracting $alu and $macc cells in module CONTROLADOR_I2C:
   creating $macc model for $flatten\ADS1115_TOP1.\ADS1115_DATA1.$add$ADS1115_CONTROLER/ADS1115_DATA.v:46$236 ($add).
   creating $macc model for $flatten\ADS1115_TOP1.\CONTROL.$add$ADS1115_CONTROLER/ADS1115_CONTROL.v:45$239 ($add).
-  creating $macc model for $flatten\ADS1115_TOP1.\TICK.$add$ADS1115_CONTROLER/TICK_GENERATOR.v:27$234 ($add).
+  creating $macc model for $flatten\ADS1115_TOP1.\TICK.$add$ADS1115_CONTROLER/TICK_GENERATOR.v:28$234 ($add).
   creating $macc model for $flatten\TOP_I2C1.\BIT_COUNTER.$sub$I2C/CONTADOR_BITS.v:22$277 ($sub).
   creating $macc model for $flatten\TOP_I2C1.\BYTE_COUNTER.$sub$I2C/CONTADOR_BYTES.v:21$272 ($sub).
   creating $macc model for $flatten\TOP_I2C1.\CLOCK_GEN.$add$I2C/I2C_CLOCK_GENERATOR.v:42$286 ($add).
@@ -915,7 +915,7 @@ Extracting $alu and $macc cells in module CONTROLADOR_I2C:
   creating $alu model for $macc $flatten\TOP_I2C1.\CLOCK_GEN.$add$I2C/I2C_CLOCK_GENERATOR.v:42$286.
   creating $alu model for $macc $flatten\TOP_I2C1.\BYTE_COUNTER.$sub$I2C/CONTADOR_BYTES.v:21$272.
   creating $alu model for $macc $flatten\TOP_I2C1.\BIT_COUNTER.$sub$I2C/CONTADOR_BITS.v:22$277.
-  creating $alu model for $macc $flatten\ADS1115_TOP1.\TICK.$add$ADS1115_CONTROLER/TICK_GENERATOR.v:27$234.
+  creating $alu model for $macc $flatten\ADS1115_TOP1.\TICK.$add$ADS1115_CONTROLER/TICK_GENERATOR.v:28$234.
   creating $alu model for $macc $flatten\ADS1115_TOP1.\CONTROL.$add$ADS1115_CONTROLER/ADS1115_CONTROL.v:45$239.
   creating $alu model for $macc $flatten\ADS1115_TOP1.\ADS1115_DATA1.$add$ADS1115_CONTROLER/ADS1115_DATA.v:46$236.
   creating $alu model for $flatten\TOP_I2C1.\CONTROL.$ge$I2C/CONTROL.v:104$261 ($ge): new $alu
@@ -924,7 +924,7 @@ Extracting $alu and $macc cells in module CONTROLADOR_I2C:
   creating $alu cell for $flatten\TOP_I2C1.\CONTROL.$ge$I2C/CONTROL.v:104$261: $auto$alumacc.cc:485:replace_alu$792
   creating $alu cell for $flatten\ADS1115_TOP1.\ADS1115_DATA1.$add$ADS1115_CONTROLER/ADS1115_DATA.v:46$236: $auto$alumacc.cc:485:replace_alu$805
   creating $alu cell for $flatten\ADS1115_TOP1.\CONTROL.$add$ADS1115_CONTROLER/ADS1115_CONTROL.v:45$239: $auto$alumacc.cc:485:replace_alu$808
-  creating $alu cell for $flatten\ADS1115_TOP1.\TICK.$add$ADS1115_CONTROLER/TICK_GENERATOR.v:27$234: $auto$alumacc.cc:485:replace_alu$811
+  creating $alu cell for $flatten\ADS1115_TOP1.\TICK.$add$ADS1115_CONTROLER/TICK_GENERATOR.v:28$234: $auto$alumacc.cc:485:replace_alu$811
   creating $alu cell for $flatten\TOP_I2C1.\BIT_COUNTER.$sub$I2C/CONTADOR_BITS.v:22$277: $auto$alumacc.cc:485:replace_alu$814
   creating $alu cell for $flatten\TOP_I2C1.\BYTE_COUNTER.$sub$I2C/CONTADOR_BYTES.v:21$272: $auto$alumacc.cc:485:replace_alu$817
   creating $alu cell for $flatten\TOP_I2C1.\CLOCK_GEN.$add$I2C/I2C_CLOCK_GENERATOR.v:42$286: $auto$alumacc.cc:485:replace_alu$820
@@ -1453,17 +1453,17 @@ ABC: + dch -f
 ABC: + if 
 ABC: + mfs2 
 ABC: + dress <abc-temp-dir>/input.blif 
-ABC: Total number of equiv classes                =     146.
-ABC: Participating nodes from both networks       =     347.
-ABC: Participating nodes from the first network   =     145. (  82.86 % of nodes)
-ABC: Participating nodes from the second network  =     202. ( 115.43 % of nodes)
-ABC: Node pairs (any polarity)                    =     145. (  82.86 % of names can be moved)
-ABC: Node pairs (same polarity)                   =     125. (  71.43 % of names can be moved)
-ABC: Total runtime =     0.09 sec
+ABC: Total number of equiv classes                =     150.
+ABC: Participating nodes from both networks       =     345.
+ABC: Participating nodes from the first network   =     149. (  82.32 % of nodes)
+ABC: Participating nodes from the second network  =     196. ( 108.29 % of nodes)
+ABC: Node pairs (any polarity)                    =     149. (  82.32 % of names can be moved)
+ABC: Node pairs (same polarity)                   =     124. (  68.51 % of names can be moved)
+ABC: Total runtime =     0.05 sec
 ABC: + write_blif <abc-temp-dir>/output.blif 
 
 13.43.1.2. Re-integrating ABC results.
-ABC RESULTS:              $lut cells:      174
+ABC RESULTS:              $lut cells:      180
 ABC RESULTS:        internal signals:      439
 ABC RESULTS:           input signals:      134
 ABC RESULTS:          output signals:       95
@@ -1547,96 +1547,175 @@ Generating RTLIL representation for module `\$lut'.
 Successfully finished Verilog frontend.
 
 13.44.2. Continuing TECHMAP pass.
-Using template $paramod$658b9ed803f0d3d335616d3858b53e0a2522f1e8\$lut for cells of type $lut.
-Using template $paramod$6d6beead1425af15cf78b27fd9b11b41b5d4bce8\$lut for cells of type $lut.
 Using template $paramod$6e238df02989b317f10820a22773676e71120644\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0001 for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000000 for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000001 for cells of type $lut.
-Using template $paramod$8ed92e7843cb22ca2c42f03247c267b9da05e8af\$lut for cells of type $lut.
-Using template $paramod$12c3ec56f460d7e12180c1027e7312a4175d7e4f\$lut for cells of type $lut.
-Using template $paramod$272652f6c6fbe9a75eff76e45cc7e2788835518b\$lut for cells of type $lut.
-Using template $paramod$571404c0889eaf57f492cb5e37f8acb5df5852f9\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000000 for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10010000 for cells of type $lut.
-Using template $paramod$287fc40df277be5303029e92cf8599a6aab4ddf0\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0100 for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000111 for cells of type $lut.
-Using template $paramod$7e4dd85730009c119c6d2518b2ffa9600f10cef4\$lut for cells of type $lut.
-Using template $paramod$7bb6a37e65823eeb4b38c370fec30ab082759a14\$lut for cells of type $lut.
-Using template $paramod$f3e1547c4b47e64c590e75cf09078b2507c8cc75\$lut for cells of type $lut.
-Using template $paramod$a3cdc1eb771a2c6a16f64da161e11100ac409d2b\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000001 for cells of type $lut.
 Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00010000 for cells of type $lut.
-Using template $paramod$c6af2d6a77d733aada4ec33ecd1fe0da34adce8b\$lut for cells of type $lut.
-Using template $paramod$c1b1e295769db1b6655cd9fa7f1823a266fa6d67\$lut for cells of type $lut.
-Using template $paramod$0efe21ff42c6a5f207b6a2c21d88701273b37457\$lut for cells of type $lut.
-Using template $paramod$c45901ca93e4a3bf0bcf2f2259cdd8c3a9b88ceb\$lut for cells of type $lut.
-Using template $paramod$b431bfd938e35871dd0b7668e1503c7e8b9d491c\$lut for cells of type $lut.
-Using template $paramod$80c6d9236a2684199e24745161c51118708bce6e\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1011 for cells of type $lut.
-Using template $paramod$73bbff9804d791be5cfd09c0116d6c083b3293af\$lut for cells of type $lut.
-Using template $paramod$d53578aacfd93124244778d88be0e90eb09c1b1b\$lut for cells of type $lut.
-Using template $paramod$baa88887c4630803f83ac99e16ebe1294bd45a7a\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11110100 for cells of type $lut.
-Using template $paramod$d4fae2c0d9ad2966369cd4e39b81c71bcd1327c9\$lut for cells of type $lut.
-Using template $paramod$b4f15f202f50520dbc381cd0880ac94f830f05a8\$lut for cells of type $lut.
-Using template $paramod$67dfffdf8661c5482a1a30c33588e5a7a65a3e64\$lut for cells of type $lut.
-Using template $paramod$70ebb6cf5bc7d63c5c1a98ccefefa2af79e8f2a9\$lut for cells of type $lut.
-Using template $paramod$480f2de070bc5752d24b7439886f4a5a13b9b68c\$lut for cells of type $lut.
-Using template $paramod$575b200168b9e109c2ed99df4359056f2c6696ac\$lut for cells of type $lut.
-Using template $paramod$9d493a05bc89f65d5f5c1244f501c865445117f4\$lut for cells of type $lut.
+Using template $paramod$658b9ed803f0d3d335616d3858b53e0a2522f1e8\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0001 for cells of type $lut.
+Using template $paramod$571404c0889eaf57f492cb5e37f8acb5df5852f9\$lut for cells of type $lut.
+Using template $paramod$1bf62ab10e48d71d6497bccacf5c70420c470fe9\$lut for cells of type $lut.
+Using template $paramod$eba7de026ff587370e320127e266317dae097a89\$lut for cells of type $lut.
+Using template $paramod$11bbb1f6d040b6fef853156bf96393db1ac26fc4\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000000 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00011111 for cells of type $lut.
+Using template $paramod$272652f6c6fbe9a75eff76e45cc7e2788835518b\$lut for cells of type $lut.
+Using template $paramod$3efbcfbfbaa24f53c7da5d4f69d6dc97abcf1329\$lut for cells of type $lut.
+Using template $paramod$cf652acbfbf67d2248e3045cd0f09c58ca55886c\$lut for cells of type $lut.
+Using template $paramod$6d6beead1425af15cf78b27fd9b11b41b5d4bce8\$lut for cells of type $lut.
 Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1000 for cells of type $lut.
-Using template $paramod$cc08dba3aac8677e797984bdf18a09dd37547dd3\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
-Using template $paramod$df0b68f8e63b2deb6710e23abd8b8ff0796d4897\$lut for cells of type $lut.
+Using template $paramod$affcf0f154430e5f24240efdee5f7d379dca7dd1\$lut for cells of type $lut.
+Using template $paramod$8ed92e7843cb22ca2c42f03247c267b9da05e8af\$lut for cells of type $lut.
+Using template $paramod$2c0001bb8124becc337daa71d1f46f20d5a016ab\$lut for cells of type $lut.
+Using template $paramod$200337237619ba4c0bed9a492562f1d1b57fb569\$lut for cells of type $lut.
+Using template $paramod$2c68ff079d2ce6a6fd58346229f821d920b247e8\$lut for cells of type $lut.
+Using template $paramod$913eef49eb8672b00b06491a1f934ca77bcdb106\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000001 for cells of type $lut.
+Using template $paramod$7bb6a37e65823eeb4b38c370fec30ab082759a14\$lut for cells of type $lut.
 Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000111 for cells of type $lut.
-Using template $paramod$5cb50363394bcd0f556eaa7775e443ee76179afc\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0111 for cells of type $lut.
-Using template $paramod$4518c6efc338c838baccc1368addc699a6d5aa1d\$lut for cells of type $lut.
-Using template $paramod$e053a22d78e6bd5ea33183ea69976f0db741be0e\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10011111 for cells of type $lut.
+Using template $paramod$0ce68ba9db1445bfa049726f5d481ca2c0a90b8f\$lut for cells of type $lut.
+Using template $paramod$965f8f2fa1a796a6c51222eabb50fbd26e97d98b\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000000 for cells of type $lut.
+Using template $paramod$179512a187da069f3b79ef6612a41e494e7d54b6\$lut for cells of type $lut.
+Using template $paramod$575b200168b9e109c2ed99df4359056f2c6696ac\$lut for cells of type $lut.
+Using template $paramod$cc08dba3aac8677e797984bdf18a09dd37547dd3\$lut for cells of type $lut.
+Using template $paramod$b4f15f202f50520dbc381cd0880ac94f830f05a8\$lut for cells of type $lut.
+Using template $paramod$d4fae2c0d9ad2966369cd4e39b81c71bcd1327c9\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0100 for cells of type $lut.
+Using template $paramod$33e58adf67c6b686a154c9ce8ebbc4b04b8cabc5\$lut for cells of type $lut.
+Using template $paramod$48ac675ec3f5ae95c9111b6fab770149399bc0f5\$lut for cells of type $lut.
+Using template $paramod$f245950a40b247d18307ffba793b693fd902d228\$lut for cells of type $lut.
+Using template $paramod$562e592eb9df7166a0f91b3923d3545d3552cd5e\$lut for cells of type $lut.
+Using template $paramod$df196ed0a1da5c4a58c5e08a1dac304fd3fccaab\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000111 for cells of type $lut.
+Using template $paramod$40eef110b559c3d0307615b8951b58fca0519b15\$lut for cells of type $lut.
+Using template $paramod$5afdc7428159757eedf89ce514f7efa32b31c8e7\$lut for cells of type $lut.
+Using template $paramod$287fc40df277be5303029e92cf8599a6aab4ddf0\$lut for cells of type $lut.
+Using template $paramod$608f40069c27841a5b3bdf03643a34bdc8974072\$lut for cells of type $lut.
+Using template $paramod$bc3c002b6c6d059be1ca238770fb1663e736a95d\$lut for cells of type $lut.
+Using template $paramod$12c3ec56f460d7e12180c1027e7312a4175d7e4f\$lut for cells of type $lut.
+Using template $paramod$85a5f5da19265dd27572b12ed78750bd513ab4cd\$lut for cells of type $lut.
+Using template $paramod$c050f6c35e36b5bebc2dc223bb73c6ce5bc73a1f\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01101111 for cells of type $lut.
 Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01011100 for cells of type $lut.
+Using template $paramod$ef55f89c74d994c27b4ec4bac79af43e8b1d7e25\$lut for cells of type $lut.
+Using template $paramod$c5f3c57a6d466a2f42208bafb8985b96ce884440\$lut for cells of type $lut.
+Using template $paramod$6b0849254d6c87461fb93e37cc18f089f61eb912\$lut for cells of type $lut.
+Using template $paramod$c39b4ae3eed03ff4e0ef2a41844cc5ea3df00d09\$lut for cells of type $lut.
+Using template $paramod$11347ef2fc461a352a702c906d1c2654f24334f0\$lut for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10011111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0111 for cells of type $lut.
 Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01100000 for cells of type $lut.
 Using template $paramod$2e7a95e82db1d690ae9ba5d10f68b175fa2cb467\$lut for cells of type $lut.
-Using template $paramod$ab8bb87959c5d7cfa27886cee1355b38e054a61a\$lut for cells of type $lut.
-Using template $paramod$53ce561f80f32d4298a3beadc88b6c5c78293221\$lut for cells of type $lut.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01001111 for cells of type $lut.
+Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1011 for cells of type $lut.
+Using template $paramod$354367fdc808a23379675dc8a2e8d73b1ff4f9aa\$lut for cells of type $lut.
+Using template $paramod$359fe4e746656bf9c72aecaff84fc7bdea9f55a5\$lut for cells of type $lut.
+Using template $paramod$bb4fff1cc3b827238aa40993cafede1c5beecbe3\$lut for cells of type $lut.
 No more expansions possible.
 
 13.45. Executing OPT_LUT_INS pass (discard unused LUT inputs).
 Optimizing LUTs in CONTROLADOR_I2C.
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3787.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 3)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 2)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3711.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 3)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 2)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3685.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3688.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3695.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3705.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3711.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3786.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 1)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3787.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3787.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3794.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 3)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3795.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3794.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 1)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3678.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3828.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 3)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3824.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 3)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3831.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 1)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3833.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
-  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3841.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
-Removed 0 unused cells and 388 unused wires.
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3798.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3798.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3798.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3798.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3798.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3798.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3783.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 1)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3783.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3783.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3783.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut6 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3783.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3810.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3810.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3812.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3812.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3812.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3829.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3791.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3791.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3791.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3791.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut6 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3791.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3717.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3709.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3709.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3709.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3709.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3709.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3697.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3697.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3833.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3833.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3833.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut4 (4 -> 1)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3833.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 1)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3833.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut6 (4 -> 1)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3833.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 1)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut5 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut6 (4 -> 1)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut7 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3680.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3770.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut2 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3770.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut3 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3679.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3680.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3680.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3684.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3686.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3691.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 1)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3695.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 1)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3697.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3701.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3703.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3704.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3706.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3709.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3710.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3717.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3770.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3717.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3771.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3774.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3783.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3783.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3785.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3786.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3787.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3791.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3793.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3794.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3796.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3791.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 3)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3798.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3799.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3801.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3802.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3803.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3804.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3805.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3806.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3807.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3808.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3810.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3811.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3812.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3814.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3818.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3825.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3833.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3823.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3828.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3832.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 2)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3833.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut0 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3709.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3693.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+  Optimizing lut $abc$3673$auto$blifparse.cc:525:parse_blif$3831.genblk1.genblk1.genblk1.genblk1.genblk1.lut1 (4 -> 0)
+Removed 0 unused cells and 398 unused wires.
 
 13.46. Executing AUTONAME pass.
-Renamed 3978 objects in module CONTROLADOR_I2C (44 iterations).
+Renamed 6871 objects in module CONTROLADOR_I2C (64 iterations).
 
 13.47. Executing HIERARCHY pass (managing design hierarchy).
 
@@ -1651,19 +1730,19 @@ Removed 0 unused modules.
 
 === CONTROLADOR_I2C ===
 
-   Number of wires:                284
-   Number of wire bits:            855
-   Number of public wires:         284
-   Number of public wire bits:     855
+   Number of wires:                434
+   Number of wire bits:           1062
+   Number of public wires:         434
+   Number of public wire bits:    1062
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                374
+   Number of cells:                522
      $_TBUF_                         2
      CCU2C                          30
-     L6MUX21                         4
-     LUT4                          199
-     PFUMX                          21
+     L6MUX21                        24
+     LUT4                          276
+     PFUMX                          72
      TRELLIS_FF                    118
 
 13.49. Executing CHECK pass (checking for obvious problems).
@@ -1673,6 +1752,6 @@ Found and reported 0 problems.
 14. Executing JSON backend.
 
 Warnings: 2 unique messages, 2 total
-End of script. Logfile hash: 80deb68f65, CPU: user 1.23s system 0.06s, MEM: 41.20 MB peak
+End of script. Logfile hash: 14f85dad61, CPU: user 1.52s system 0.07s, MEM: 44.64 MB peak
 Yosys 0.33+6 (git sha1 41b34a193, x86_64-conda-linux-gnu-cc 11.2.0 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/root/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1694128612374/work=/usr/local/src/conda/yosys-0.33_7_g41b34a193 -fdebug-prefix-map=/home/juan-diego/miniconda3/envs/digital=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
 Time spent: 25% 25x read_verilog (0 sec), 21% 7x techmap (0 sec), ...

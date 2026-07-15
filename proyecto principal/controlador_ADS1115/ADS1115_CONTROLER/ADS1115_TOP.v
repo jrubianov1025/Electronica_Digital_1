@@ -1,4 +1,4 @@
-/*       >>> CONFIGURACIÓN DEL ADS1115 <<<
+/*       >>> CONFIGURACIÓN DEL ADS1115 <
        Bit [15]     OS: Iniciar conversión. (1 = Inicia lectura en modo single-shot).
        Bits [14:12] MUX: Multiplexor analógico 
                       - 100 = AIN0 vs GND                 <-- CONFIGURACIÓN ACTUAL
@@ -62,13 +62,13 @@ module ADS1115_TOP #(
     output wire [15:0] adc_value
 );
 
-    wire [1:0] byte_idx;
-    wire idx_ld;
-    wire cap_msb;
-    wire cap_lsb;
-    wire err_set;
+wire [1:0] count_byte;
+    wire Ld_count_byte;
+    wire capture_msb;
+    wire capture_lsb;
+    wire error_set;
     wire delay_en;
-    wire tick_delay;
+    wire tick;
 
     ADS1115_CONTROL #(
         .CLK_FREQ_HZ (CLK_FREQ_HZ),
@@ -77,37 +77,37 @@ module ADS1115_TOP #(
         .CFG_MSB     (CFG_MSB),
         .CFG_LSB     (CFG_LSB)
     ) CONTROL (
-        .clk        (clk),
-        .rst        (rst),
-        .done       (done),
-        .ack_error  (ack_error),
-        .byte_done  (byte_done),
-        .tick_delay (tick_delay),
-        .delay_en   (delay_en),
-        .byte_idx   (byte_idx),
-        .start      (start),
-        .rw         (rw),
-        .tx_byte    (tx_byte),
-        .num_bytes  (num_bytes),
-        .idx_ld     (idx_ld),
-        .cap_msb    (cap_msb),
-        .cap_lsb    (cap_lsb),
-        .err_set    (err_set)
+        .clk           (clk),
+        .rst           (rst),
+        .done          (done),
+        .ack_error     (ack_error),
+        .byte_done     (byte_done),
+        .tick          (tick),
+        .delay_en      (delay_en),
+        .count_byte    (count_byte),
+        .start         (start),
+        .rw            (rw),
+        .tx_byte       (tx_byte),
+        .num_bytes     (num_bytes),
+        .Ld_count_byte (Ld_count_byte),
+        .capture_msb   (capture_msb),
+        .capture_lsb   (capture_lsb),
+        .error_set     (error_set)
     );
 
     ADS1115_DATA ADS1115_DATA1 (
-        .clk         (clk),
-        .rst         (rst),
-        .byte_done   (byte_done),
-        .rx_data     (rx_data),
-        .idx_ld      (idx_ld),
-        .cap_msb     (cap_msb),
-        .cap_lsb     (cap_lsb),
-        .err_set     (err_set),
-        .byte_idx    (byte_idx),
-        .adc_value   (adc_value),
-        .adc_valid   (adc_valid),
-        .error_alert (error_alert)
+        .clk           (clk),
+        .rst           (rst),
+        .byte_done     (byte_done),
+        .rx_data       (rx_data),
+        .Ld_count_byte (Ld_count_byte),
+        .capture_msb   (capture_msb),
+        .capture_lsb   (capture_lsb),
+        .error_set     (error_set),
+        .count_byte    (count_byte),
+        .adc_value     (adc_value),
+        .adc_valid     (adc_valid),
+        .error_alert   (error_alert)
     );
 
     TICK_GENERATOR #(
@@ -117,7 +117,7 @@ module ADS1115_TOP #(
         .clk    (clk),
         .rst    (rst),
         .enable (delay_en),
-        .tick   (tick_delay)
+        .tick   (tick)
     );
 
 endmodule

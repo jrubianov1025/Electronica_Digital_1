@@ -7,27 +7,41 @@ la estructura del proyecto se muestra acontinuación:
 
 ```Bash
 
-\proyecto principal
+    \proyecto principal
 
-    \Diagramas
-    
-    \Codigo_pantalla
+      \Diagramas
+        I2C_Datapath.png
+        I2C_Estados.png
+        I2C_Flujo.png
 
-    \controlador ads1115
+      \Codigo_pantalla
+
+      \controlador ads1115
         \ADS1115_CONTROLLER
-            ADS1115_CONTROL.v
-            ADS1115_DATA.v
-            ADS1115_TOP.v
-            TICK_GENERATOR.v
+          ADS1115_CONTROL.v
+          ADS1115_DATA.v
+          ADS1115_TOP.v
+          TICK_GENERATOR.v
 
         \I2C
-            \CONTADOR_BITS.v     
-            \CONTADOR_BYTES.v    
-            \CONTROL.v 
-            \I2C_CLOCK_GENERATOR.v
-            \SHIFT_REG.v
-            \Top_I2C.v
+          \CONTADOR_BITS.v     
+          \CONTADOR_BYTES.v    
+          \CONTROL.v 
+          \I2C_CLOCK_GENERATOR.v
+          \SHIFT_REG.v
+          \Top_I2C.v
 
+      CONTROLADOR_I2C_i9.lpf
+      CONTROLADOR_I2C.v
+      Makefile
+      tb_CONTROLADOR_I2C.v
+
+    Makefile
+    Pantalla_I2C.v
+    TOP_PROYECTO_i9.lpf
+    TOP_PROYECTO.v
+
+    README.md
   ...
 
 ```
@@ -59,7 +73,36 @@ El objetivo del diseño es leer periódicamente, por el bus I2C, el valor digita
 
 ###  📥 ADS1115_CONTROLER 
  
+Esta carpeta posee cuatro archivos fundamentales para la comunicacion con el ADS1115; el objetivo principal es implementar una máquina de estados que realice **el protocolo de configuración y lectura periódica del ADS1115**, usando al maestro I2C. No conoce los tiempos del bus I2C bit a bit; solo le pide al maestro escribir o leer N bytes y espera la señal `done`.
+ 
+Secuencia que realiza en cada ciclo de lectura:
+ 
+1. **Configuracion del ADC** escribiendo 4 bytes en el registro `CONFIG` (0x01): dirección + puntero de registro + 2 bytes de configuración. Los dos bytes de configuracion pueden ser modificados dependiendo del uso. (ver comentario en cabecera del archivo con el mapa de bits completo del registro `CONFIG`).
 
+2. **Apuntar al registro de conversión** (0x00) escribiendo el puntero correspondiente.
+
+3. **Leer 2 bytes** (MSB y LSB) del resultado de la conversión y arma `adc_value.
+
+4. **Esperar** un tiempo configurable (`DELAY_MS`, por defecto 500 ms) usando `TICK_GENERATOR`, y vuelve al paso 2 para leer el siguiente dato (no repite la configuración salvo que exista un error o un reset).
+ 
+Estos diagramas, permiten visualizar al detalle el funcionamiento de los modulos.
+
+
+<p align="center">
+  <img src="./Diagramas/ADS1115_flujo.png" width="300">
+  <img src="./Diagramas/ADS1115_datapath.png" width="400">
+  <img src="./Diagramas/ADS1115_estados.png" width="350">
+</p>
+
+El controlador se divide en tres bloques principales y un modulo top:
+
+- `ADS1115_CONTROL.v` — Implementa una máquina de estados encargada de coordinar toda la comunicación con el ADS1115 a través del maestro I2C. Durante el primer ciclo configura el registro `CONFIG` del ADC, posteriormente selecciona el registro de conversión `0x00`, solicita la lectura de dos bytes y espera un tiempo configurable antes de repetir el proceso. Además, supervisa la señal `ack_error` para detectar errores de comunicación.
+
+- `ADS1115_DATA.v` — Se encarga de almacenar los dos bytes recibidos desde el maestro I2C, reconstruir el valor digital de 16 bits `adc_value`, generar un pulso `adc_valid` cuando una nueva conversión está disponible y mantener el índice del byte actualmente transmitido o recibido durante cada transacción.
+
+- `TICK_GENERATOR.v` — Temporizador parametrizable en milisegundos. Cuenta ciclos de reloj hasta alcanzar `(CLK_FREQ_HZ / 1000) * DELAY_MS` y genera un pulso `tick` de un ciclo de duración. Solo cuenta mientras `enable` está activo; si `enable` baja, el contador se reinicia
+
+- `ADS1115_TOP.v` — Módulo superior del controlador. Instancia los módulos ADS1115_CONTROL, ADS1115_DATA y TICK_GENERATOR, conectando las señales de control, datos y temporización. Su función es integrar todos los bloques necesarios para que el controlador interactúe con el maestro I2C y entregue el valor digital leído `adc_value` junto con las señales de estado `adc_valid y error_alert`.
  
 ---
 
@@ -107,34 +150,9 @@ Ademas de estas carpetas, se encuentran 4 archivos adicionales que complementan 
 
 - `CONTROLADOR_I2C.v` — Módulo top que instancia y conecta el `ADS1115_CONTROLLER` con `TOP_I2C`, y expone hacia la FPGA solo las señales físicas necesarias (reloj, reset y el bus I2C).
  
-| Señal        | I/O    | Bits | Descripción                                            |
-| ------------ | ------ | ---- | -------------------------------------------------------|
-| `clk`        | Input  | 1    | Reloj del sistema                                      |
-| `rst`        | Input  | 1    | Reset general, activo en alto                          |
-| `SDA`        | Inout  | 1    | Línea de datos del bus I2C (bidireccional, open-drain) |
-| `SCL`        | Inout  | 1    | Línea de reloj del bus I2C (bidireccional, open-drain) |
-| `adc_value`  | Output | 16   | Último valor digital leído del ADS1115                 |
- 
-Parámetros configurables: `CLK_FREQ_HZ` (frecuencia del reloj de la FPGA, por defecto 25 MHz) y `DELAY_MS` (tiempo de espera entre lecturas consecutivas del ADC, por defecto 500 ms).
-
- 
  - `Makefile` — automatiza tanto la simulación como el flujo de síntesis para la FPGA Colorlight i9:
  
-| Target               | Acción                                                                     |
-| ------------------   | -------------------------------------------------------------------------  |
-| `make sim`           | Compila y simula con iverilog, abre las formas de onda en gtkwave          |
-| `make` / `make all`  | Corre el flujo completo de síntesis: yosys → nextpnr-ecp5 → ecppack        |
-| `make configure_i9`  | Programa la FPGA físicamente vía openFPGALoader                            |
-| `make clean`         | Elimina archivos generados                                                 |
- 
 - `CONTROLADOR_I2C_i9.lpf` — define la asignación de pines físicos en la tarjeta Colorlight i9:
- 
-| Señal  | Pin  | Notas                              |
-| ------ | ---- | -----------------------------------|
-| `clk`  | P3   | Oscilador de 25 MHz                |
-| `rst`  | K18  | Con resistencia de pull-up interna |
-| `SDA`  | D2   | Línea de datos I2C hacia el ADS1115|
-| `SCL`  | E2   | Línea de reloj I2C hacia el ADS1115|
  
 - `tb_CONTROLADOR_I2C.v` — valida el sistema completo (`CONTROLADOR_I2C`), simulando un **ADS1115 esclavo completo**: responde ACK a la configuración, ACK al puntero de registro, y entrega valores de conversión simulados que van cambiando (0x1A55 → 0x2B66 → 0x3C77) en cada ciclo de lectura. El testbench declara éxito cuando adc_value refleja correctamente las tres lecturas esperadas, y cuenta con un timeout de seguridad de 20 ms simulados por si la máquina de estados quedara bloqueada.
 
