@@ -37,17 +37,21 @@ always @(posedge clk) begin
             NEXT_STATE = S_CHECK;
         end
 
+// cambie la logica de tansicion de estos dos estados para que funcionara correctamente :)
+// la plataforma donde hago el diseño de los diagramas (Lucidchart) no me deja modificar el diagrama de estados :(
         S_CHECK: begin
-            if      (Z & corregir)  NEXT_STATE = S_CORRECT;
-            else if (Z)             NEXT_STATE = S_END;
-            else if (MSB)           NEXT_STATE = S_SHIFT;
-            else                    NEXT_STATE = S_ONE;
+            if      (~MSB)          NEXT_STATE = S_ONE;     
+            else if (Z & corregir)  NEXT_STATE = S_CORRECT;
+            else if (Z)             NEXT_STATE = S_END;    
+            else                    NEXT_STATE = S_SHIFT;   
         end
 
         S_ONE: begin
-            NEXT_STATE = S_SHIFT;
+            if      (Z & corregir)  NEXT_STATE = S_CORRECT; 
+            else if (Z)             NEXT_STATE = S_END;
+            else                    NEXT_STATE = S_SHIFT;
         end
-
+//---------------------------------------------------------------------------------------------
         S_CORRECT: begin
             NEXT_STATE = S_END;
         end

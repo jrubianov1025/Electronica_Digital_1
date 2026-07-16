@@ -10,6 +10,7 @@ wire [23:0] RGB_IMG_0;
 wire [23:0] RGB_IMG_1;
 wire [23:0] RGB_IMG_2;
 wire [23:0] RGB_IMG_3;
+wire [23:0] RGB_IMG_4;
 
 // Imagen 0
 Image_0 #(
@@ -43,6 +44,13 @@ Image_3 #(
     .RGB(RGB_IMG_3)
 );
 
+Image_4 #(
+    .ADDR_WIDTH(ADDR_WIDTH)
+) image_4_inst (
+    .ADDR(ADDR),
+    .RGB(RGB_IMG_4)
+);
+
 // Selector de imagen
 always @(*) begin
     case (IMG_SEL)
@@ -51,6 +59,7 @@ always @(*) begin
         4'd1: RGB = RGB_IMG_1;
         4'd2: RGB = RGB_IMG_2;
         4'd3: RGB = RGB_IMG_3;
+        4'd4: RGB = RGB_IMG_4;
 
         default: RGB = 24'h000000;
 

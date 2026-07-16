@@ -14,6 +14,10 @@ la estructura del proyecto se muestra acontinuación:
         I2C_Estados.png
         I2C_Flujo.png
 
+        ADS1115_datapath.png
+        ADS1115_estados.png
+        ADS1115_flujo.png
+
       \Codigo_pantalla
 
       \controlador ads1115
@@ -46,6 +50,78 @@ la estructura del proyecto se muestra acontinuación:
 
 ```
 La carpeta `build/` contiene las salidas generadas automáticamente por el flujo de síntesis (`.json`, `.config`, `.bit`, `.svf`, `.rpt`) y no debe editarse manualmente; se regenera con `make`.
+
+
+## 🔗 Integración final — TOP_PROYECTO
+
+Esta sección explica la integración completa del proyecto: el controlador ADS1115 leyendo los datos de un sensor de humedad conectado a la pantalla WS2812, de forma que el nivel de humedad medido determina qué cara se muestra (feliz, seria, triste, neutral o error).
+
+El sistema queda dividido en cuatro piezas nuevas sobre las carpetas ya existentes de `controlador_ADS1115` y `Codigo_Pantalla`:
+
+1. **`TOP_PROYECTO.v`** — módulo superior que une ambos subsistemas.
+
+2. **`Pantalla_I2C.v`** — puente de decisión entre la lectura del ADC y la imagen a mostrar.
+
+3. **`Makefile`** archivo que realiza la sintesis de todos los modulos para el correcto funcionamiento en la FPGA.
+
+4. **`TOP_PROYECTO.lpf`** archivo que mapea los pines fisicos de la fpga para realizar las conecciones con la pantalla y el sensor.
+
+---
+
+### TOP_PROYECTO.v
+
+Módulo superior de todo el proyecto. Instancia y conecta los tres bloques principales:
+
+- `ADS1115_TOP` — controlador del ADC externo, entrega `adc_value` (16 bits), `adc_valid` (pulso de dato nuevo) y `error_alert` (error persistente de comunicación I2C).
+
+- `TOP_I2C` — maestro I2C genérico que maneja físicamente el bus (`SDA`, `SCL`).
+
+- `Pantalla_I2C` — traduce la lectura del ADC en una selección de imagen para la matriz de LEDs.
+
+Expone hacia la FPGA únicamente las señales físicas necesarias: `clk`, `reset`, el bus I2C (`SDA`/`SCL`) y la salida hacia la matriz WS2812 (`DOUT`, `DONE_M`).
+
+Parámetros configurables:
+
+- `CLK_FREQ_HZ`, `DELAY_MS` — frecuencia del sistema y periodo entre lecturas del ADC (heredados del controlador ADS1115).
+- `ADDR_WIDTH`, `N_LEDS` — geometría de la matriz de LEDs (heredados de la pantalla).
+- `UMBRAL_1`, `UMBRAL_2`, `UMBRAL_3` — fronteras de clasificación de humedad, calibradas empíricamente con el sensor **resistivo**:
+  - `UMBRAL_1 = 6000` — frontera neutral (encharcado) ↔ feliz.
+  - `UMBRAL_2 = 15000` — frontera feliz ↔ seria.
+  - `UMBRAL_3 = 24000` — frontera seria ↔ triste (muy seco).
+
+  > Nota: `adc_value` **alto** corresponde a tierra **seca** y `adc_value` **bajo** a tierra **húmeda**, según la curva de respuesta medida de un sensor resistivo (≈26.400 en aire/seco, ≈4.000–6.000 en tierra húmeda). Si se cambia a un sensor capacitivo, estos umbrales deben recalcularse con su propia curva.
+
+---
+
+### Pantalla_I2C.v
+
+Actúa como controlador intermedio entre el dato del ADS1115 y el core de la matriz de LEDs (`WS2812_Led_Array`). No conoce el protocolo I2C ni el protocolo WS2812; solo decide **qué imagen mostrar** y **cuándo pedir el reenvío** de la matriz completa.
+
+Lógica de clasificación (`img_sel_actual`), evaluada en cada ciclo:
+
+c
+
+La prioridad de evaluación es fija: primero se revisa error, luego validez del dato, y solo después los umbrales de humedad — así un error de I2C siempre se refleja en pantalla sin importar el último valor válido leído.
+
+Como el envío de una imagen completa a la matriz WS2812 toma varios ciclos de reloj (no es instantáneo), el módulo implementa una pequeña lógica de control con dos registros:
+
+- `pending_img_sel` — última clasificación calculada, puede cambiar en cualquier ciclo.
+- `active_img_sel` — imagen que realmente se está transmitiendo en este momento.
+
+Cuando `pending_img_sel` cambia y el core no está ocupado (`core_busy = 0`), se dispara un pulso `init_m` de un ciclo que arranca el envío de la nueva imagen hacia `WS2812_Led_Array`. Si llegan varios cambios de clasificación mientras el core sigue ocupado transmitiendo la imagen anterior, solo se envía la última clasificación pendiente al terminar (no se encolan envíos intermedios).
+
+---
+### TOP_PROYECTO_i9.lpf
+
+este archivo declara los pines fisicos que se conectaran directamente entre la FPGA y el sensor ADS1115 ademas de la pantalla y un reset. 
+
+| PINES      |  Significado                                |
+|------------|---------------------------------------------|
+| `P3`       | Reloj de la FPGA a 25MHZ                    |
+| `K18`      | Señal de reset                              |
+| `D2`       | Linea SDA del protocolo I2C                 |
+| `E2`       | Linea SCL del protocolo I2C                 |
+| `T1`       | DOUT directo para la entrada de la pantalla |
 
 ---
 
