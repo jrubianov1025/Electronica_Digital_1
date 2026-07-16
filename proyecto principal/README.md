@@ -19,7 +19,7 @@ la estructura del proyecto se muestra acontinuación:
         ADS1115_flujo.png
 
       \Codigo_pantalla
-
+        
       \controlador ads1115
         \ADS1115_CONTROLLER
           ADS1115_CONTROL.v
@@ -127,11 +127,149 @@ este archivo declara los pines fisicos que se conectaran directamente entre la F
 
 ##  PANTALLA LED
 
+La carpeta `Codigo_Pantalla` contiene los archivos necesarios para controlar una matriz de 64 LEDs direccionables WS2812, organizada físicamente como una pantalla de 8×8. Cada LED recibe una palabra de 24 bits en formato **GRB**, es decir, 8 bits para verde, 8 bits para rojo y 8 bits para azul.
+
+El controlador se encuentra dividido en tres niveles. El primer nivel genera los tiempos necesarios para transmitir un bit siguiendo el protocolo WS2812; el segundo nivel envía los 24 bits correspondientes al color de un LED; y el tercer nivel recorre las 64 posiciones de la matriz, consulta el color almacenado para cada dirección y transmite una imagen completa.
+
+La carpeta se divide en los siguientes bloques:
+
+1. **`Timer_ws2812`** — genera la forma de onda correspondiente a un bit `0`, un bit `1` o una señal de reset.
+
+2. **`WS2812_led`** — transmite los 24 bits GRB correspondientes a un LED individual.
+
+3. **`WS2812_Led_Array`** — recorre la matriz completa, selecciona una imagen y envía el color correspondiente a cada LED.
+
+Además, `Pantalla.v` funciona como módulo superior para probar la pantalla de manera independiente, interpretando una cantidad de pulsos recibidos por la entrada `sensor` como el número de la imagen que debe mostrarse.
+
+---
+
+###  📥 Timer_WS2812
+
+Este bloque genera la temporización necesaria para representar cada símbolo del protocolo WS2812. La entrada `SEL` determina el tipo de transmisión que debe realizarse:
+
+- `SEL = 0` — transmisión de un bit lógico `0`.
+- `SEL = 1` — transmisión de un bit lógico `1`.
+- `SEL = 2` — intervalo de reset del protocolo WS2812.
+
+Con el reloj de 25 MHz definido para la FPGA, cada ciclo tiene una duración de 40 ns. Los valores establecidos en `mux_timer_ws2812.v` corresponden a 10 ciclos para `T0H` (400 ns), 20 ciclos para `T1H` (800 ns), 31 ciclos para el periodo total de cada bit (1,24 µs) y 1250 ciclos para el reset (50 µs).
+
+Los diagramas siguientes muestran el funcionamiento del temporizador, la interconexión de sus componentes y la máquina de estados que controla la salida `DOUT`.
+
 <p align="center">
-  <img src="./Diagramas/_flujo.png" width="300">
-  <img src="./Diagramas/_datapath.png" width="400">
-  <img src="./Diagramas/_estados.png" width="350">
+  <img src="./Diagramas/Timer_Ws2812_Flujo.png" width="300">
+  <img src="./Diagramas/Timer_Ws2812_Datapath.png" width="400">
+  <img src="./Diagramas/Timer_Ws2812_Estados.png" width="350">
 </p>
+
+La carpeta posee seis archivos necesarios para el funcionamiento y la simulación del temporizador:
+
+- `Control_Timer_WS2812.v` — Implementa la máquina de estados del temporizador. Según el valor de `SEL`, selecciona el estado encargado de transmitir un `0`, un `1` o el reset. Durante `SEND_0` y `SEND_1` mantiene `DOUT` en alto durante el tiempo correspondiente y después pasa a `WAIT_T`, donde completa en bajo el periodo del bit. Para el reset mantiene directamente la salida en bajo durante el tiempo configurado. La señal `DONE_T` indica que la temporización solicitada terminó.
+
+- `count_out.v` — Contador ascendente de 11 bits. Se reinicia mediante `RST` y aumenta en cada ciclo mientras `INC` se encuentra activa. Su valor representa la cantidad de ciclos transcurridos durante la transmisión actual.
+
+- `mux_timer_ws2812.v` — Multiplexor que contiene los cuatro valores de tiempo utilizados por el protocolo: `T0H`, `T1H`, `RES` y `PER`. La señal `SEL_TIM`, generada por la unidad de control, selecciona cuál de estos valores será comparado con el contador.
+
+- `comp_timer_ws2812.v` — Compara el valor del contador con el tiempo seleccionado. La bandera `Z` se activa cuando se alcanza el último ciclo del intervalo y permite que la máquina de estados continúe con la siguiente etapa.
+
+- `Timer_WS2812.v` — Módulo top del temporizador. Instancia y conecta la unidad de control, el contador, el multiplexor de tiempos y el comparador. Recibe `INIT_T` y `SEL`, y entrega la señal serial `DOUT` junto con la bandera `DONE_T`.
+
+- `Timer_WS2812_TB.v` — Comprueba de manera independiente la duración de la señal para un bit `0`, un bit `1` y el reset. El testbench cuenta los ciclos totales y los ciclos durante los cuales `DOUT` permanece en alto para verificar la temporización generada.
+
+---
+
+###  📥 WS2812_LED
+
+Este bloque se encarga de transmitir la información de color correspondiente a un solo LED. El dato de entrada `RGB[23:0]` se encuentra organizado en formato **GRB** y se transmite comenzando por el bit más significativo.
+
+Al recibir un pulso en `INIT`, el registro carga los 24 bits del color y el contador se inicializa en 24. La unidad de control revisa `RGB_MSB`, solicita al temporizador el envío de un bit `0` o `1`, espera la señal `DONE_T`, desplaza el registro una posición a la izquierda y disminuye el contador. El proceso se repite hasta transmitir los 24 bits, momento en el que se activa `DONE`.
+
+La entrada `RST_CMD` permite solicitar el intervalo de reset del protocolo en lugar de transmitir un color.
+
+<p align="center">
+  <img src="./Diagramas/Ws2812_LED_Flujo.png" width="300">
+  <img src="./Diagramas/Ws2812_LED_Datapath.png" width="400">
+  <img src="./Diagramas/Ws2812_LED_Estados.png" width="350">
+</p>
+
+La carpeta posee cinco archivos:
+
+- `Control_WS2812_LED.v` — Máquina de estados encargada de coordinar el envío de los 24 bits. Selecciona el tipo de temporización a partir de `RGB_MSB`, genera el pulso `INIT_T`, espera la finalización del temporizador y activa las señales `SH` y `DEC` para continuar con el siguiente bit. Después de transmitir todos los bits genera la señal `DONE`.
+
+- `LSR_RGB.v` — Registro de desplazamiento de 24 bits. Cuando `LD` está activa carga el valor `RGB`; cuando `SH` está activa desplaza el contenido una posición a la izquierda. La salida `RGB_MSB` expone el bit que debe enviarse en cada iteración.
+
+- `Count_24.v` — Contador descendente que se carga con el valor 24 y disminuye después de cada bit transmitido. La bandera `Z` se activa cuando el contador llega a cero e indica a la unidad de control que el LED fue enviado completamente.
+
+- `WS2812_led.v` — Módulo top de este nivel. Instancia `LSR_RGB`, `Count_24`, `Control_WS2812_LED` y `Timer_WS2812`, conectando el camino de datos con las señales producidas por la unidad de control.
+
+- `WS2812_led_TB.v` — Verifica el envío de colores verde, rojo y azul puros usando el orden GRB. Después de cada color también solicita un reset y comprueba que la señal `DONE` sea generada antes de alcanzar el tiempo máximo definido en la prueba.
+
+---
+
+###  📥 WS2812_LED_ARRAY
+
+Este bloque controla la transmisión de una imagen completa. Cada LED de la matriz posee una dirección entre 0 y 63. Para cada dirección, `Led_Mem` entrega una palabra GRB de 24 bits y el módulo `WS2812_led` realiza su transmisión serial.
+
+Cuando se activa `INIT_M`, el contador de direcciones se reinicia y comienza el envío desde `ADDR = 0`. La unidad de control espera que termine cada LED, incrementa la dirección y repite el proceso hasta alcanzar `N_LEDS`. Al completar toda la matriz se activa `DONE_M`.
+
+La selección de la imagen se realiza mediante `IMG_SEL`. El diseño actual contiene cinco imágenes:
+
+- `IMG_SEL = 0` — todos los LEDs encendidos en azul celeste o cian; se utiliza como imagen inicial.
+- `IMG_SEL = 1` — cara feliz en verde claro.
+- `IMG_SEL = 2` — cara seria en anaranjado.
+- `IMG_SEL = 3` — cara triste en rojo.
+- `IMG_SEL = 4` — señal de error representada mediante una X roja.
+
+Cualquier valor diferente apaga todos los LEDs.
+
+<p align="center">
+  <img src="./Diagramas/Ws2812_LED_Array_Flujo.png" width="300">
+  <img src="./Diagramas/Ws2812_LED_Array_Datapath.png" width="400">
+  <img src="./Diagramas/Ws2812_LED_Array_Estados.png" width="350">
+</p>
+
+La carpeta posee los siguientes archivos:
+
+- `Control_WS2812_Led_Array.v` — Máquina de estados que coordina el recorrido de la matriz. Genera `INIT_LED` para comenzar la transmisión de cada posición, espera `DONE_LED`, incrementa la dirección y verifica la bandera `Z`. Cuando se han enviado todos los LEDs activa `DONE_M`.
+
+- `Count_Addr.v` — Contador ascendente que almacena la dirección del LED actual. Se reinicia con `RST` y se incrementa mediante `INC` después de completar cada transmisión.
+
+- `Comp_Addr.v` — Compara la dirección actual con el parámetro `N_LEDS`. La bandera `Z` se activa cuando se alcanzó la cantidad total de LEDs configurada.
+
+- `Led_Mem.v` — Memoria combinacional encargada de seleccionar el color de la dirección actual. Instancia las cinco imágenes y utiliza `IMG_SEL` para conectar una de ellas a la salida `RGB`.
+
+- `Image_0.v` — Define el color de las 64 posiciones de la imagen inicial azul celeste o cian.
+
+- `Image_1.v` — Contiene las posiciones encendidas que forman la cara feliz en verde claro.
+
+- `Image_2.v` — Contiene las posiciones encendidas que forman la cara seria en anaranjado.
+
+- `Image_3.v` — Contiene las posiciones encendidas que forman la cara triste en rojo.
+
+- `Image_4.v` — Contiene las posiciones diagonales que forman una X roja utilizada para indicar un error.
+
+- `WS2812_Led_Array.v` — Módulo top del controlador de matriz. Instancia la unidad de control, el contador y comparador de direcciones, la memoria de imágenes y el controlador de un LED. Sus parámetros `ADDR_WIDTH` y `N_LEDS` permiten modificar el ancho de la dirección y la cantidad de LEDs que deben transmitirse.
+
+- `WS2812_Led_Array_TB.v` — Simula el envío de las imágenes 0, 1, 2 y 3 sobre una matriz de 64 LEDs. Durante la simulación muestra la dirección, el color seleccionado, el inicio de cada LED y el momento en que se incrementa el contador.
+
+---
+
+Además de las tres carpetas anteriores, existen cuatro archivos principales para utilizar y probar la pantalla de manera independiente:
+
+- `Pantalla.v` — Módulo superior de la pantalla. Sincroniza la entrada externa `sensor` mediante dos flip-flops para reducir problemas de metaestabilidad y detecta sus flancos de subida. Cada ráfaga de pulsos representa el número de una imagen; cuando transcurre el tiempo definido por `TIMEOUT_CYCLES` sin recibir otro pulso, el valor contado se almacena como nueva selección. El módulo mantiene por separado `pending_img_sel` y `active_img_sel`, evitando cambiar la imagen mientras el core continúa ocupado transmitiendo la anterior. Después de un reset envía automáticamente la imagen 0.
+
+- `Pantalla_TB.v` — Verifica el funcionamiento completo del módulo `Pantalla`. Para reducir el tiempo de simulación utiliza ocho LEDs y un timeout pequeño. Primero comprueba el envío automático de la imagen 0 y posteriormente aplica ráfagas de uno, dos, tres y cuatro pulsos para seleccionar las imágenes restantes.
+
+- `Pantalla_i9.lpf` — Define la asignación de pines para probar la pantalla de manera independiente sobre la Colorlight i9:
+
+| PINES      | Significado                                      |
+|------------|--------------------------------------------------|
+| `P3`       | Reloj de la FPGA a 25 MHz                        |
+| `K18`      | Señal de reset                                   |
+| `L18`      | Entrada de pulsos utilizada como señal `sensor`  |
+| `C18`      | Salida serial `DOUT` hacia la matriz WS2812      |
+| `G18`      | Señal `DONE_M` de finalización de una imagen     |
+
+- `Makefile` — Automatiza la simulación con Icarus Verilog y GTKWave, la síntesis con Yosys, el place and route con nextpnr-ecp5, la generación del archivo `.bit` mediante `ecppack` y la configuración de la FPGA mediante `openFPGALoader`. Los archivos generados se almacenan dentro de la carpeta `build/`.
 
 ---
 
