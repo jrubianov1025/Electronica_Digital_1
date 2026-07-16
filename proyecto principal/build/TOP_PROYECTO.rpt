@@ -647,7 +647,7 @@ Marked 9 switch rules as full_case in process $proc$controlador_ADS1115/ADS1115_
 Marked 2 switch rules as full_case in process $proc$controlador_ADS1115/ADS1115_CONTROLER/ADS1115_DATA.v:19$253 in module ADS1115_DATA.
 Marked 3 switch rules as full_case in process $proc$controlador_ADS1115/ADS1115_CONTROLER/TICK_GENERATOR.v:17$249 in module $paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.
 Marked 1 switch rules as full_case in process $proc$controlador_ADS1115/I2C/Top_I2C.v:54$244 in module $paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.
-Marked 1 switch rules as full_case in process $proc$Pantalla_I2C.v:52$235 in module $paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.
+Marked 1 switch rules as full_case in process $proc$Pantalla_I2C.v:41$235 in module $paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.
 Removed a total of 2 dead cases.
 
 33.5.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
@@ -657,15 +657,15 @@ Promoted 93 assignments to connections.
 33.5.4. Executing PROC_INIT pass (extract init attributes).
 Found init rule in `\TRELLIS_FF.$proc$/home/juan-diego/miniconda3/envs/digital/bin/../share/yosys/ecp5/cells_sim.v:0$225'.
   Set init value: \Q = 1'0
-Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:36$243'.
+Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:25$243'.
   Set init value: \init_m = 1'0
-Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:35$242'.
+Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:24$242'.
   Set init value: \core_busy = 1'0
-Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:34$241'.
+Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:23$241'.
   Set init value: \request_send = 1'0
-Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:32$240'.
+Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:21$240'.
   Set init value: \pending_img_sel = 4'0000
-Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:31$239'.
+Found init rule in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:20$239'.
   Set init value: \active_img_sel = 4'0000
 
 33.5.5. Executing PROC_ARST pass (detect async resets in processes).
@@ -823,12 +823,12 @@ Creating decoders for process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3
 Creating decoders for process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$controlador_ADS1115/I2C/Top_I2C.v:54$244'.
      1/2: $0\sda_sync[0:0]
      2/2: $0\sda_meta[0:0]
-Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:36$243'.
-Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:35$242'.
-Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:34$241'.
-Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:32$240'.
-Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:31$239'.
-Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:52$235'.
+Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:25$243'.
+Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:24$242'.
+Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:23$241'.
+Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:21$240'.
+Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:20$239'.
+Creating decoders for process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:41$235'.
      1/5: $0\init_m[0:0]
      2/5: $0\core_busy[0:0]
      3/5: $0\request_send[0:0]
@@ -1024,15 +1024,15 @@ Creating register for signal `$paramod$883779b11137cdd758f697b018082aebb916c78f\
   created $adff cell `$procdff$1192' with positive edge clock and positive level reset.
 Creating register for signal `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.\sda_sync' using process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$controlador_ADS1115/I2C/Top_I2C.v:54$244'.
   created $adff cell `$procdff$1193' with positive edge clock and positive level reset.
-Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\active_img_sel' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:52$235'.
+Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\active_img_sel' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:41$235'.
   created $dff cell `$procdff$1194' with positive edge clock.
-Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\pending_img_sel' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:52$235'.
+Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\pending_img_sel' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:41$235'.
   created $dff cell `$procdff$1195' with positive edge clock.
-Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\request_send' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:52$235'.
+Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\request_send' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:41$235'.
   created $dff cell `$procdff$1196' with positive edge clock.
-Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\core_busy' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:52$235'.
+Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\core_busy' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:41$235'.
   created $dff cell `$procdff$1197' with positive edge clock.
-Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\init_m' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:52$235'.
+Creating register for signal `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.\init_m' using process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:41$235'.
   created $dff cell `$procdff$1198' with positive edge clock.
 
 33.5.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
@@ -1107,13 +1107,13 @@ Removing empty process `ADS1115_DATA.$proc$controlador_ADS1115/ADS1115_CONTROLER
 Found and cleaned up 2 empty switches in `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$controlador_ADS1115/ADS1115_CONTROLER/TICK_GENERATOR.v:17$249'.
 Removing empty process `$paramod$ef89205ef5bbfd5a6a5ef3a21319a57bdeb38de3\TICK_GENERATOR.$proc$controlador_ADS1115/ADS1115_CONTROLER/TICK_GENERATOR.v:17$249'.
 Removing empty process `$paramod$883779b11137cdd758f697b018082aebb916c78f\TOP_I2C.$proc$controlador_ADS1115/I2C/Top_I2C.v:54$244'.
-Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:36$243'.
-Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:35$242'.
-Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:34$241'.
-Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:32$240'.
-Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:31$239'.
-Found and cleaned up 4 empty switches in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:52$235'.
-Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:52$235'.
+Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:25$243'.
+Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:24$242'.
+Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:23$241'.
+Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:21$240'.
+Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:20$239'.
+Found and cleaned up 4 empty switches in `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:41$235'.
+Removing empty process `$paramod$deacaa106664fa186463d5896b2dcdde52a7739f\Pantalla_I2C.$proc$Pantalla_I2C.v:41$235'.
 Cleaned up 102 empty switches.
 
 33.5.12. Executing OPT_EXPR pass (perform const folding).
@@ -1890,10 +1890,10 @@ Removed top 1 bits (of 2) from port B of cell TOP_PROYECTO.$flatten\mi_pantalla.
 Removed top 1 bits (of 2) from port B of cell TOP_PROYECTO.$flatten\mi_pantalla.\core_pantalla.\ws2812_led_inst.\timer0.\mux_timer.$procmux$495_CMP0 ($eq).
 Removed top 4 bits (of 5) from port B of cell TOP_PROYECTO.$flatten\mi_pantalla.\core_pantalla.\ws2812_led_inst.\count_24_0.$sub$Codigo_Pantalla/WS2812_led/Count_24.v:22$316 ($sub).
 Removed top 1 bits (of 2) from mux cell TOP_PROYECTO.$flatten\mi_pantalla.\core_pantalla.\ws2812_led_inst.\control0.$procmux$538 ($mux).
-Removed top 3 bits (of 4) from mux cell TOP_PROYECTO.$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:49$230 ($mux).
-Removed top 3 bits (of 16) from port B of cell TOP_PROYECTO.$flatten\mi_pantalla.$gt$Pantalla_I2C.v:49$229 ($gt).
-Removed top 2 bits (of 16) from port B of cell TOP_PROYECTO.$flatten\mi_pantalla.$gt$Pantalla_I2C.v:48$228 ($gt).
-Removed top 1 bits (of 16) from port B of cell TOP_PROYECTO.$flatten\mi_pantalla.$gt$Pantalla_I2C.v:47$227 ($gt).
+Removed top 3 bits (of 4) from mux cell TOP_PROYECTO.$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:38$230 ($mux).
+Removed top 3 bits (of 16) from port B of cell TOP_PROYECTO.$flatten\mi_pantalla.$gt$Pantalla_I2C.v:38$229 ($gt).
+Removed top 2 bits (of 16) from port B of cell TOP_PROYECTO.$flatten\mi_pantalla.$gt$Pantalla_I2C.v:37$228 ($gt).
+Removed top 1 bits (of 16) from port B of cell TOP_PROYECTO.$flatten\mi_pantalla.$gt$Pantalla_I2C.v:36$227 ($gt).
 Removed top 1 bits (of 9) from wire TOP_PROYECTO.$flatten\mi_controlador.\CONTROL.$procmux$1076_Y.
 Removed top 1 bits (of 9) from wire TOP_PROYECTO.$flatten\mi_controlador.\CONTROL.$procmux$1080_Y.
 Removed top 3 bits (of 9) from wire TOP_PROYECTO.$flatten\mi_controlador.\CONTROL.$procmux$1088_Y.
@@ -1902,7 +1902,7 @@ Removed top 1 bits (of 2) from wire TOP_PROYECTO.$flatten\mi_controlador.\CONTRO
 Removed top 1 bits (of 10) from wire TOP_PROYECTO.$flatten\mi_i2c_driver.\CONTROL.$procmux$928_Y.
 Removed top 5 bits (of 10) from wire TOP_PROYECTO.$flatten\mi_i2c_driver.\CONTROL.$procmux$932_Y.
 Removed top 3 bits (of 10) from wire TOP_PROYECTO.$flatten\mi_i2c_driver.\CONTROL.$procmux$942_Y.
-Removed top 3 bits (of 4) from wire TOP_PROYECTO.$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:49$230_Y.
+Removed top 3 bits (of 4) from wire TOP_PROYECTO.$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:38$230_Y.
 Removed top 1 bits (of 2) from wire TOP_PROYECTO.$flatten\mi_pantalla.\core_pantalla.\ws2812_led_inst.\control0.$2\SEL[1:0].
 
 33.16. Executing PEEPOPT pass (run peephole optimizers).
@@ -1987,12 +1987,12 @@ Extracting $alu and $macc cells in module TOP_PROYECTO:
   creating $alu model for $macc $flatten\mi_controlador.\ADS1115_DATA1.$add$controlador_ADS1115/ADS1115_CONTROLER/ADS1115_DATA.v:46$254.
   creating $alu model for $flatten\mi_i2c_driver.\CONTROL.$ge$controlador_ADS1115/I2C/CONTROL.v:104$279 ($ge): new $alu
   creating $alu model for $flatten\mi_i2c_driver.\CONTROL.$ge$controlador_ADS1115/I2C/CONTROL.v:99$278 ($ge): new $alu
-  creating $alu model for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:47$227 ($gt): new $alu
-  creating $alu model for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:48$228 ($gt): new $alu
-  creating $alu model for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:49$229 ($gt): new $alu
-  creating $alu cell for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:49$229: $auto$alumacc.cc:485:replace_alu$1507
-  creating $alu cell for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:48$228: $auto$alumacc.cc:485:replace_alu$1512
-  creating $alu cell for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:47$227: $auto$alumacc.cc:485:replace_alu$1517
+  creating $alu model for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:36$227 ($gt): new $alu
+  creating $alu model for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:37$228 ($gt): new $alu
+  creating $alu model for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:38$229 ($gt): new $alu
+  creating $alu cell for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:38$229: $auto$alumacc.cc:485:replace_alu$1507
+  creating $alu cell for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:37$228: $auto$alumacc.cc:485:replace_alu$1512
+  creating $alu cell for $flatten\mi_pantalla.$gt$Pantalla_I2C.v:36$227: $auto$alumacc.cc:485:replace_alu$1517
   creating $alu cell for $flatten\mi_i2c_driver.\CONTROL.$ge$controlador_ADS1115/I2C/CONTROL.v:99$278: $auto$alumacc.cc:485:replace_alu$1522
   creating $alu cell for $flatten\mi_i2c_driver.\CONTROL.$ge$controlador_ADS1115/I2C/CONTROL.v:104$279: $auto$alumacc.cc:485:replace_alu$1531
   creating $alu cell for $flatten\mi_controlador.\ADS1115_DATA1.$add$controlador_ADS1115/ADS1115_CONTROLER/ADS1115_DATA.v:46$254: $auto$alumacc.cc:485:replace_alu$1544
@@ -2567,10 +2567,10 @@ Removed 0 multiplexer ports.
       Old ports: A={ \mi_i2c_driver.SHIFT.shift_reg [6:0] \mi_i2c_driver.sda_sync }, B={ \mi_i2c_driver.SHIFT.shift_reg [6:0] 1'0 }, Y=$flatten\mi_i2c_driver.\SHIFT.$procmux$785_Y
       New ports: A=\mi_i2c_driver.sda_sync, B=1'0, Y=$flatten\mi_i2c_driver.\SHIFT.$procmux$785_Y [0]
       New connections: $flatten\mi_i2c_driver.\SHIFT.$procmux$785_Y [7:1] = \mi_i2c_driver.SHIFT.shift_reg [6:0]
-    Consolidated identical input bits for $mux cell $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:48$231:
-      Old ports: A=4'0010, B={ 3'000 $auto$wreduce.cc:461:run$1499 [0] }, Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:48$231_Y
-      New ports: A=2'10, B={ 1'0 $auto$wreduce.cc:461:run$1499 [0] }, Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:48$231_Y [1:0]
-      New connections: $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:48$231_Y [3:2] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:37$231:
+      Old ports: A=4'0010, B={ 3'000 $auto$wreduce.cc:461:run$1499 [0] }, Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:37$231_Y
+      New ports: A=2'10, B={ 1'0 $auto$wreduce.cc:461:run$1499 [0] }, Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:37$231_Y [1:0]
+      New connections: $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:37$231_Y [3:2] = 2'00
     Consolidated identical input bits for $mux cell $flatten\mi_pantalla.\core_pantalla.\led_mem.\image_0_inst.$procmux$498:
       Old ports: A=24'000000000000000000000000, B=24'111111110000000011111111, Y=\mi_pantalla.core_pantalla.led_mem.RGB_IMG_0
       New ports: A=1'0, B=1'1, Y=\mi_pantalla.core_pantalla.led_mem.RGB_IMG_0 [0]
@@ -2804,10 +2804,10 @@ Removed 0 multiplexer ports.
       Old ports: A=$flatten\mi_i2c_driver.\CONTROL.$procmux$935_Y [7:0], B=8'10000000, Y=$flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [7:0]
       New ports: A={ $flatten\mi_i2c_driver.\CONTROL.$procmux$935_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$935_Y [4:0] }, B=6'100000, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [4:0] }
       New connections: $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [6:5] = 2'00
-    Consolidated identical input bits for $mux cell $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:47$232:
-      Old ports: A=4'0011, B=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:48$231_Y, Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:47$232_Y
-      New ports: A=2'11, B=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:48$231_Y [1:0], Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:47$232_Y [1:0]
-      New connections: $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:47$232_Y [3:2] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:36$232:
+      Old ports: A=4'0011, B=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:37$231_Y, Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:36$232_Y
+      New ports: A=2'11, B=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:37$231_Y [1:0], Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:36$232_Y [1:0]
+      New connections: $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:36$232_Y [3:2] = 2'00
     Consolidated identical input bits for $pmux cell $flatten\mi_pantalla.\core_pantalla.\led_mem.$procmux$750:
       Old ports: A=24'000000000000000000000000, B={ \mi_pantalla.core_pantalla.led_mem.RGB_IMG_0 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_1 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_2 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_3 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_4 }, Y=\mi_pantalla.core_pantalla.ws2812_led_inst.lsr_rgb0.RGB
       New ports: A=14'00000000000000, B={ \mi_pantalla.core_pantalla.led_mem.RGB_IMG_0 [0] \mi_pantalla.core_pantalla.led_mem.RGB_IMG_0 [0] \mi_pantalla.core_pantalla.led_mem.RGB_IMG_0 [0] \mi_pantalla.core_pantalla.led_mem.RGB_IMG_0 [0] \mi_pantalla.core_pantalla.led_mem.RGB_IMG_0 [0] 8'00000000 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_0 [0] \mi_pantalla.core_pantalla.led_mem.RGB_IMG_1 [23:22] \mi_pantalla.core_pantalla.led_mem.RGB_IMG_1 [18:16] 1'0 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_1 [14] 1'0 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_1 [12] 5'00000 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_2 [23] 4'0000 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_2 [15:8] 6'000000 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_3 [15:8] 6'000000 \mi_pantalla.core_pantalla.led_mem.RGB_IMG_4 [15:8] 1'0 }, Y={ \mi_pantalla.core_pantalla.ws2812_led_inst.lsr_rgb0.RGB [23:22] \mi_pantalla.core_pantalla.ws2812_led_inst.lsr_rgb0.RGB [18:8] \mi_pantalla.core_pantalla.ws2812_led_inst.lsr_rgb0.RGB [0] }
@@ -2901,10 +2901,10 @@ Removed 0 multiplexer ports.
       Old ports: A={ $flatten\mi_i2c_driver.\CONTROL.$procmux$935_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$935_Y [4:0] }, B=6'100000, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [4:0] }
       New ports: A={ $flatten\mi_i2c_driver.\CONTROL.$procmux$935_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$935_Y [4] $flatten\mi_i2c_driver.\CONTROL.$procmux$935_Y [2] }, B=3'100, Y={ $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [7] $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [4] $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [2] }
       New connections: { $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [3] $flatten\mi_i2c_driver.\CONTROL.$procmux$938_Y [1:0] } = 3'000
-    Consolidated identical input bits for $mux cell $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:46$233:
-      Old ports: A=4'0000, B=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:47$232_Y, Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:46$233_Y
-      New ports: A=2'00, B=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:47$232_Y [1:0], Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:46$233_Y [1:0]
-      New connections: $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:46$233_Y [3:2] = 2'00
+    Consolidated identical input bits for $mux cell $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:35$233:
+      Old ports: A=4'0000, B=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:36$232_Y, Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:35$233_Y
+      New ports: A=2'00, B=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:36$232_Y [1:0], Y=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:35$233_Y [1:0]
+      New connections: $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:35$233_Y [3:2] = 2'00
   Optimizing cells in module \TOP_PROYECTO.
     Consolidated identical input bits for $mux cell $memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_3_inst.$auto$proc_rom.cc:150:do_switch$348$rdmux[0][2][3]$2131:
       Old ports: A=$memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_3_inst.$auto$proc_rom.cc:150:do_switch$348$rdmux[0][2][3]$a$2132, B=8'00000000, Y=$memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_3_inst.$auto$proc_rom.cc:150:do_switch$348$rdmux[0][1][1]$b$2121
@@ -2954,9 +2954,9 @@ Removed 0 multiplexer ports.
       Old ports: A=$memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][2][1]$a$1748, B=7'0000000, Y=$memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][1][0]$b$1740
       New ports: A=$memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][2][1]$a$1748 [0], B=1'0, Y=$memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][1][0]$b$1740 [0]
       New connections: $memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][1][0]$b$1740 [6:1] = { $memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][1][0]$b$1740 [0] $memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][1][0]$b$1740 [0] $memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][1][0]$b$1740 [0] $memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][1][0]$b$1740 [0] $memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][1][0]$b$1740 [0] $memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_1_inst.$auto$proc_rom.cc:150:do_switch$340$rdmux[0][1][0]$b$1740 [0] }
-    Consolidated identical input bits for $mux cell $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:45$234:
-      Old ports: A=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:46$233_Y, B=4'0100, Y=\mi_pantalla.img_sel_actual
-      New ports: A={ 1'0 $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:46$233_Y [1:0] }, B=3'100, Y=\mi_pantalla.img_sel_actual [2:0]
+    Consolidated identical input bits for $mux cell $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:34$234:
+      Old ports: A=$flatten\mi_pantalla.$ternary$Pantalla_I2C.v:35$233_Y, B=4'0100, Y=\mi_pantalla.img_sel_actual
+      New ports: A={ 1'0 $flatten\mi_pantalla.$ternary$Pantalla_I2C.v:35$233_Y [1:0] }, B=3'100, Y=\mi_pantalla.img_sel_actual [2:0]
       New connections: \mi_pantalla.img_sel_actual [3] = 1'0
     Consolidated identical input bits for $mux cell $memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_4_inst.$auto$proc_rom.cc:150:do_switch$352$rdmux[0][2][3]$2320:
       Old ports: A=$memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_4_inst.$auto$proc_rom.cc:150:do_switch$352$rdmux[0][2][3]$a$2321, B=$memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_4_inst.$auto$proc_rom.cc:150:do_switch$352$rdmux[0][2][3]$b$2322, Y=$memory$flatten\mi_pantalla.\core_pantalla.\led_mem.\image_4_inst.$auto$proc_rom.cc:150:do_switch$352$rdmux[0][1][1]$b$2310
@@ -3352,7 +3352,7 @@ ABC: Participating nodes from the first network   =     233. (  83.51 % of nodes
 ABC: Participating nodes from the second network  =     303. ( 108.60 % of nodes)
 ABC: Node pairs (any polarity)                    =     233. (  83.51 % of names can be moved)
 ABC: Node pairs (same polarity)                   =     208. (  74.55 % of names can be moved)
-ABC: Total runtime =     0.07 sec
+ABC: Total runtime =     0.06 sec
 ABC: + write_blif <abc-temp-dir>/output.blif 
 
 33.43.1.2. Re-integrating ABC results.
@@ -3683,6 +3683,6 @@ Found and reported 0 problems.
 34. Executing JSON backend.
 
 Warnings: 2 unique messages, 2 total
-End of script. Logfile hash: 9bfada4070, CPU: user 2.41s system 0.05s, MEM: 58.79 MB peak
+End of script. Logfile hash: edd66c5020, CPU: user 2.20s system 0.05s, MEM: 58.92 MB peak
 Yosys 0.33+6 (git sha1 41b34a193, x86_64-conda-linux-gnu-cc 11.2.0 -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -fdebug-prefix-map=/root/conda-eda/conda-eda/workdir/conda-env/conda-bld/yosys_1694128612374/work=/usr/local/src/conda/yosys-0.33_7_g41b34a193 -fdebug-prefix-map=/home/juan-diego/miniconda3/envs/digital=/usr/local/src/conda-prefix -fPIC -Os -fno-merge-constants)
-Time spent: 19% 7x techmap (0 sec), 18% 45x read_verilog (0 sec), ...
+Time spent: 18% 45x read_verilog (0 sec), 16% 7x techmap (0 sec), ...

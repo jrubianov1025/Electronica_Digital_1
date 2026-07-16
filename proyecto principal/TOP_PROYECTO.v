@@ -20,7 +20,6 @@ module TOP_PROYECTO #(
     // parameter [15:0] UMBRAL_2 = 16'd14000,  // frontera feliz <-> seria
     // parameter [15:0] UMBRAL_3 = 16'd19000   // frontera seria <-> triste (muy seco)
 )(
-)(
     input  wire clk,
     input  wire reset,
 
