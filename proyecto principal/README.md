@@ -6,8 +6,7 @@ En esta carpeta se encuentran todos los archivos necesarios para el funcionamien
 la estructura del proyecto se muestra acontinuación: 
 
 ```Bash
-
-    \proyecto principal
+\proyecto principal
 
       \Diagramas
         I2C_Datapath.png
@@ -18,27 +17,78 @@ la estructura del proyecto se muestra acontinuación:
         ADS1115_estados.png
         ADS1115_flujo.png
 
-      \Codigo_pantalla
-        
-      \controlador ads1115
-        \ADS1115_CONTROLLER
+        Timer_Ws2812_Datapath.png
+        Timer_Ws2812_Estados.png
+        Timer_Ws2812_Flujo.png
+
+        Ws2812_LED_Datapath.png
+        Ws2812_LED_Estados.png
+        Ws2812_LED_Flujo.png
+
+        Ws2812_LED_Array_Datapath.png
+        Ws2812_LED_Array_Estados.png
+        Ws2812_LED_Array_Flujo.png
+
+      \Codigo_Pantalla
+        Makefile
+        Pantalla.v
+        Pantalla_TB.v
+        Pantalla_i9.lpf
+
+        \Timer_ws2812
+          Control_Timer_WS2812.v
+          Timer_WS2812.v
+          Timer_WS2812_TB.v
+          comp_timer_ws2812.v
+          count_out.v
+          mux_timer_ws2812.v
+
+        \WS2812_led
+          Control_WS2812_LED.v
+          Count_24.v
+          LSR_RGB.v
+          WS2812_led.v
+          WS2812_led_TB.v
+
+        \WS2812_Led_Array
+          Comp_Addr.v
+          Control_WS2812_Led_Array.v
+          Count_Addr.v
+          Image_0.v
+          Image_1.v
+          Image_2.v
+          Image_3.v
+          Image_4.v
+          Led_Mem.v
+          WS2812_Led_Array.v
+          WS2812_Led_Array_TB.v
+
+        \build   (generado por make)
+
+      \controlador_ADS1115
+        \ADS1115_CONTROLER
           ADS1115_CONTROL.v
           ADS1115_DATA.v
           ADS1115_TOP.v
           TICK_GENERATOR.v
 
         \I2C
-          \CONTADOR_BITS.v     
-          \CONTADOR_BYTES.v    
-          \CONTROL.v 
-          \I2C_CLOCK_GENERATOR.v
-          \SHIFT_REG.v
-          \Top_I2C.v
+          CONTADOR_BITS.v
+          CONTADOR_BYTES.v
+          CONTROL.v
+          I2C_CLOCK_GENERATOR.v
+          SHIFT_REG.v
+          TESTBENCH.v
+          Top_I2C.v
 
-      CONTROLADOR_I2C_i9.lpf
-      CONTROLADOR_I2C.v
-      Makefile
-      tb_CONTROLADOR_I2C.v
+        \build   (generado por make)
+
+        CONTROLADOR_I2C_i9.lpf
+        CONTROLADOR_I2C.v
+        Makefile
+        tb_CONTROLADOR_I2C.v
+
+      \build   (generado por make)
 
     Makefile
     Pantalla_I2C.v

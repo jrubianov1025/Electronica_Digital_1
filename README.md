@@ -39,10 +39,6 @@ Sebastian Bohorquez Parra -CC 1003845024 - Grupo 8
   
 - `README.md` — Archivo de descripción principal.
 
-- [rubricas de auto y coevaluacion](./Coevaluacion_Autoevaluacion/)
-
-  ---
-## Funcionamiento del proyecto
 
 
 
